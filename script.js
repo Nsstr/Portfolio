@@ -35,64 +35,51 @@ projectCards.forEach(card => {
 
 
 
-    // Obtener URLs de redes sociales
+   // Dentro del event listener del click en la tarjeta
+const facebookUrl = card.getAttribute('data-facebook') || "#";
 const instagramUrl = card.getAttribute('data-instagram') || "#";
 
-// Crear contenedor de redes sociales
+// Eliminar íconos sociales previos
+const existingSocial = document.querySelectorAll('.social-icon-container');
+existingSocial.forEach(el => el.remove());
+
+// Crear nuevo contenedor
 const socialContainer = document.createElement('div');
+socialContainer.className = 'social-icon-container'; // Clase clave
 socialContainer.style.position = 'absolute';
 socialContainer.style.top = '20px';
 socialContainer.style.right = '50px';
 socialContainer.style.display = 'flex';
 socialContainer.style.gap = '10px';
 
-// Icono de Instagram
+// Lógica para Facebook
+if (facebookUrl && facebookUrl !== "#") {
+    const fbLink = document.createElement('a');
+    fbLink.href = facebookUrl;
+    fbLink.target = "_blank";
+    const fbIcon = document.createElement('img');
+    fbIcon.src = "imagenes/botones/fb.png";
+    fbIcon.style.width = "32px";
+    fbIcon.alt = "Facebook";
+    fbLink.appendChild(fbIcon);
+    socialContainer.appendChild(fbLink);
+}
+
+// Lógica para Instagram
 if (instagramUrl && instagramUrl !== "#") {
     const igLink = document.createElement('a');
     igLink.href = instagramUrl;
     igLink.target = "_blank";
     const igIcon = document.createElement('img');
-    igIcon.src = "imagenes/botones/ig.png"; // Asegurar que esta imagen existe
+    igIcon.src = "imagenes/botones/ig.png";
     igIcon.style.width = "32px";
-    igIcon.alt = "Instagram del proyecto";
+    igIcon.alt = "Instagram";
     igLink.appendChild(igIcon);
     socialContainer.appendChild(igLink);
 }
 
-// Insertar en el modal (antes del título)
-document.getElementById('modal-body').prepend(socialContainer);
-
-
-
-
-
-
-
-    // Dentro del event listener del click en la tarjeta
-const facebookUrl = card.getAttribute('data-facebook') || "#";
-
-// Crear contenedor del ícono
-const facebookContainer = document.createElement('div');
-facebookContainer.style.position = 'absolute';
-facebookContainer.style.top = '20px';
-facebookContainer.style.right = '50px';
-facebookContainer.style.zIndex = '1000';
-
-// Crear enlace e ícono
-if (facebookUrl && facebookUrl !== "#") {
-    const facebookLink = document.createElement('a');
-    facebookLink.href = facebookUrl;
-    facebookLink.target = "_blank";
-    const facebookIcon = document.createElement('img');
-    facebookIcon.src = "imagenes/botones/fb.png"; // Asegurar que esta ruta existe
-    facebookIcon.style.width = "32px";
-    facebookIcon.alt = "Facebook del proyecto";
-    facebookLink.appendChild(facebookIcon);
-    facebookContainer.appendChild(facebookLink);
-}
-
 // Insertar en el modal
-document.getElementById('modal-body').prepend(facebookContainer);
+document.getElementById('modal-body').prepend(socialContainer);
 
     // Videos y comentarios
     const videosContainer = document.getElementById('modal-video-links');
@@ -140,8 +127,11 @@ document.getElementById('modal-body').prepend(facebookContainer);
   });
 });
 
+// En la función que cierra el modal
 closeButton.addEventListener('click', function() {
   modal.style.display = 'none';
+  // Eliminar íconos al cerrar
+  document.querySelectorAll('.social-icon-container').forEach(el => el.remove());
 });
 
 window.addEventListener('click', function(e) {

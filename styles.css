@@ -510,3 +510,15 @@ footer {
 #project-modal .contact-icon:hover {
   transform: scale(1.1);
 }
+
+
+
+/* Limpiar floats */
+#project-modal .social-icon-container {
+  clear: both;
+}
+
+/* Evitar superposición */
+.modal-content {
+  position: relative;
+}
