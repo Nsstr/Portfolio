@@ -6,7 +6,7 @@ const closeButton = modal.querySelector('.close-button');
 projectCards.forEach(card => {
   card.addEventListener('click', function() {
     const title = card.getAttribute('data-title') || "Proyecto";
-    const description = card.getAttribute('data-description') || "Presentación del proyecto.";
+    const description = card.getAttribute('data-description') || " ";
     const imagesData = card.getAttribute('data-images');
     const videosData = card.getAttribute('data-videos');
 

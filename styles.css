@@ -440,3 +440,61 @@ footer {
   font-size: 1.5em;
   cursor: pointer;
 }
+
+
+
+.nombre-container {
+  text-align: left; /* Alinea el texto a la izquierda */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea al inicio (izquierda) */
+  justify-content: center;
+  height: 100vh; /* Ocupa toda la pantalla */
+  padding-left: 70px; /* Ajusta el espacio desde el borde izquierdo */
+}
+
+
+.nombre {
+  font-family: 'Helvetica CE Bold', sans-serif;
+  font-size: 5rem; /* Ajusta según necesidad */
+  font-weight: bold;
+  text-transform: uppercase;
+  writing-mode: vertical-rl; /* Hace el texto vertical */
+  transform: rotate(180deg); /* Corrige la orientación */
+  margin: 0;
+  line-height: 1; /* Reduce el espacio entre líneas */
+}
+
+.descripcion {
+  font-family: 'Helvetica LT Std Condensed', sans-serif;
+  font-size: 1.2rem;
+  text-align: left; /* Asegura que el texto descriptivo también esté alineado */
+  max-width: 300px; /* Ajusta el ancho */
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.nombre-texto {
+  font-size: 5.7rem; /* Tamaño del nombre */
+}
+
+.apellido-texto {
+  font-size: 4rem; /* Tamaño del apellido */
+}
+
+
+
+
+@font-face {
+  font-family: 'Helvetica CE Bold';
+  src: url('font/Helvetica CE Bold.otf') format('woff2'),
+       url('font/Helvetica CE Bold.otf') format('woff');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Helvetica LT Std Condensed';
+  src: url('font/HelveticaLTStd-Cond.otf') format('woff2'),
+       url('font/HelveticaLTStd-Cond.otf') format('woff');
+  font-weight: normal;
+}
