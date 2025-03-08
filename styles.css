@@ -1,0 +1,301 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Header con fondo animado unificado */
+header {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Canvas para animación de fondo */
+#background-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Navbar (transparente para dejar ver el fondo animado) */
+.navbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.navbar .logo {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #ccc;
+}
+
+/* Menú móvil */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  height: 3px;
+  width: 25px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+/* Contenido del Hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+/* Nombre en grande en el lateral */
+.side-name {
+  flex: 1;
+  padding-left: 55px;
+}
+
+.side-name h1 {
+  font-size: 5em;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Tagline */
+.hero-tagline {
+  flex: 2;
+  text-align: center;
+}
+
+.hero-tagline p {
+  font-size: 2em;
+  font-weight: 300;
+}
+
+/* Secciones generales */
+.section {
+  padding: 60px 20px;
+  background-color: #121212;
+}
+
+.section:nth-of-type(even) {
+  background-color: #1e1e1e;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.container p {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Portfolio */
+.portfolio-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.portfolio-items .item {
+  background-color: #fff;
+  color: #121212;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.portfolio-items .item:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio-items .item img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.portfolio-items .item h3 {
+  margin-top: 10px;
+  font-size: 1.4em;
+}
+
+.portfolio-items .item p {
+  margin-top: 5px;
+  font-size: 1em;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 800px;
+  width: 90%;
+  color: #121212;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* Galería y Videos en el Modal */
+#modal-gallery, #modal-videos {
+  margin-top: 20px;
+}
+
+.gallery, .videos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery img {
+  width: calc(50% - 10px);
+  border-radius: 5px;
+}
+
+/* Formulario de contacto */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+}
+
+form label {
+  margin: 10px 0 5px;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+form button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #00BFFF;
+  border: none;
+  color: #fff;
+  font-size: 1.1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #8A2BE2;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #121212;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+  
+  .navbar ul.active {
+    display: flex;
+  }
+  
+  .navbar ul li {
+    margin: 10px 0;
+  }
+  
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .side-name h1 {
+    font-size: 3em;
+  }
+  
+  .hero-tagline p {
+    font-size: 1.5em;
+  }
+}

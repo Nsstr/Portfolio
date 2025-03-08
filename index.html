@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Néstor Tártalo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Canvas de fondo animado que se extiende en todo el header -->
+    <canvas id="background-canvas"></canvas>
+
+    <nav class="navbar">
+
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul>
+        <li><a href="#sobre-mi">Sobre Mi</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contenido del hero con el nombre en grande a un lado -->
+    <div class="hero-content">
+      <div class="side-name">
+        <h1>Néstor Tartalo</h1>
+      </div>
+      <div class="hero-tagline">
+        <p>Diseñador gráfico enfocado en soluciones 
+            creativas que potencian la comunicación visual.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Sección Sobre Mi -->
+    <section id="sobre-mi" class="section">
+      <div class="container">
+        <h2>Sobre Mi</h2>
+        <p>
+          Soy Néstor Tartalo, diseñador gráfico con amplia 
+          experiencia en identidades visuales, diseño editorial
+          y campañas publicitarias. Fusiono creatividad y 
+          funcionalidad para generar experiencias visuales únicas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección Portfolio (10 tarjetas de proyecto con datos dinámicos) -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <h2>Portfolio</h2>
+        <div class="portfolio-items">
+          <!-- Tarjeta 1 -->
+          <div class="item project-card" 
+               data-title="Rebranding" 
+               data-images="imagenes/mercado libre/DEF/PUB-1b.png,
+               imagenes/mercado libre/DEF/APP-1.png,
+               imagenes/mercado libre/DEF/BOX-1.png,
+               imagenes/mercado libre/DEF/BOX-2.png,
+               imagenes/mercado libre/DEF/BOX-3.png,
+               imagenes/mercado libre/DEF/CHOMBA.png,
+               imagenes/mercado libre/DEF/PUB-EDIF.png,
+               imagenes/mercado libre/DEF/RED-1.png,
+               imagenes/mercado libre/DEF/RED-2.png,
+               imagenes/mercado libre/DEF/OR.png,
+               imagenes/mercado libre/DEF/ID-2.png,
+               imagenes/mercado libre/DEF/ID-1.png"
+               data-videos="">
+            <img src="imagenes/mercado libre/DEF/PUB-1b.png" alt="Identidad Visual">
+            <h3>Rebranding de Mercado Libre</h3>
+            <p>En este proyecto, me propuse reimaginar la identidad visual 
+                de Mercado Libre como un ejercicio personal para explorar 
+                mis habilidades de diseño. Mi propuesta incluye una nueva 
+                imagen de marca aplicada en diversos soportes, reflejando 
+                modernidad, funcionalidad y una conexión más cercana con 
+                los usuarios. Este rebranding es una iniciativa propia que 
+                destaca mi capacidad creativa y estratégica como diseñador gráfico.</p>
+          </div>
+          <!-- Tarjeta 2 -->
+          <div class="item project-card" 
+               data-title="Diseño Editorial" 
+               data-description="Maquetación y diseño de revistas y publicaciones, resaltando la narrativa visual."
+               data-images="https://via.placeholder.com/800x600/aaaaaa,https://via.placeholder.com/800x600/bbbbbb"
+               data-videos="">
+            <img src="https://via.placeholder.com/400x300/aaaaaa" alt="Diseño Editorial">
+            <h3>Diseño Editorial</h3>
+            <p>Revistas y publicaciones</p>
+          </div>
+          <!-- Tarjeta 3 -->
+          <div class="item project-card" 
+               data-title="Campaña Publicitaria" 
+               data-description="Conceptualización y desarrollo de campañas publicitarias con procesos creativos innovadores."
+               data-images="https://via.placeholder.com/800x600/222222"
+               data-videos="https://www.youtube.com/embed/oHg5SJYRHA0,https://www.youtube.com/embed/6_b7RDuLwcI">
+            <img src="https://via.placeholder.com/400x300/222222" alt="Campaña Publicitaria">
+            <h3>Campaña Publicitaria</h3>
+            <p>Conceptos y ejecución</p>
+          </div>
+          <!-- Tarjeta 4 -->
+          <div class="item project-card" 
+               data-title="Packaging Creativo" 
+               data-description="Diseño de empaques que comunican la esencia del producto y atraen al consumidor."
+               data-images="https://via.placeholder.com/800x600/333333,https://via.placeholder.com/800x600/444444"
+               data-videos="">
+            <img src="https://via.placeholder.com/400x300/333333" alt="Packaging Creativo">
+            <h3>Packaging Creativo</h3>
+            <p>Diseño de empaques</p>
+          </div>
+          <!-- Tarjeta 5 -->
+          <div class="item project-card" 
+               data-title="Branding Corporativo" 
+               data-description="Desarrollo integral de identidades corporativas, desde el logo hasta la aplicación en soportes."
+               data-images="https://via.placeholder.com/800x600/555555"
+               data-videos="">
+            <img src="https://via.placeholder.com/400x300/555555" alt="Branding Corporativo">
+            <h3>Branding Corporativo</h3>
+            <p>Identidades integrales</p>
+          </div>
+          <!-- Tarjeta 6 -->
+          <div class="item project-card" 
+               data-title="Ilustración Digital" 
+               data-description="Creación de ilustraciones digitales con estilo único para publicidad y medios digitales."
+               data-images="https://via.placeholder.com/800x600/666666,https://via.placeholder.com/800x600/777777"
+               data-videos="">
+            <img src="https://via.placeholder.com/400x300/666666" alt="Ilustración Digital">
+            <h3>Ilustración Digital</h3>
+            <p>Arte digital</p>
+          </div>
+          <!-- Tarjeta 7 -->
+          <div class="item project-card" 
+               data-title="Diseño Web" 
+               data-description="Proyectos de diseño web que combinan estética y funcionalidad para experiencias digitales."
+               data-images="https://via.placeholder.com/800x600/888888"
+               data-videos="https://www.youtube.com/embed/9bZkp7q19f0">
+            <img src="https://via.placeholder.com/400x300/888888" alt="Diseño Web">
+            <h3>Diseño Web</h3>
+            <p>Interfaces digitales</p>
+          </div>
+          <!-- Tarjeta 8 -->
+          <div class="item project-card" 
+               data-title="Fotografía Creativa" 
+               data-description="Proyectos fotográficos que capturan emociones y cuentan historias a través de la imagen."
+               data-images="https://via.placeholder.com/800x600/999999,https://via.placeholder.com/800x600/ababab"
+               data-videos="">
+            <img src="https://via.placeholder.com/400x300/999999" alt="Fotografía Creativa">
+            <h3>Fotografía Creativa</h3>
+            <p>Historias visuales</p>
+          </div>
+          <!-- Tarjeta 9 -->
+          <div class="item project-card" 
+               data-title="Motion Graphics" 
+               data-description="Animaciones y gráficos en movimiento que enriquecen la comunicación visual."
+               data-images="https://via.placeholder.com/800x600/cccccc"
+               data-videos="https://www.youtube.com/embed/3JZ_D3ELwOQ">
+            <img src="https://via.placeholder.com/400x300/cccccc" alt="Motion Graphics">
+            <h3>Motion Graphics</h3>
+            <p>Animación y video</p>
+          </div>
+          <!-- Tarjeta 10 -->
+          <div class="item project-card" 
+               data-title="Exposición Digital" 
+               data-description="Curaduría y diseño de exposiciones digitales que integran multimedia y arte interactivo."
+               data-images="https://via.placeholder.com/800x600/dddddd,https://via.placeholder.com/800x600/eeeeee"
+               data-videos="https://www.youtube.com/embed/tVj0ZTS4WF4">
+            <img src="https://via.placeholder.com/400x300/dddddd" alt="Exposición Digital">
+            <h3>Exposición Digital</h3>
+            <p>Multimedia interactivo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <h2>Contacto</h2>
+        <form>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal para Detalle de Proyecto -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div id="modal-body">
+        <h2 id="modal-title">Título del Proyecto</h2>
+        <p id="modal-description">Descripción detallada del proyecto...</p>
+        <div id="modal-gallery">
+         
+          <div id="modal-images" class="gallery"></div>
+        </div>
+        <div id="modal-videos">
+          
+          <div id="modal-video-links" class="videos"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Néstor Tartalo. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
