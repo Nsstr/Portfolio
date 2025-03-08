@@ -30,6 +30,70 @@ projectCards.forEach(card => {
       });
     }
 
+
+
+
+
+
+    // Obtener URLs de redes sociales
+const instagramUrl = card.getAttribute('data-instagram') || "#";
+
+// Crear contenedor de redes sociales
+const socialContainer = document.createElement('div');
+socialContainer.style.position = 'absolute';
+socialContainer.style.top = '20px';
+socialContainer.style.right = '50px';
+socialContainer.style.display = 'flex';
+socialContainer.style.gap = '10px';
+
+// Icono de Instagram
+if (instagramUrl && instagramUrl !== "#") {
+    const igLink = document.createElement('a');
+    igLink.href = instagramUrl;
+    igLink.target = "_blank";
+    const igIcon = document.createElement('img');
+    igIcon.src = "imagenes/botones/ig.png"; // Asegurar que esta imagen existe
+    igIcon.style.width = "32px";
+    igIcon.alt = "Instagram del proyecto";
+    igLink.appendChild(igIcon);
+    socialContainer.appendChild(igLink);
+}
+
+// Insertar en el modal (antes del título)
+document.getElementById('modal-body').prepend(socialContainer);
+
+
+
+
+
+
+
+    // Dentro del event listener del click en la tarjeta
+const facebookUrl = card.getAttribute('data-facebook') || "#";
+
+// Crear contenedor del ícono
+const facebookContainer = document.createElement('div');
+facebookContainer.style.position = 'absolute';
+facebookContainer.style.top = '20px';
+facebookContainer.style.right = '50px';
+facebookContainer.style.zIndex = '1000';
+
+// Crear enlace e ícono
+if (facebookUrl && facebookUrl !== "#") {
+    const facebookLink = document.createElement('a');
+    facebookLink.href = facebookUrl;
+    facebookLink.target = "_blank";
+    const facebookIcon = document.createElement('img');
+    facebookIcon.src = "imagenes/botones/fb.png"; // Asegurar que esta ruta existe
+    facebookIcon.style.width = "32px";
+    facebookIcon.alt = "Facebook del proyecto";
+    facebookLink.appendChild(facebookIcon);
+    facebookContainer.appendChild(facebookLink);
+}
+
+// Insertar en el modal
+document.getElementById('modal-body').prepend(facebookContainer);
+
     // Videos y comentarios
     const videosContainer = document.getElementById('modal-video-links');
     videosContainer.innerHTML = "";
@@ -148,6 +212,17 @@ function showCommentModal(text) {
     </div>
   `;
   document.body.appendChild(overlay);
+
+
+  
+
+
+
+
+
+
+
+
   // Cerrar el modal al hacer clic en el botón de cerrar o fuera del contenido
   overlay.querySelector('.comment-modal-close').addEventListener('click', function() {
     document.body.removeChild(overlay);
@@ -216,3 +291,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   draw();
 });
+
+
+

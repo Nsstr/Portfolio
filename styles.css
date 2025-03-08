@@ -500,3 +500,13 @@ footer {
 }
 
 
+/* Estilos para íconos de redes en el modal */
+#project-modal .contact-icon {
+  width: 32px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+#project-modal .contact-icon:hover {
+  transform: scale(1.1);
+}
