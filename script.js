@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const canvas = document.getElementById("background-canvas");
   const ctx = canvas.getContext("2d");
   let width, height;
+  let hue = 0; // Variable para controlar el cambio de color
 
   // Ajustar tamaño del canvas
   function resize() {
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Crear puntos para la red geométrica
   const points = [];
-  const numPoints = 100;
+  const numPoints = 150;
   for (let i = 0; i < numPoints; i++) {
     points.push({
       x: Math.random() * width,
@@ -98,6 +99,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // Dibujar líneas entre puntos cercanos
   function draw() {
     ctx.clearRect(0, 0, width, height); // Limpiar el canvas en cada cuadro
+
+    // Incrementar el valor de hue para cambiar el color
+    hue += 0.5; // Controlar la velocidad del cambio de color
+    if (hue >= 360) hue = 0; // Reseteamos el valor de hue si llega a 360
+
     for (let i = 0; i < numPoints; i++) {
       const p1 = points[i];
       for (let j = i + 1; j < numPoints; j++) {
@@ -105,8 +111,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const dx = p1.x - p2.x;
         const dy = p1.y - p2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {  // Dibuja las líneas si los puntos están suficientemente cerca
-          ctx.strokeStyle = "rgba(255,255,255," + (1 - dist / 150) + ")";
+        if (dist < 100) {  // Dibuja las líneas si los puntos están suficientemente cerca
+          // Establecer el color dinámico en función de hue
+          ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
