@@ -9,46 +9,72 @@ projectCards.forEach(card => {
     const description = card.getAttribute('data-description') || "Presentación del proyecto.";
     const imagesData = card.getAttribute('data-images');
     const videosData = card.getAttribute('data-videos');
-    
+
     document.getElementById('modal-title').textContent = title;
     document.getElementById('modal-description').textContent = description;
 
-    // Imágenes
+    // Imágenes con funcionalidad de carrusel
     const imagesContainer = document.getElementById('modal-images');
     imagesContainer.innerHTML = "";
     if (imagesData) {
-      imagesData.split(',').forEach(imgUrl => {
+      const imageUrls = imagesData.split(',').map(url => url.trim());
+      imageUrls.forEach((imgUrl, index) => {
         const img = document.createElement('img');
-        img.src = imgUrl.trim();
+        img.src = imgUrl;
         img.alt = title;
+        // Al hacer clic, se abre el carrusel
+        img.addEventListener('click', function() {
+          openImageCarousel(index, imageUrls);
+        });
         imagesContainer.appendChild(img);
       });
     }
 
-    // Videos
+    // Videos y comentarios
     const videosContainer = document.getElementById('modal-video-links');
     videosContainer.innerHTML = "";
+    const videoCommentsData = card.getAttribute('data-video-comments');
+    let videoComments = [];
+    if (videoCommentsData) {
+      videoComments = videoCommentsData.split('/').map(text => text.trim());
+    }
     if (videosData) {
       const videoUrls = videosData.split(',');
-      videoUrls.forEach(videoUrl => {
+      videoUrls.forEach((videoUrl, index) => {
+        const videoContainer = document.createElement('div');
+        videoContainer.classList.add('video-container');
+    
+        // Contenedor del video
+        const videoWrapper = document.createElement('div');
+        videoWrapper.classList.add('video-wrapper');
         const iframe = document.createElement('iframe');
         const videoID = getYouTubeVideoID(videoUrl.trim());
-        iframe.src = `https://www.youtube.com/embed/${videoID}?rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&playsinline=1&autoplay=1&mute=1&loop=1&playlist=${videoID}`;
-
-
+        iframe.src = `https://www.youtube.com/embed/${videoID}?rel=0&modestbranding=1&controls=1&playsinline=1&autoplay=1&mute=1&loop=1&playlist=${videoID}`;
         iframe.frameBorder = "0";
         iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
         iframe.allowFullscreen = true;
-        iframe.style.width = "100%";
-        iframe.style.height = "300px";
-        videosContainer.appendChild(iframe);
+        videoWrapper.appendChild(iframe);
+        videoContainer.appendChild(videoWrapper);
+    
+        // Si existe comentario para este video, se agrega el botón para mostrarlo
+        if (videoComments[index] && videoComments[index] !== "") {
+          const toggleComment = document.createElement('div');
+          toggleComment.classList.add('toggle-comment');
+          toggleComment.innerHTML = "+";
+          toggleComment.addEventListener("click", function () {
+            showCommentModal(videoComments[index]);
+          });
+          videoContainer.appendChild(toggleComment);
+        }
+    
+        videosContainer.appendChild(videoContainer);
       });
     }
+    
 
     modal.style.display = 'flex';
   });
 });
-
 
 closeButton.addEventListener('click', function() {
   modal.style.display = 'none';
@@ -67,15 +93,79 @@ function getYouTubeVideoID(url) {
   return match ? (match[1] || match[2]) : null;
 }
 
+// Función para abrir el carrusel de imágenes
+function openImageCarousel(currentIndex, imagesArray) {
+  let overlay = document.createElement('div');
+  overlay.id = 'image-carousel-overlay';
+  overlay.innerHTML = `
+    <span class="carousel-close">&times;</span>
+    <span class="carousel-nav carousel-prev">&#10094;</span>
+    <img id="carousel-image" src="${imagesArray[currentIndex]}" alt="">
+    <span class="carousel-nav carousel-next">&#10095;</span>
+  `;
+  document.body.appendChild(overlay);
+
+  function updateImage(index) {
+    const imgElement = document.getElementById('carousel-image');
+    imgElement.src = imagesArray[index];
+    currentIndex = index;
+  }
+
+  overlay.querySelector('.carousel-close').addEventListener('click', function() {
+    document.body.removeChild(overlay);
+  });
+
+  overlay.querySelector('.carousel-prev').addEventListener('click', function(e) {
+    e.stopPropagation();
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) newIndex = imagesArray.length - 1;
+    updateImage(newIndex);
+  });
+
+  overlay.querySelector('.carousel-next').addEventListener('click', function(e) {
+    e.stopPropagation();
+    let newIndex = currentIndex + 1;
+    if (newIndex >= imagesArray.length) newIndex = 0;
+    updateImage(newIndex);
+  });
+
+  // Cerrar carrusel al hacer clic fuera de la imagen
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      document.body.removeChild(overlay);
+    }
+  });
+}
+
+// Función para mostrar el comentario en una ventana flotante centrada
+function showCommentModal(text) {
+  const overlay = document.createElement('div');
+  overlay.id = 'comment-modal-overlay';
+  overlay.innerHTML = `
+    <div class="comment-modal">
+      <span class="comment-modal-close">&times;</span>
+      <p>${text}</p>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  // Cerrar el modal al hacer clic en el botón de cerrar o fuera del contenido
+  overlay.querySelector('.comment-modal-close').addEventListener('click', function() {
+    document.body.removeChild(overlay);
+  });
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      document.body.removeChild(overlay);
+    }
+  });
+}
 
 // Animación en Canvas para fondo geométrico
 document.addEventListener("DOMContentLoaded", function() {
   const canvas = document.getElementById("background-canvas");
   const ctx = canvas.getContext("2d");
   let width, height;
-  let hue = 0; // Variable para controlar el cambio de color
+  let hue = 0;
 
-  // Ajustar tamaño del canvas
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
@@ -84,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener('resize', resize);
   resize();
 
-  // Crear puntos para la red geométrica
   const points = [];
   const numPoints = 150;
   for (let i = 0; i < numPoints; i++) {
@@ -96,14 +185,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Dibujar líneas entre puntos cercanos
   function draw() {
-    ctx.clearRect(0, 0, width, height); // Limpiar el canvas en cada cuadro
-
-    // Incrementar el valor de hue para cambiar el color
-    hue += 0.5; // Controlar la velocidad del cambio de color
-    if (hue >= 360) hue = 0; // Reseteamos el valor de hue si llega a 360
-
+    ctx.clearRect(0, 0, width, height);
+    hue += 0.5;
+    if (hue >= 360) hue = 0;
     for (let i = 0; i < numPoints; i++) {
       const p1 = points[i];
       for (let j = i + 1; j < numPoints; j++) {
@@ -111,8 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const dx = p1.x - p2.x;
         const dy = p1.y - p2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {  // Dibuja las líneas si los puntos están suficientemente cerca
-          // Establecer el color dinámico en función de hue
+        if (dist < 100) {
           ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
           ctx.lineWidth = 1;
           ctx.beginPath();
@@ -122,17 +206,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
     }
-
-    // Actualizar posición de los puntos
     points.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
     });
-
-    requestAnimationFrame(draw); // Llamar a la siguiente animación
+    requestAnimationFrame(draw);
   }
-
   draw();
 });
