@@ -326,3 +326,21 @@ footer {
     font-size: 1.5em;
   }
 }
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.contact-buttons img {
+  width: 100%; /* Tamaño de los iconos */
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.contact-buttons img:hover {
+  transform: scale(1.1);
+}
+

@@ -33,7 +33,9 @@ projectCards.forEach(card => {
       videoUrls.forEach(videoUrl => {
         const iframe = document.createElement('iframe');
         const videoID = getYouTubeVideoID(videoUrl.trim());
-        iframe.src = `https://www.youtube.com/embed/${videoID}`;
+        iframe.src = `https://www.youtube.com/embed/${videoID}?rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&playsinline=1&autoplay=1&mute=1&loop=1&playlist=${videoID}`;
+
+
         iframe.frameBorder = "0";
         iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
         iframe.allowFullscreen = true;
