@@ -64,3 +64,66 @@ function getYouTubeVideoID(url) {
   const match = url.match(regex);
   return match ? (match[1] || match[2]) : null;
 }
+
+
+// Animación en Canvas para fondo geométrico
+document.addEventListener("DOMContentLoaded", function() {
+  const canvas = document.getElementById("background-canvas");
+  const ctx = canvas.getContext("2d");
+  let width, height;
+
+  // Ajustar tamaño del canvas
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Crear puntos para la red geométrica
+  const points = [];
+  const numPoints = 100;
+  for (let i = 0; i < numPoints; i++) {
+    points.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5
+    });
+  }
+
+  // Dibujar líneas entre puntos cercanos
+  function draw() {
+    ctx.clearRect(0, 0, width, height); // Limpiar el canvas en cada cuadro
+    for (let i = 0; i < numPoints; i++) {
+      const p1 = points[i];
+      for (let j = i + 1; j < numPoints; j++) {
+        const p2 = points[j];
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {  // Dibuja las líneas si los puntos están suficientemente cerca
+          ctx.strokeStyle = "rgba(255,255,255," + (1 - dist / 150) + ")";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Actualizar posición de los puntos
+    points.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+    });
+
+    requestAnimationFrame(draw); // Llamar a la siguiente animación
+  }
+
+  draw();
+});

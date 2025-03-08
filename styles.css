@@ -26,8 +26,9 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: -1; /* Esto asegura que el canvas quede en el fondo */
 }
+
 
 /* Navbar (transparente para dejar ver el fondo animado) */
 .navbar {
