@@ -218,12 +218,38 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center; /* Centra los elementos dentro del contenedor */
 }
 
 .gallery img {
-  width: calc(50% - 10px);
+  width: calc(50% - 10px); /* Dos imágenes por fila */
+  max-width: 100%; /* Evita que las imágenes se desborden */
+  height: auto; /* Mantiene la proporción de la imagen */
   border-radius: 5px;
+  object-fit: contain; /* Asegura que las imágenes no se deformen */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega una sombra sutil para más impacto */
 }
+
+.videos iframe {
+  width: 100%;
+  max-width: 100%; /* Limita el ancho máximo */
+  height: 300px; /* Ajusta la altura de los videos */
+  border-radius: 5px;
+  object-fit: contain; /* Mantiene la proporción original del video */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para los videos */
+}
+
+@media (max-width: 768px) {
+  /* Para pantallas más pequeñas, las imágenes se ajustan a una sola columna */
+  .gallery img {
+    width: 100%; /* Una imagen por fila en dispositivos móviles */
+  }
+
+  .videos iframe {
+    height: 250px; /* Ajusta la altura de los videos en dispositivos móviles */
+  }
+}
+
 
 /* Formulario de contacto */
 form {
