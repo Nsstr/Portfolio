@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
   resize();
 
   const points = [];
-  const numPoints = 150;
+  const numPoints = 200;
   for (let i = 0; i < numPoints; i++) {
     points.push({
       x: Math.random() * width,
