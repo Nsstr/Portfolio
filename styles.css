@@ -522,3 +522,19 @@ footer {
 .modal-content {
   position: relative;
 }
+
+
+
+
+/* Elimina el fondo de la sección contacto */
+#contacto {
+    background: transparent !important; /* Fondo transparente */
+    position: relative; /* Necesario para z-index */
+    z-index: 1; /* Asegura que el contenido esté sobre el canvas */
+}
+
+/* Si usas un contenedor interno */
+#contacto .container {
+    background: transparent;
+    backdrop-filter: blur(2px); /* Opcional: efecto de vidrio esmerilado */
+}
