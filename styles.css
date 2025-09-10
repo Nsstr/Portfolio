@@ -42,10 +42,12 @@ h2 { font-size: 2rem; margin-bottom: 40px; text-align: center; }
 
 .contact-buttons {
   display: flex;
+  flex-wrap: wrap;   /* 👈 permite que se acomoden */
   justify-content: center;
   gap: 30px;
   margin-top: 20px;
 }
+
 
 .contact-buttons a {
   display: inline-block;
@@ -196,4 +198,18 @@ footer {
 .info-btn img {
   width: 18px;
   height: 18px;
+}
+
+
+/* Ajuste para pantallas chicas (celulares) */
+@media (max-width: 600px) {
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .contact-buttons img {
+    width: 140px; /* un poco más chico para celular */
+  }
 }
