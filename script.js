@@ -44,13 +44,10 @@ function goNext(index, list) {
   setMainMedia(nextIndex, list);
 }
 
-// ---- Core ----
 function setMainMedia(index, mediaList) {
-  // UI: marcar miniatura seleccionada
   const thumbs = gallery.children;
   [...thumbs].forEach((el, i) => el.classList.toggle('selected', i === index));
 
-  // reset
   clearTimersAndPlayers();
   mainMediaContainer.innerHTML = '';
 
@@ -65,13 +62,11 @@ function setMainMedia(index, mediaList) {
     img.style.objectFit = "contain";
     mainMediaContainer.appendChild(img);
 
-    // esperar 4s y pasar
     autoSlideTimeout = setTimeout(() => goNext(index, mediaList), 4000);
 
   } else {
     const ytId = extractYouTubeID(media.url);
 
-    // ---- Caso YouTube ----
     if (ytId) {
       const playerDiv = document.createElement('div');
       const playerId = `yt-player-${Date.now()}`;
@@ -81,6 +76,7 @@ function setMainMedia(index, mediaList) {
       mainMediaContainer.appendChild(playerDiv);
 
       loadYouTubeAPI().then(() => {
+        console.log("YouTube API lista, creando player...");
         ytPlayer = new YT.Player(playerId, {
           videoId: ytId,
           playerVars: {
@@ -91,15 +87,19 @@ function setMainMedia(index, mediaList) {
             rel: 0,
             fs: 0,
             disablekb: 1,
-            playsinline: 1
+            playsinline: 1,
+            origin: window.location.origin   // 👈 importante en producción
           },
           events: {
             onReady: (e) => {
+              console.log("Player listo, reproduciendo...");
               try { e.target.mute(); } catch {}
               try { e.target.playVideo(); } catch {}
             },
             onStateChange: (e) => {
+              console.log("Cambio de estado YT:", e.data);
               if (e.data === YT.PlayerState.ENDED) {
+                console.log("Video terminado, pasando al siguiente...");
                 goNext(index, mediaList);
               }
             }
@@ -108,7 +108,7 @@ function setMainMedia(index, mediaList) {
       });
 
     } else {
-      // ---- Caso video no-YouTube (archivo propio, etc.) ----
+      // videos propios
       const vid = document.createElement('video');
       vid.src = media.url;
       vid.muted = true;
@@ -121,8 +121,8 @@ function setMainMedia(index, mediaList) {
       mainMediaContainer.appendChild(vid);
 
       vid.addEventListener('ended', () => goNext(index, mediaList));
-      // fallback: si no puede reproducir, pasar al siguiente tras 6s
       vid.addEventListener('error', () => {
+        console.warn("Error al reproducir video, paso al siguiente");
         autoSlideTimeout = setTimeout(() => goNext(index, mediaList), 6000);
       });
     }
