@@ -14,15 +14,15 @@ header.hero {
 .nombre-container { text-align: center; color: #ededed; padding: 20px; }
 .nombre {
   font-family: 'Poppins', sans-serif;
-  font-size: 5rem; /* Más grande que antes */
-  font-weight: 600; /* SemiBold */
+  font-size: 5rem;
+  font-weight: 600;
   color: #ffffff;
   text-align: center;
   text-shadow: 2px 2px 5px #7e7d7d;
   margin: 0 auto;
 }
 
-.descripcion { font-size: 1.2rem; margin-top: 10px; color: #000000; }
+.descripcion { font-size: 2.2rem; margin-top: -30px; color: #ffffff; text-shadow: 2px 2px 5px #3d3d3d; }
 
 .section { padding: 60px 20px; }
 .container { max-width: 1100px; margin: auto; }
@@ -32,18 +32,60 @@ p { text-align: justify; }
 .portfolio-items {
   display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;
 }
-.project-card {
-  width: 300px; background-color: #fff; border-radius: 8px;
-  overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  cursor: pointer; transition: transform 0.3s;
+
+/* ESTILOS PARA TARJETAS NORMALES (no destacadas) */
+.project-card:not(.featured-card) {
+  width: 300px; 
+  background-color: #fff; 
+  border-radius: 8px;
+  overflow: hidden; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  cursor: pointer; 
+  transition: transform 0.3s;
 }
-.project-card:hover { transform: scale(1.03); }
-.project-card img { width: 100%; height: 200px; object-fit: cover; }
-.project-card h3 { padding: 15px; font-size: 1.3rem; text-align: center; }
+
+.project-card:not(.featured-card):hover { transform: scale(1.03); }
+
+/* Imágenes solo para tarjetas normales */
+.project-card:not(.featured-card) > img { 
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+}
+
+.project-card:not(.featured-card) h3 { 
+  padding: 15px; 
+  font-size: 1.3rem; 
+  text-align: center; 
+}
+
+/* BOTÓN INFO GENERAL */
+.info-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 0 10px 15px;
+  font-size: 0.9rem;
+   color: rgb(55, 55, 55);
+  cursor: pointer;
+}
+
+/* Icono del botón info (SOLO para tarjetas normales) */
+.project-card:not(.featured-card) .info-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Icono del botón info para tarjeta destacada */
+.featured-card .info-btn img {
+  width: 18px;
+  height: 18px;
+}
 
 .contact-buttons {
   display: flex;
-  flex-wrap: wrap;   /* 👈 permite que se acomoden */
+  flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
   margin-top: 20px;
@@ -65,9 +107,28 @@ p { text-align: justify; }
 }
 .modal-content {
   background-color: #fff; padding: 20px;
-  width: 90%; max-width: 800px; max-height: 90%; overflow-y: auto;
+  width: 98%; /* Casi todo el ancho de la pantalla */
+  max-width: 1200px; /* Muy ancho */
+  max-height: 90%; overflow-y: auto;
   position: relative; border-radius: 8px;
 }
+
+/* Para pantallas muy grandes */
+@media (min-width: 1400px) {
+  .modal-content {
+    max-width: 1200px;
+  }
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 98%;
+    max-width: 95%;
+    padding: 15px;
+  }
+}
+
 .close-button {
   position: absolute; top: 10px; right: 15px; font-size: 2rem;
   color: #999; cursor: pointer;
@@ -77,12 +138,12 @@ p { text-align: justify; }
 /* --- Contenedor principal del modal --- */
 #modal-main-image {
   width: 100%;
-  height: 60vh;          /* altura controlada */
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  background: #000;       /* fondo negro para videos */
+  background: #000;
 }
 
 /* --- Imágenes y videos dentro del modal --- */
@@ -90,7 +151,7 @@ p { text-align: justify; }
 #modal-main-image iframe {
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* mantiene proporciones */
+  object-fit: contain;
   border: none;
 }
 
@@ -161,22 +222,6 @@ footer {
 }
 .close-info:hover { color: #000; }
 
-/* --- Botón Info en cada tarjeta --- */
-.info-btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 6px;
-  padding: 0 10px 15px;
-  font-size: 0.9rem;
-  color: #007bff;
-  cursor: pointer;
-}
-.info-btn img {
-  width: 18px;
-  height: 18px;
-}
-
 /* Ajuste para pantallas chicas (celulares) */
 @media (max-width: 600px) {
   .contact-buttons {
@@ -185,6 +230,172 @@ footer {
     gap: 15px;
   }
   .contact-buttons img {
-    width: 140px; /* un poco más chico para celular */
+    width: 140px;
   }
+}
+
+/* =============================================== */
+/* ESTILOS ESPECÍFICOS PARA TARJETA DESTACADA */
+/* =============================================== */
+
+.featured-card-wrapper {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.featured-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto 30px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.featured-card > img {
+  width: 70% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+  border-radius: 15px 0 0 15px;
+  flex-shrink: 0;
+}
+
+.featured-content {
+  width: 30%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.95); /* Blanco semitransparente */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque */
+}
+
+.featured-card h3 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.featured-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 15px;
+}
+.featured-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  padding: 0;
+  text-align: left;
+}
+
+.featured-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Botón info para tarjeta destacada */
+.featured-card .info-btn {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 10px 20px;
+
+  color: rgb(33, 33, 33);
+  border-radius: 25px;
+  transition: background 0.3s ease;
+}
+
+
+
+.featured-card .info-btn span {
+  color: rgb(55, 55, 55);
+}
+
+/* Estilos responsivos para tarjeta destacada */
+@media (max-width: 992px) {
+  .featured-card {
+    flex-direction: column !important;
+    height: auto;
+  }
+  
+  .featured-card > img {
+    width: 100% !important;
+    height: 200px !important;
+    border-radius: 15px 15px 0 0;
+  }
+  
+  .featured-content {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .featured-card h3 {
+    text-align: center;
+  }
+  
+  .featured-card .info-btn {
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-card h3 {
+    font-size: 1.8rem;
+  }
+  
+  .featured-description {
+    font-size: 1rem;
+  }
+}
+
+
+/* Estilo para los bullet points destacados */
+.skills-highlight {
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.skills-highlight ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.skills-highlight li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.skills-highlight li:before {
+  content: "•";
+  color: #007bff;
+  font-size: 1.5em;
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+
+.skills-highlight strong {
+  color: #2c3e50;
 }
