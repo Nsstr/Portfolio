@@ -406,8 +406,8 @@ footer {
 @media (max-width: 768px) {
   .nombre-container {
     padding: 30px 20px !important;
-    background: linear-gradient(135deg, rgba(119, 119, 119, 0.4), rgba(119, 119, 119, 0.2));
-    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(175, 175, 175, 0.4), rgba(175, 175, 175, 0.2));
+    backdrop-filter: blur(7px);
     border-radius: 25px;
     width: 90%;
     margin: 0 auto;
