@@ -88,7 +88,7 @@ function setMainMedia(index, mediaList) {
             fs: 0,
             disablekb: 1,
             playsinline: 1,
-            origin: window.location.origin   // 👈 importante en producción
+            origin: window.location.origin
           },
           events: {
             onReady: (e) => {
@@ -209,3 +209,157 @@ infoClose.addEventListener('click', () => { infoModal.style.display = 'none'; })
 window.addEventListener('click', (e) => {
   if (e.target === infoModal) infoModal.style.display = 'none';
 });
+
+// ===========================
+// Animaciones y efectos
+// ===========================
+const sections = document.querySelectorAll('.section');
+const normalCards = document.querySelectorAll('.project-card:not(.featured-card)');
+const taglineItems = document.querySelectorAll('.tagline-item');
+
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+// Observar secciones y tarjetas normales
+sections.forEach(section => observer.observe(section));
+normalCards.forEach(card => observer.observe(card));
+
+// Animación para elementos del tagline
+taglineItems.forEach((item, index) => {
+  item.style.opacity = '0';
+  item.style.transform = 'translateY(20px)';
+  item.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+  
+  setTimeout(() => {
+    item.style.opacity = '1';
+    item.style.transform = 'translateY(0)';
+  }, 300 + (index * 200));
+});
+
+// Efecto de partículas para el hero (opcional)
+function createParticles() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  
+  // Limpiar partículas existentes
+  const existingParticles = hero.querySelectorAll('.floating-particle');
+  existingParticles.forEach(p => p.remove());
+  
+  for (let i = 0; i < 15; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'floating-particle';
+    particle.style.position = 'absolute';
+    particle.style.width = Math.random() * 4 + 1 + 'px';
+    particle.style.height = particle.style.width;
+    particle.style.background = 'rgba(255, 255, 255, 0.5)';
+    particle.style.borderRadius = '50%';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    particle.style.animation = `float ${Math.random() * 20 + 10}s infinite linear`;
+    particle.style.zIndex = '1';
+    hero.appendChild(particle);
+  }
+}
+
+// Función para animación de entrada del glass-card
+function animateGlassCard() {
+  const glassCard = document.querySelector('.glass-card');
+  if (glassCard) {
+    glassCard.style.opacity = '0';
+    glassCard.style.transform = 'scale(0.9) translateY(30px)';
+    glassCard.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    
+    setTimeout(() => {
+      glassCard.style.opacity = '1';
+      glassCard.style.transform = 'scale(1) translateY(0)';
+    }, 300);
+  }
+}
+
+// Función para animar el scroll indicator
+function animateScrollIndicator() {
+  const indicator = document.querySelector('.scroll-indicator');
+  if (indicator) {
+    indicator.style.opacity = '0';
+    indicator.style.transform = 'translateX(-50%) translateY(20px)';
+    indicator.style.transition = 'opacity 0.6s ease 1s, transform 0.6s ease 1s';
+    
+    setTimeout(() => {
+      indicator.style.opacity = '0.8';
+      indicator.style.transform = 'translateX(-50%) translateY(0)';
+    }, 1300);
+  }
+}
+
+// Iniciar efectos cuando la página cargue
+document.addEventListener('DOMContentLoaded', function() {
+  // Crear partículas (descomenta si quieres el efecto)
+  // createParticles();
+  
+  // Animar elementos del hero
+  animateGlassCard();
+  animateScrollIndicator();
+  
+  // Añadir clase visible al hero inmediatamente
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.style.opacity = '0';
+    hero.style.transition = 'opacity 1s ease';
+    
+    setTimeout(() => {
+      hero.style.opacity = '1';
+    }, 100);
+  }
+});
+
+// Smooth scroll para el indicador
+document.querySelector('.scroll-indicator')?.addEventListener('click', function(e) {
+  e.preventDefault();
+  const aboutSection = document.querySelector('#sobre-mi');
+  if (aboutSection) {
+    aboutSection.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+});
+
+// Efecto de hover mejorado para tarjetas
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    this.style.zIndex = '10';
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    this.style.zIndex = '';
+  });
+});
+
+// Añade esto a tu script.js
+function adjustHeroBackground() {
+  const hero = document.querySelector('header.hero');
+  if (!hero) return;
+  
+  const isMobile = window.innerWidth <= 768;
+  
+  if (isMobile) {
+    // Ajusta este valor hasta que veas bien tu rostro
+    hero.style.backgroundPosition = '30% center';
+  } else {
+    hero.style.backgroundPosition = 'left center';
+  }
+}
+
+// Ejecutar al cargar y al redimensionar
+window.addEventListener('DOMContentLoaded', adjustHeroBackground);
+window.addEventListener('resize', adjustHeroBackground);

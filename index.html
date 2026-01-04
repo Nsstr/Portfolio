@@ -10,18 +10,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-overlay">
-      <div class="nombre-container">
-  <h1 class="nombre">Néstor Tártalo</h1>
-  <div class="descripcion">
-    <div>Diseñador Gráfico Estratégico</div>
-    <div>Automatización de Contenido Visual</div>
-    <div>Liderazgo Operativo</div>
-  </div>
+<header class="hero">
+  <div class="geometric-element"></div>
+  <div class="geometric-element"></div>
+  <div class="geometric-element"></div>
+  <!-- Coloca esto DENTRO de header.hero, después de .hero-overlay -->
+<div class="tarjeta-movil">
+    <div class="nombre-tarjeta">Néstor Tórtalo</div>
+    <div class="titulo-principal">Diseñador Gráfico Estratégico</div>
+    <div class="subtitulo">Automatización de Contenido Visual</div>
+    <div class="subtitulo">Liderazgo Operativo</div>
+    
 </div>
+  <div class="hero-overlay">
+    <div class="glass-card">
+      <h1 class="nombre">Néstor Tártalo</h1>
+      <div class="tagline-grid">
+        <div class="tagline-item">
+          <span>Diseñador Gráfico Estratégico</span>
+        </div>
+        <div class="tagline-item">
+          <span>Automatización de Contenido Visual</span>
+        </div>
+        <div class="tagline-item">
+          <span>Liderazgo Operativo</span>
+        </div>
+      </div>
     </div>
-  </header>
+    <div class="scroll-indicator">
+      Scroll
+      <span>↓</span>
+    </div>
+  </div>
+</header>
 
   <main>
     <section id="sobre-mi" class="section">
@@ -76,9 +97,6 @@
         </div>
       </div>
     </div>
-    
-    <!-- SOLO UN .portfolio-items -->
-    <div class="portfolio-items">
 
           <div class="item project-card"
                data-title="A las puertas del eclipse"
@@ -113,7 +131,7 @@ El resultado: una portada que se convierte en la puerta de entrada a un universo
           <div class="item project-card"
                data-title="Cafetería Soul Café"
                data-description="El diseño de Soul Café transmite sensaciones cálidas y auténticas."
-               data-info="El diseño de Soul Café se centra en transmitir sensaciones cálidas y auténticas, alineadas con el concepto de un espacio donde el aroma y la experiencia del café se conectan con el alma. La identidad gráfica está compuesta por una tipografía manuscrita, fluida y elegante, que aporta un carácter personal y cercano. El ícono de la taza de café, rodeado por un círculo de puntos, sugiere calidez, armonía y dinamismo, reforzando la idea de un momento íntimo y reconfortante. La combinación del texto Soul con la palabra café en tipografía más limpia y moderna crea un equilibrio visual entre lo tradicional y lo contemporáneo. La frase “sensaciones del alma” complementa la propuesta visual y refuerza el mensaje emocional del café como un momento especial: un instante de pausa, disfrute y conexión con uno mismo."
+               data-info="El diseño de Soul Café se centra en transmitir sensaciones cálidas y auténticas, alineadas con el concepto de un espacio donde el aroma y la experiencia del café se conectan con el alma. La identidad gráfica está compuesta por una tipografía manuscrita, fluida y elegante, que aporta un carácter personal y cercano. El ícono de la taza de café, rodeado por un círculo de puntos, sugiere calidez, armonía y dinamismo, reforzando la idea de un momento íntimo y reconfortante. La combinación del texto Soul con la palabra café en tipografía más limpia y moderna crea un equilibrio visual entre lo tradicional y lo contemporáneo. La frase "sensaciones del alma" complementa la propuesta visual y refuerza el mensaje emocional del café como un momento especial: un instante de pausa, disfrute y conexión con uno mismo."
                data-images="imagenes/Soul Cafe/sc1.png, imagenes/Soul Cafe/sc2.png, imagenes/Soul Cafe/sc3.png, imagenes/Soul Cafe/sc4.png, imagenes/Soul Cafe/sc5.png, imagenes/Soul Cafe/sc6.png, imagenes/Soul Cafe/ff2b0060-cddd-4dac-b144-f2a4a2041bd2.png">
             <img src="imagenes/Soul Cafe/ff2b0060-cddd-4dac-b144-f2a4a2041bd2.png" alt="Diseño Editorial">
             <h3>Soul Café</h3>
@@ -153,7 +171,7 @@ El resultado: una portada que se convierte en la puerta de entrada a un universo
                data-title="Venero Punk Rock"
                data-description="Identidad visual de banda disruptiva."
                data-info="Venero es una banda de Punk Rock originaria de la zona norte de Buenos Aires, nacida con el propósito de dar forma e identidad a años de esfuerzo y evolución. Este paso hacia la madurez y solidez se refleja en su propuesta disruptiva e irreverente, gestada en los suburbios de una ciudad caótica. Con un emblema estilo esténcil, la banda encapsula su esencia rebelde y provocadora, pero también un mensaje de esperanza y triunfo en medio de la marginalidad. Venero simboliza el nacimiento de un cambio social, con tintes de anarquía, capaz de atrapar y transformar la mente de aquellos que se atrevan a escuchar su mensaje."
-               data-images="imagenes/Venero/78eefce7-eed5-4a67-8f1e-ba90f589a622_rw_1200.png, imagenes/Venero/v1.png, imagenes/Venero/v2.png, imagenes/Venero/v3.png, imagenes/Venero/v4.png, imagenes/Venero/v5.png,imagenes/Venero/v6.png ">
+               data-images="imagenes/Venero/78eefce7-eed5-4a67-8f1e-ba90f589a622_rw_1200.png, imagenes/Venero/v1.png, imagenes/Venero/v2.png, imagenes/Venero/v3.png, imagenes/Venero/v4.png, imagenes/Venero/v5.png,imagenes/Venero/v6.png">
             <img src="imagenes/Venero/78eefce7-eed5-4a67-8f1e-ba90f589a622_rw_1200.png" alt="Venero">
             <h3>Venero Punk Rock</h3>
             <div class="info-btn">
@@ -262,10 +280,18 @@ El resultado: una portada que se convierte en la puerta de entrada a un universo
       <div class="container">
         <h2>Contacto</h2>
         <div class="contact-buttons">
-          <a href="https://wa.me/+541169620563" target="_blank"><img src="imagenes/botones/w.png" alt="WhatsApp"/></a>
-          <a href="https://t.me/+541169620563" target="_blank"><img src="imagenes/botones/t.png" alt="Telegram"/></a>
-          <a href="https://www.linkedin.com/in/n%C3%A9stort%C3%A1rtalo/" target="_blank"><img src="imagenes/botones/in.png" alt="LinkedIn"/></a>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tartalonestor@gmail.com" target="_blank"><img src="imagenes/botones/gm.png" alt="Gmail"/></a>
+          <a href="https://wa.me/+541169620563" target="_blank" data-tooltip="Envíame un mensaje">
+            <img src="imagenes/botones/w.png" alt="WhatsApp"/>
+          </a>
+          <a href="https://t.me/+541169620563" target="_blank" data-tooltip="Escríbeme por Telegram">
+            <img src="imagenes/botones/t.png" alt="Telegram"/>
+          </a>
+          <a href="https://www.linkedin.com/in/n%C3%A9stort%C3%A1rtalo/" target="_blank" data-tooltip="Conectemos en LinkedIn">
+            <img src="imagenes/botones/in.png" alt="LinkedIn"/>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tartalonestor@gmail.com" target="_blank" data-tooltip="Envíame un email">
+            <img src="imagenes/botones/gm.png" alt="Gmail"/>
+          </a>
         </div>
       </div>
     </section>
@@ -292,8 +318,10 @@ El resultado: una portada que se convierte en la puerta de entrada a un universo
     </div>
   </div>
 
+  
+
   <footer>
-    <p>&copy; 2025 Néstor Tártalo. Todos los derechos reservados.</p>
+    <p>&copy; 2026 Néstor Tártalo. Todos los derechos reservados.</p>
   </footer>
 
   <script src="script.js"></script>
