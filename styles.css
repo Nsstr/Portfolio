@@ -399,3 +399,106 @@ footer {
 .skills-highlight strong {
   color: #2c3e50;
 }
+
+
+
+/* Diseño mejorado para hero en móviles */
+@media (max-width: 768px) {
+  .nombre-container {
+    padding: 30px 20px !important;
+    background: linear-gradient(135deg, rgba(119, 119, 119, 0.4), rgba(119, 119, 119, 0.2));
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 35vh; /* Agregado: empuja el contenedor hacia abajo desde arriba */
+  }
+  
+  .nombre {
+    font-size: 3rem !important;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .nombre::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  }
+  
+  .descripcion {
+    font-size: 1.2rem !important;
+    margin-top: 15px !important;
+    line-height: 1.5;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+    padding: 0 5px;
+  }
+  
+  .hero-overlay {
+    align-items: flex-start; /* Cambiado: alineado al inicio */
+    justify-content: center;
+    padding-top: 30vh; /* Agregado: espacio desde arriba */
+  }
+}
+
+@media (max-width: 480px) {
+  .nombre {
+    font-size: 2.5rem !important;
+    letter-spacing: 0.5px;
+  }
+  
+  .descripcion {
+    font-size: 1.1rem !important;
+    line-height: 1.4;
+  }
+  
+  .nombre-container {
+    padding: 25px 15px !important;
+    width: 95%;
+    margin-top: 20vh; /* Ajustado para móviles más pequeños */
+  }
+  
+  .hero-overlay {
+    padding-top: 8vh; /* Ajustado para móviles más pequeños */
+  }
+}
+
+
+
+
+
+
+/* Para tablets (hasta 992px) */
+@media (max-width: 992px) {
+  .portfolio-items {
+    gap: 25px;
+  }
+  
+  .project-card:not(.featured-card) {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* En tablets, 2 columnas */
+  @media (min-width: 769px) and (max-width: 992px) {
+    .portfolio-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .project-card:not(.featured-card) > img {
+      height: 200px;
+    }
+  }
+}
