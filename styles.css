@@ -1286,7 +1286,7 @@ footer::before {
 /* =============================================== */
 .tarjeta-movil {
     position: absolute;
-    bottom: 40px;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
@@ -1317,7 +1317,7 @@ footer::before {
 .tarjeta-movil .titulo-principal {
     font-size: 1rem;
     font-weight: 600;
-    color: #f9f9f9;
+    color: #222;
     margin-bottom: 0.3rem;
     letter-spacing: 0.5px;
 }
@@ -1325,7 +1325,7 @@ footer::before {
 /* Subtítulos compactos */
 .tarjeta-movil .subtitulo {
     font-size: 0.9rem;
-    color: #ffffff;
+    color: #222;
     margin-bottom: 0.25rem;
     line-height: 1.3;
     font-weight: 400;
@@ -1346,7 +1346,7 @@ footer::before {
 /* Para que no tape la foto importante en móvil */
 @media (max-width: 768px) {
     .tarjeta-movil {
-        bottom: 30px;
+        bottom: 90px;
         width: 90%;
         max-width: 280px;
         padding: 0.9rem;
