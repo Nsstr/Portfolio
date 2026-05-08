@@ -143,8 +143,14 @@ document.addEventListener('DOMContentLoaded', function() {
   projectCards.forEach(card => {
     card.addEventListener('click', function(e) {
       // Solo abrir si no se hizo clic en el botón de info
-      if (e.target.closest('.info-btn')) {
+      if (e.target.closest('.info-btn') && !this.classList.contains('inbox-trigger')) {
         return; // Dejar que el evento de info-btn maneje esto
+      }
+      
+      if (this.classList.contains('inbox-trigger')) {
+        document.getElementById('inbox-modal').classList.add('active');
+        document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+        return;
       }
       
       console.log('Abriendo modal de imágenes para:', this.getAttribute('data-title'));
@@ -219,10 +225,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if (infoModal && infoModal.style.display === 'flex') {
       infoModal.style.display = 'none';
     }
+    
+    // Cerrar modal de Inbox si está abierto
+    const inboxModal = document.getElementById('inbox-modal');
+    if (inboxModal && inboxModal.classList.contains('active')) {
+      inboxModal.classList.remove('active');
+      document.body.style.overflow = ''; // Restaurar scroll
+    }
   }
 
   // Botones de cerrar (X)
-  const closeButtons = document.querySelectorAll('.close-button, .close-info');
+  const closeButtons = document.querySelectorAll('.close-button, .close-info, .close-inbox-modal, .mac-buttons .close');
   console.log('Botones de cerrar encontrados:', closeButtons.length);
   
   closeButtons.forEach(button => {
@@ -236,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Cerrar haciendo clic fuera del contenido
   document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal')) {
+    if (e.target.classList.contains('modal') || e.target.classList.contains('inbox-modal-overlay')) {
       console.log('Clic fuera del contenido modal');
       closeAllModals();
     }
@@ -355,6 +368,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener('resize', adjustHeroBackground);
   adjustHeroBackground();
+
+  // ===========================
+  // INBOX SHOWCASE
+  // ===========================
+  const inboxItems = document.querySelectorAll('.inbox-item');
+  const emailContents = document.querySelectorAll('.email-content');
+
+  inboxItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevenir propagación
+      
+      // Quitar clase active de todos
+      inboxItems.forEach(el => el.classList.remove('active'));
+      emailContents.forEach(el => el.classList.remove('active'));
+      
+      // Añadir clase active al clickeado
+      this.classList.add('active');
+      
+      // Mostrar email correspondiente
+      const targetId = this.getAttribute('data-target');
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
 
   console.log('=== PORTFOLIO INICIALIZADO CORRECTAMENTE ===');
 });
