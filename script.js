@@ -3,6 +3,15 @@
 // ===========================
 document.addEventListener('DOMContentLoaded', function() {
   console.log('=== PORTFOLIO INICIALIZANDO ===');
+
+  // Restaurar posición de scroll si se viene de la presentación Soul Cafè
+  const savedY = sessionStorage.getItem('portfolioScrollY');
+  if (savedY !== null) {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: parseInt(savedY, 10), behavior: 'instant' });
+    });
+    sessionStorage.removeItem('portfolioScrollY');
+  }
   
   // ===========================
   // VARIABLES GLOBALES
@@ -142,6 +151,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // ===========================
   projectCards.forEach(card => {
     card.addEventListener('click', function(e) {
+      // Tarjetas con enlace propio (ej: Soul Cafè case study) — no abrir modal
+      if (this.classList.contains('soul-cafe-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'soul-cafe-presentation.html';
+        return;
+      }
+
       // Solo abrir si no se hizo clic en el botón de info
       if (e.target.closest('.info-btn') && !this.classList.contains('inbox-trigger')) {
         return; // Dejar que el evento de info-btn maneje esto
@@ -199,8 +215,14 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log('Abriendo modal de info');
+      // Si el botón pertenece a la tarjeta Soul Cafè, abrir el Case Study en lugar del modal
       const card = this.closest('.project-card');
+      if (card && card.classList.contains('soul-cafe-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'soul-cafe-presentation.html';
+        return;
+      }
+      console.log('Abriendo modal de info');
       infoTitle.textContent = card.getAttribute('data-title') || "Info";
       infoText.textContent = card.getAttribute('data-info') || "Sin información adicional.";
       infoModal.style.display = 'flex';

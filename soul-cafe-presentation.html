@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Soul Cafè — Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FDF8F0;
+  --cream2:#F5EDE0;
+  --cafe:#3B1F0E;
+  --cafe-mid:#6B3A1F;
+  --cafe-lt:#A0693A;
+  --carbon:#1C1410;
+  --warm-gray:#8C7B6E;
+  --rule:rgba(59,31,14,.15);
+}
+html,body{height:100%;overflow:hidden;background:var(--carbon);font-family:'Jost',sans-serif}
+
+/* DECK */
+.deck{width:100vw;height:100vh;position:relative}
+
+/* SLIDES */
+.slide{
+  position:absolute;inset:0;
+  opacity:0;pointer-events:none;
+  transition:opacity .65s ease,transform .65s ease;
+  transform:translateY(18px);
+}
+.slide.active{opacity:1;pointer-events:all;transform:translateY(0)}
+
+/* ── S1 COVER ── */
+#s1{background:var(--carbon);display:flex;align-items:center;justify-content:center;overflow:hidden}
+#s1 .bg{
+  position:absolute;inset:0;
+  background:url('imagenes/Soul Cafe/ff2b0060-cddd-4dac-b144-f2a4a2041bd2.png') center/cover no-repeat;
+  filter:brightness(.28) saturate(.6);
+}
+#s1 .vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 50% 50%,transparent 30%,rgba(28,20,16,.85) 100%);
+}
+#s1 .c{position:relative;text-align:center;padding:2rem}
+.cover-rule{width:1px;height:56px;background:rgba(253,248,240,.3);margin:0 auto 2.2rem}
+#s1 h1{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(4.5rem,11vw,10rem);line-height:.95;
+  color:var(--cream);letter-spacing:-.01em;
+}
+#s1 h1 em{font-style:italic;font-weight:300}
+#s1 .sub{
+  margin-top:1.6rem;
+  font-family:'Jost',sans-serif;font-weight:200;
+  letter-spacing:.45em;font-size:clamp(.65rem,1.1vw,.8rem);
+  color:rgba(253,248,240,.55);text-transform:uppercase;
+}
+#s1 .tag{
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-top:2.4rem;
+  border:1px solid rgba(253,248,240,.2);
+  border-radius:2px;padding:.5rem 1.2rem;
+  font-family:'Jost',sans-serif;font-weight:300;
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(253,248,240,.45);
+}
+.dot-dec{width:5px;height:5px;border-radius:50%;background:rgba(253,248,240,.3)}
+
+/* ── SHARED SPLIT ── */
+.split{display:flex;height:100%}
+.split .panel-img{flex:0 0 52%;position:relative;overflow:hidden}
+.split .panel-img img{width:100%;height:100%;object-fit:cover;display:block}
+.split .panel-text{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(2.5rem,6vw,5.5rem) clamp(2rem,5vw,4.5rem);
+  background:var(--cream);overflow-y:auto;
+}
+.split.reverse .panel-img{order:2}
+.split.reverse .panel-text{order:1;background:var(--cream)}
+
+/* SHARED TEXT PARTS */
+.slide-index{
+  font-family:'Jost',sans-serif;font-weight:300;
+  font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--cafe-lt);margin-bottom:1.4rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.slide-index::before{content:'';display:block;width:28px;height:1px;background:var(--cafe-lt)}
+
+h2.slide-title{
+  font-family:'Cormorant Garamond',serif;font-weight:400;
+  font-size:clamp(2rem,4vw,3.4rem);line-height:1.08;
+  color:var(--cafe);
+}
+h2.slide-title em{font-style:italic;font-weight:300;color:var(--cafe-mid)}
+
+.rule{width:44px;height:2px;background:var(--cafe-mid);margin:1.6rem 0;opacity:.5}
+
+.body{
+  font-family:'Jost',sans-serif;font-weight:300;
+  font-size:clamp(.8rem,1.3vw,.95rem);color:var(--carbon);
+  line-height:1.85;opacity:.75;max-width:420px;
+}
+
+.pull-quote{
+  margin-top:1.8rem;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1rem,1.8vw,1.3rem);color:var(--cafe);
+  border-left:2px solid var(--cafe-mid);padding-left:1.1rem;
+  line-height:1.5;opacity:.9;
+}
+
+/* ── S2 CONCEPT ── */
+#s2 .panel-img{flex:0 0 50%}
+#s2 .panel-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,transparent 55%,var(--cream));
+}
+
+/* ── S3 ADN VISUAL ── */
+#s3{background:var(--cream)}
+#s3 .panel-img{background:#F0E8DC;display:flex;align-items:center;justify-content:center;padding:3rem}
+#s3 .panel-img img{object-fit:contain;width:100%;height:100%}
+#s3 .panel-text{background:var(--cream2)}
+
+.type-rows{display:flex;flex-direction:column;gap:1.2rem;margin-top:1.6rem}
+.type-row{
+  display:flex;align-items:baseline;gap:1rem;
+  padding-bottom:1.1rem;border-bottom:1px solid var(--rule);
+}
+.type-label{
+  font-family:'Jost',sans-serif;font-weight:500;
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cafe-lt);min-width:60px;
+}
+.type-def{
+  font-family:'Jost',sans-serif;font-weight:300;
+  font-size:clamp(.78rem,1.2vw,.9rem);color:var(--carbon);
+  line-height:1.6;opacity:.75;
+}
+
+.drops-block{display:flex;align-items:center;gap:1.2rem;margin-top:1.6rem}
+.drops-grid{display:flex;flex-wrap:wrap;gap:5px;width:96px}
+.drop{width:9px;height:9px;border-radius:50%;background:var(--cafe-mid);opacity:.45}
+.drops-caption{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(.85rem,1.4vw,1.05rem);color:var(--cafe);
+  line-height:1.5;opacity:.85;
+}
+
+/* ── S4 PRODUCTO ── */
+#s4 .panel-img{flex:0 0 55%}
+#s4 .panel-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,transparent 60%,var(--cream));
+}
+
+.tag-list{display:flex;flex-direction:column;gap:1.1rem;margin-top:1.5rem}
+.tag-item{display:flex;gap:.9rem;align-items:flex-start}
+.tag-num{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--cafe-mid);display:flex;align-items:center;justify-content:center;
+  font-family:'Jost',sans-serif;font-size:.65rem;font-weight:500;
+  color:var(--cafe-mid);margin-top:.1rem;
+}
+.tag-body h4{
+  font-family:'Jost',sans-serif;font-weight:500;
+  font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--cafe);margin-bottom:.3rem;
+}
+.tag-body p{
+  font-family:'Jost',sans-serif;font-weight:300;
+  font-size:clamp(.76rem,1.1vw,.88rem);color:var(--carbon);
+  line-height:1.7;opacity:.7;
+}
+
+/* ── S5 CONTACTO ── */
+#s5 .panel-img{flex:0 0 50%}
+#s5 .panel-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,transparent 55%,var(--cream));
+}
+
+/* ── S6 CIERRE ── */
+#s6{
+  background:var(--cafe);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+}
+#s6::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 55%, rgba(107,58,31,.5) 0%,transparent 70%);
+}
+#s6 .c{position:relative;padding:2rem}
+#s6 .eye{
+  font-family:'Jost',sans-serif;font-weight:200;
+  letter-spacing:.45em;font-size:.68rem;
+  color:rgba(253,248,240,.4);text-transform:uppercase;margin-bottom:1.6rem;
+}
+#s6 h2{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(3rem,8vw,7rem);line-height:1;color:var(--cream);
+}
+#s6 h2 em{font-style:italic}
+#s6 .sub{
+  margin-top:.8rem;
+  font-family:'Jost',sans-serif;font-weight:200;
+  letter-spacing:.25em;font-size:clamp(.65rem,1.1vw,.82rem);
+  color:rgba(253,248,240,.45);text-transform:uppercase;
+}
+#s6 .line{width:1px;height:48px;background:rgba(253,248,240,.25);margin:2rem auto}
+.contact-row{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap}
+.ci .lbl{
+  font-family:'Jost',sans-serif;font-weight:200;
+  font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(253,248,240,.4);margin-bottom:.35rem;
+}
+.ci a,.ci span{
+  font-family:'Jost',sans-serif;font-weight:300;
+  font-size:clamp(.8rem,1.2vw,.92rem);
+  color:rgba(253,248,240,.75);text-decoration:none;
+  transition:color .3s;
+}
+.ci a:hover{color:var(--cream)}
+
+/* NAV */
+.nav{
+  position:fixed;bottom:1.8rem;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:1rem;
+  background:rgba(28,20,16,.72);backdrop-filter:blur(14px);
+  border:1px solid rgba(253,248,240,.1);
+  border-radius:40px;padding:.55rem 1.3rem;z-index:100;
+}
+.nb{background:none;border:none;cursor:pointer;color:rgba(253,248,240,.5);font-size:1rem;padding:.2rem .45rem;transition:color .3s}
+.nb:hover{color:var(--cream)}
+.nd-wrap{display:flex;gap:.45rem}
+.nd{
+  width:6px;height:6px;border-radius:50%;background:rgba(253,248,240,.3);
+  cursor:pointer;transition:all .3s;border:none;padding:0;
+}
+.nd.on{background:var(--cream);transform:scale(1.45)}
+.nc{font-family:'Jost',sans-serif;font-weight:200;font-size:.65rem;letter-spacing:.1em;color:rgba(253,248,240,.4);min-width:36px;text-align:right}
+
+/* BACK */
+.back{
+  position:fixed;top:1.4rem;left:1.6rem;z-index:100;
+  font-family:'Jost',sans-serif;font-weight:300;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(253,248,240,.4);text-decoration:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .3s;
+}
+.back:hover{color:var(--cream)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+#s1 .c>*{animation:fadeUp .8s both}
+#s1 .cover-rule{animation-delay:.1s}
+#s1 h1{animation-delay:.25s}
+#s1 .sub{animation-delay:.45s}
+#s1 .tag{animation-delay:.6s}
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">← Portfolio</a>
+
+<div class="deck" id="deck">
+
+<!-- S1 COVER -->
+<div class="slide active" id="s1">
+  <div class="bg"></div>
+  <div class="vignette"></div>
+  <div class="c">
+    <div class="cover-rule"></div>
+    <h1><em>Soul</em> Cafè</h1>
+    <p class="sub">Branding Sensorial · Case Study</p>
+    <div class="tag"><span class="dot-dec"></span>Identidad Visual · Packaging · Señalética<span class="dot-dec"></span></div>
+  </div>
+</div>
+
+<!-- S2 CONCEPTO -->
+<div class="slide" id="s2">
+  <div class="split">
+    <div class="panel-img">
+      <img src="imagenes/Soul Cafe/sc2.png" alt="Ritual de la pausa — latte art sobre madera"/>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">02 &mdash; Concepto</div>
+      <h2 class="slide-title">El Ritual<br>de la <em>Pausa</em></h2>
+      <div class="rule"></div>
+      <p class="body">
+        La marca nace de una observación cotidiana: las manchas y huellas que el café deja sobre
+        la mesa. Ese rastro involuntario —orgánico, efímero, honesto— se convirtió en la metáfora
+        central de la identidad. Soul Cafè no vende solo café; vende el momento que queda impreso
+        en la memoria después de cada taza.
+      </p>
+      <blockquote class="pull-quote">
+        "El aroma persiste. La calidez permanece.<br>La huella es la marca."
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- S3 ADN VISUAL -->
+<div class="slide" id="s3">
+  <div class="split">
+    <div class="panel-img">
+      <img src="imagenes/Soul Cafe/sc1.png" alt="Variantes del logotipo — blanco y negro"/>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">03 &mdash; ADN Visual</div>
+      <h2 class="slide-title">Dualismo<br><em>Tipográfico</em></h2>
+      <div class="rule"></div>
+      <div class="type-rows">
+        <div class="type-row">
+          <span class="type-label">Soul</span>
+          <span class="type-def">Script caligráfico · Elegancia, tradición, lo hecho a mano. Evoca la calidez del ritual y la memoria afectiva.</span>
+        </div>
+        <div class="type-row">
+          <span class="type-label">Cafè</span>
+          <span class="type-def">Sans-serif estructurada · Fuerza, modernidad, claridad. Ancla la marca en el presente sin perder identidad.</span>
+        </div>
+      </div>
+      <div class="drops-block">
+        <div class="drops-grid" id="dropsGrid"></div>
+        <p class="drops-caption">24 gotas en el isotipo.<br>El tiempo exacto de<br>una extracción perfecta.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S4 PRODUCTO -->
+<div class="slide" id="s4">
+  <div class="split">
+    <div class="panel-img">
+      <img src="imagenes/Soul Cafe/sc6.png" alt="Packaging — bolsa de café en papel Kraft"/>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">04 &mdash; Tangibilidad</div>
+      <h2 class="slide-title">Materia<br><em>Honesta</em></h2>
+      <div class="rule"></div>
+      <p class="body">El packaging en papel Kraft no es un recurso estético: es una declaración de principios. La marca elige materiales que comunican antes de que el cliente lea una sola palabra.</p>
+      <div class="tag-list">
+        <div class="tag-item">
+          <div class="tag-num">01</div>
+          <div class="tag-body">
+            <h4>Kraft sin blanquear</h4>
+            <p>Textura natural que comunica artesanía, sustentabilidad y honestidad de proceso.</p>
+          </div>
+        </div>
+        <div class="tag-item">
+          <div class="tag-num">02</div>
+          <div class="tag-body">
+            <h4>Isotipo en positivo</h4>
+            <p>El logo blanco sobre Kraft crea contraste elegante manteniendo legibilidad premium.</p>
+          </div>
+        </div>
+        <div class="tag-item">
+          <div class="tag-num">03</div>
+          <div class="tag-body">
+            <h4>Lujo accesible</h4>
+            <p>Sofisticación en los detalles, cercanía en los materiales. El lujo como actitud cotidiana.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S5 PUNTOS DE CONTACTO -->
+<div class="slide" id="s5">
+  <div class="split reverse">
+    <div class="panel-img">
+      <img src="imagenes/Soul Cafe/sc3.png" alt="Tarjetas personales y papelería corporativa"/>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">05 &mdash; Puntos de Contacto</div>
+      <h2 class="slide-title">La Textura<br>como <em>Lenguaje</em></h2>
+      <div class="rule"></div>
+      <p class="body">Cada pieza de la papelería es una extensión de la experiencia sensorial. Las tarjetas, platos y papelería no son soportes: son momentos de contacto donde la marca se vuelve táctil.</p>
+      <div class="tag-list">
+        <div class="tag-item">
+          <div class="tag-num">A</div>
+          <div class="tag-body">
+            <h4>Tarjetas personales</h4>
+            <p>Versión negra y blanca del sistema. La dualidad cromática comunica versatilidad sin perder coherencia.</p>
+          </div>
+        </div>
+        <div class="tag-item">
+          <div class="tag-num">B</div>
+          <div class="tag-body">
+            <h4>Vajilla y señalética</h4>
+            <p>El isotipo de las 24 gotas aplicado en plato y taza refuerza la identidad en cada momento de consumo.</p>
+          </div>
+        </div>
+        <div class="tag-item">
+          <div class="tag-num">C</div>
+          <div class="tag-body">
+            <h4>Papelería membretada</h4>
+            <p>Hojas con logo discreto que elevan la percepción de la marca en cada comunicación formal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S6 CIERRE -->
+<div class="slide" id="s6">
+  <div class="c">
+    <div class="eye">Néstor Tártalo · Diseñador Gráfico Estratégico</div>
+    <h2><em>Sensaciones</em><br>del alma</h2>
+    <p class="sub">Soul Cafè · Branding Sensorial · 2025</p>
+    <div class="line"></div>
+    <div class="contact-row">
+      <div class="ci"><p class="lbl">WhatsApp</p><a href="https://wa.me/+541169620563" target="_blank">+54 11 6962 0563</a></div>
+      <div class="ci"><p class="lbl">Email</p><a href="mailto:tartalonestor@gmail.com">tartalonestor@gmail.com</a></div>
+      <div class="ci"><p class="lbl">LinkedIn</p><a href="https://www.linkedin.com/in/n%C3%A9stort%C3%A1rtalo/" target="_blank">Néstor Tártalo</a></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<nav class="nav">
+  <button class="nb" id="bPrev">&#8249;</button>
+  <div class="nd-wrap" id="ndWrap"></div>
+  <button class="nb" id="bNext">&#8250;</button>
+  <span class="nc" id="nc">1/6</span>
+</nav>
+
+<script>
+// Drops
+const g=document.getElementById('dropsGrid');
+for(let i=0;i<24;i++){const d=document.createElement('div');d.className='drop';g.appendChild(d)}
+
+// Slides
+const slides=[...document.querySelectorAll('.slide')];
+const wrap=document.getElementById('ndWrap');
+const nc=document.getElementById('nc');
+let cur=0;
+
+slides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  b.className='nd'+(i===0?' on':'');
+  b.setAttribute('aria-label',`Slide ${i+1}`);
+  b.onclick=()=>go(i);
+  wrap.appendChild(b);
+});
+
+function go(n){
+  slides[cur].classList.remove('active');
+  wrap.children[cur].classList.remove('on');
+  cur=(n+slides.length)%slides.length;
+  slides[cur].classList.add('active');
+  wrap.children[cur].classList.add('on');
+  nc.textContent=`${cur+1}/${slides.length}`;
+}
+
+document.getElementById('bNext').onclick=()=>go(cur+1);
+document.getElementById('bPrev').onclick=()=>go(cur-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);
+});
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1))});
+</script>
+</body>
+</html>
