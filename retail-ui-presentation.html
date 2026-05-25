@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Retail UI — Case Study</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -17,6 +18,15 @@
   --accent: #E05D3A;       /* Terracota Bento */
   --accent-dim: rgba(224, 93, 58, 0.15);
   --rule: rgba(255, 255, 255, 0.1);
+  
+  /* Ecosistema UI */
+  --ui-cream: #FDF8F0;
+  --ui-white: #FFFFFF;
+  --ui-terracota: #E05D3A;
+  --ui-text: #1C1410;
+  --ui-muted: #8C7B6E;
+  --font-title: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 html,body{height:100%;overflow:hidden;background:var(--bg-dark);font-family:'Inter',sans-serif;color:var(--text-main)}
@@ -142,8 +152,8 @@ h2.slide-title em{
   width: 100%; height: 100%;
 }
 
-/* ── PROTOTIPO PWA MOCKUP (S6) ── */
-.panel-app {
+/* ── ECOSISTEMA OMNICANAL (S6) ── */
+.panel-eco {
   flex: 0 0 52%;
   position: relative;
   overflow: hidden;
@@ -153,285 +163,268 @@ h2.slide-title em{
   justify-content: center;
   padding: 1rem;
 }
-:root {
-  --bg-cream: #FDF8F0;
-  --card-bg: #FFFFFF;
-  --terracota: #E05D3A;
-  --terracota-dark: #C24D2F;
-  --text-main-pwa: #1C1410;
-  --text-muted-pwa: #8C7B6E;
-  --alert-red: #E63946;
-  --border-radius-lg: 24px;
-  --border-radius-md: 16px;
-  --border-radius-sm: 10px;
-  --shadow: 0 8px 24px rgba(28, 20, 16, 0.06);
+.eco-container {
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  padding:clamp(2rem,4vw,3.2rem) clamp(2rem,5vw,4.5rem);
+  width:100%;
 }
 
-.device-mockup {
-  width: 320px;
-  height: 640px;
-  background-color: var(--bg-cream);
-  border-radius: 36px;
-  border: 8px solid #27272A;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.6);
-  overflow: hidden;
-  position: relative;
+.layout-wrapper {
+  display:flex;
+  gap:25px;
+  flex:1;
+  min-height:0;
+  height:calc(100% - 100px);
+}
+
+/* Navegador de Escritorio Enchulado */
+.desktop-section {
+  flex: 0 0 74%; 
   display: flex;
   flex-direction: column;
-  font-family: 'Inter', sans-serif;
-  color: var(--text-main-pwa);
+  min-height: 0;
 }
 
-.app-header {
-  padding: 16px 16px 12px;
+.browser-frame {
+  background-color: var(--ui-cream);
+  border-radius: 12px;
+  border: 6px solid #27272a;
+  flex: 1;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.browser-header-row1 {
+  height: 28px;
+  background-color: #d4d4d8;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 6px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #b1b1aa;
+}
+.dot-red { width: 8px; height: 8px; border-radius: 50%; background-color: #ef4444; }
+.dot-yellow { width: 8px; height: 8px; border-radius: 50%; background-color: #eab308; }
+.dot-green { width: 8px; height: 8px; border-radius: 50%; background-color: #22c55e; }
+
+.browser-tab {
+  height: 20px;
+  background-color: var(--ui-cream);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: var(--ui-text);
+  margin-left: 20px;
+  border: 1px solid #b1b1aa;
+  border-bottom: none;
+}
+
+.browser-header-row2 {
+  height: 32px;
+  background-color: #e4e4e7;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 10px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #d4d4d8;
+}
+
+.browser-nav-arrows {
+  display: flex;
+  gap: 8px;
+  color: #71717a;
+  font-size: 10px;
+}
+
+.browser-address-bar {
+  display: flex;
+  align-items: center;
+  background: var(--ui-white);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 9px;
+  color: #71717a;
+  gap: 6px;
+  flex: 1;
+  border: 1px solid #cbd5e1;
+}
+
+.web-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  color: var(--ui-text);
+  scrollbar-width: none;
+}
+.web-content::-webkit-scrollbar { display: none; }
+
+.web-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--bg-cream);
-  position: sticky;
-  top: 0;
+  margin-bottom: 20px;
+}
+.web-logo { font-family: var(--font-title); font-weight: 800; font-size: 20px; color: var(--ui-text); }
+
+.web-hero {
+  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80') center/cover no-repeat;
+  height: 130px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #fff;
+}
+
+.web-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.web-card {
+  background: var(--ui-white);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+.web-card img { width: 100%; height: 70px; object-fit: contain; margin-bottom: 8px; }
+.web-card h4 { font-size: 10px; margin-bottom: 8px; height: 26px; overflow: hidden; font-weight: 600; color: var(--ui-text); line-height: 1.3; }
+.web-btn { background: var(--ui-terracota); color: #fff; border: none; border-radius: 6px; padding: 6px; font-weight: 700; font-size: 10px; cursor: pointer; }
+
+/* Celular Enchulado */
+.mobile-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 0;
+}
+
+.phone-frame {
+  background-color: var(--ui-cream);
+  border: 7px solid #27272a;
+  border-radius: 32px;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Elementos realistas del celular */
+.phone-header-real {
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 16px 0;
+  font-size: 8px;
+  color: #71717a;
+  font-weight: 600;
+  flex-shrink: 0;
+  position: relative;
   z-index: 10;
 }
 
-.app-logo {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--text-main-pwa);
-  letter-spacing: -0.5px;
-}
-
-.cart-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--card-bg);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: var(--shadow);
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--text-main-pwa);
-  transition: transform 0.2s;
-}
-
-.app-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0 16px 80px;
-  scrollbar-width: none;
-}
-.app-content::-webkit-scrollbar { display: none; }
-
-.bento-hero {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: 16px;
-  box-shadow: var(--shadow);
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.hero-badge {
-  background: #111;
-  color: #fff;
-  font-size: 0.65rem;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 100px;
-  align-self: flex-start;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.hero-content {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.hero-img {
-  width: 90px;
-  height: 90px;
-  background: #f4f4f4;
-  border-radius: var(--border-radius-md);
-  object-fit: contain;
-}
-
-.hero-info h2 {
-  margin: 0 0 3px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.05rem;
-  color: var(--text-main-pwa);
-  line-height: 1.2;
-}
-
-.hero-info p {
-  margin: 0;
-  font-size: 0.75rem;
-  color: var(--text-muted-pwa);
-}
-
-.section-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
-  color: var(--text-main-pwa);
-  margin: 0 0 12px;
-}
-
-.scroll-horizontal {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 15px;
-  margin: 0 -16px;
-  padding-left: 16px;
-  padding-right: 16px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.scroll-horizontal::-webkit-scrollbar { display: none; }
-
-.bento-card {
-  min-width: 130px;
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: 12px;
-  box-shadow: var(--shadow);
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.stock-alert {
+.phone-notch-pill {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--alert-red);
-  color: #fff;
-  font-size: 0.6rem;
-  font-weight: 600;
-  padding: 3px 6px;
-  border-radius: var(--border-radius-sm);
-  z-index: 2;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 12px;
+  background: #27272a;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.1);
 }
 
-.card-img {
-  width: 100%;
-  height: 90px;
-  background: #f9f9f9;
-  border-radius: var(--border-radius-md);
-  margin-bottom: 8px;
-  object-fit: cover;
-}
-
-.card-brand {
-  font-size: 0.65rem;
-  color: var(--text-muted-pwa);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 2px;
-}
-
-.card-title {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-main-pwa);
-  margin: 0 0 12px;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  height: 32px;
-}
-
-.btn-price {
-  margin-top: auto;
-  background: var(--terracota);
-  color: #fff;
-  border: none;
-  border-radius: var(--border-radius-md);
-  padding: 8px 10px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
+.phone-content {
+  flex: 1;
+  padding: 12px 12px 45px; /* Espacio extra para el tab bar */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.phone-content::-webkit-scrollbar { display: none; }
+
+.phone-card {
+  background: var(--ui-white);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
 }
 
-.btn-price:active {
-  transform: scale(0.96);
-}
-
-.btn-price.added {
-  background: #27C93F;
-}
-
-.btn-finance {
-  font-size: 0.85rem;
-}
-.price-total {
-  font-size: 0.7rem;
-  color: var(--text-muted-pwa);
-  text-align: center;
-  margin-top: 6px;
-}
-
-.bottom-nav {
+.phone-nav-bar {
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(0,0,0,0.05);
+  height: 40px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid #e4e4e7;
   display: flex;
   justify-content: space-around;
-  padding: 10px 16px 16px;
-  box-sizing: border-box;
-  border-radius: 20px 20px 0 0;
+  align-items: center;
+  font-size: 13px;
+  color: var(--ui-muted);
+  flex-shrink: 0;
   z-index: 15;
+  padding-bottom: 8px; /* Espacio para barra de home */
 }
 
-.nav-item {
+/* Home Indicator Bar de iOS al fondo del celular */
+.phone-home-indicator {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background: #a1a1aa;
+  border-radius: 2px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Recuadro de Texto Terracota debajo */
+.info-box {
+  background-color: var(--ui-terracota);
+  border-radius: 12px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  color: var(--text-muted-pwa);
-  font-size: 0.65rem;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 10px 25px rgba(224,93,58,0.2);
+}
+.info-box p {
+  color: #fff;
+  font-size: 11px;
   font-weight: 500;
+  line-height: 1.35;
+  margin: 0;
+  font-family: var(--font-body);
 }
-
-.nav-item.active {
-  color: var(--terracota);
-}
-
-.nav-icon {
-  width: 20px;
-  height: 20px;
-  background: currentColor;
-  mask-size: contain;
-  -webkit-mask-size: contain;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-position: center;
-}
-
-.icon-home { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>'); }
-.icon-search { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>'); }
-.icon-list { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>'); }
-.icon-user { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>'); }
 
 /* ── S3 ADN VISUAL (BENTO GRID) ── */
 .type-rows{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
@@ -708,91 +701,124 @@ body::before {
   </div>
 </div>
 
-<!-- ── S6 PROTOTIPO INTERACTIVO PWA ── -->
+<!-- ── S6 ECOSISTEMA OMNICANAL ADAPTATIVO ── -->
 <div class="slide" id="s6">
-  <div class="split">
-    <div class="panel-app">
-      <!-- MOCKUP DEL CELULAR CON PWA REAL -->
-      <div class="device-mockup">
-        <header class="app-header">
-          <div class="app-logo">SUPER TOTAL</div>
-          <div class="cart-icon" id="cart-count">0</div>
-        </header>
+  <div class="eco-container">
+    <div class="slide-index">06 &mdash; Ecosistema Adaptativo</div>
+    <h2 class="slide-title" style="margin-bottom: clamp(1.2rem, 3vh, 2rem);">Ecosistema<br><em>Omnicanal Adaptativo</em></h2>
+    
+    <div class="layout-wrapper">
+        
+        <!-- Left Side: Desktop (74%) -->
+        <div class="desktop-section">
+            <div class="browser-frame">
+                <div class="browser-header-row1">
+                    <div class="dot-red"></div>
+                    <div class="dot-yellow"></div>
+                    <div class="dot-green"></div>
+                    <div class="browser-tab">SuperTotal — Ofertas</div>
+                </div>
+                <div class="browser-header-row2">
+                    <div class="browser-nav-arrows">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </div>
+                    <div class="browser-address-bar">
+                        <i class="fa-solid fa-lock" style="color: #22c55e;"></i>
+                        <span>supertotal.com.ar/ofertas-bento</span>
+                    </div>
+                </div>
+                <div class="web-content">
+                    <div class="web-nav">
+                        <div class="web-logo">SUPER TOTAL</div>
+                        <div style="font-size: 10px; color: var(--ui-muted); letter-spacing: 2px; font-weight: 600;">ALMACÉN | FRESCOS | TECH | BEBIDAS</div>
+                    </div>
+                    
+                    <div class="web-hero">
+                        <div style="max-width: 300px;">
+                            <h3 style="font-family: var(--font-title); font-size: 24px; line-height: 1; font-weight: 800; text-transform: uppercase;">FRESCOS DEL DÍA</h3>
+                            <p style="font-size: 12px; color: #f4f4f5; margin-top: 4px;">Calidad seleccionada en cada envío.</p>
+                        </div>
+                    </div>
 
-        <div class="app-content">
-          <div class="bento-hero">
-            <span class="hero-badge">💳 Hasta 12 sin interés</span>
-            <div class="hero-content">
-              <img src="imagenes/Retail UI/e.png" class="hero-img" alt="Smart TV">
-              <div class="hero-info">
-                <h2>Smart TV 70" 4K UHD</h2>
-                <p>Envío gratis hoy</p>
-              </div>
+                    <div class="web-bento-grid">
+                        <div class="web-card">
+                            <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=300&q=80" alt="Smart TV">
+                            <h4>Led Smart Xiaomi 65" 4K UHD</h4>
+                            <button class="web-btn">12 x $149.999</button>
+                        </div>
+                        <div class="web-card">
+                            <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=300&q=80" alt="Bicicleta">
+                            <h4>Bicicleta MTB SLP Rod. 29</h4>
+                            <button class="web-btn">12 x $107.999</button>
+                        </div>
+                        <div class="web-card">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300&q=80" alt="Hamburguesas" style="object-fit: cover; border-radius: 6px;">
+                            <h4>Hamburguesas Premium x 2u.</h4>
+                            <button class="web-btn">$1.809</button>
+                        </div>
+                        <div class="web-card">
+                            <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&q=80" alt="Leche" style="object-fit: cover; border-radius: 6px;">
+                            <h4>Leche Tregar Entera 1Lt.</h4>
+                            <button class="web-btn">$2.249</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-              <button class="btn-price btn-finance cta-btn" data-price="125000">12 x $125.000</button>
-              <div class="price-total">Precio Final: $1.500.000</div>
-            </div>
-          </div>
-
-          <h3 class="section-title">Comprados habitualmente</h3>
-          
-          <div class="scroll-horizontal">
-            <div class="bento-card">
-              <div class="stock-alert">Últimas 3</div>
-              <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&q=80" class="card-img" alt="Leche Entera Larga Vida">
-              <div class="card-brand">TREGAR</div>
-              <h4 class="card-title">Leche Entera Larga Vida 1L</h4>
-              <button class="btn-price cta-btn" data-price="2249">$2.249</button>
-            </div>
-
-            <div class="bento-card">
-              <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=300&q=80" class="card-img" alt="Cacao en Polvo">
-              <div class="card-brand">NESTLÉ</div>
-              <h4 class="card-title">Cacao en polvo Nesquik 250g</h4>
-              <button class="btn-price cta-btn" data-price="6899">$6.899</button>
-            </div>
-
-            <div class="bento-card">
-              <img src="https://images.unsplash.com/photo-1571244856341-4f3dd95db36e?w=300&q=80" class="card-img" alt="Yogur Bebible">
-              <div class="card-brand">ILOLAY</div>
-              <h4 class="card-title">Yogur bebible Frutilla 1Kg</h4>
-              <button class="btn-price cta-btn" data-price="2199">$2.199</button>
-            </div>
-          </div>
         </div>
 
-        <nav class="bottom-nav">
-          <div class="nav-item active">
-            <div class="nav-icon icon-home"></div>
-            <span>Inicio</span>
-          </div>
-          <div class="nav-item">
-            <div class="nav-icon icon-search"></div>
-            <span>Buscar</span>
-          </div>
-          <div class="nav-item">
-            <div class="nav-icon icon-list"></div>
-            <span>Listas</span>
-          </div>
-          <div class="nav-item">
-            <div class="nav-icon icon-user"></div>
-            <span>Perfil</span>
-          </div>
-        </nav>
-      </div>
-    </div>
-    
-    <div class="panel-text">
-      <div class="slide-index">06 &mdash; Prototipo Interactivo</div>
-      <h2 class="slide-title">Estructura<br><em>PWA Móvil</em></h2>
-      <div class="rule"></div>
-      <p class="body">
-        Estructuramos un prototipo web móvil interactivo enfocado 100% en fricción cero. Aplica una rigurosa matriz Bento Grid, integrando navegación por gestos en scroll horizontal para la canasta masiva, módulos Hero para artículos de ticket alto con foco claro en el valor cuota, y navegación inferior ergonómica para el uso cómodo con un solo dedo.
-      </p>
-      <blockquote class="pull-quote">
-        La fricción es el enemigo número uno de la conversión. El diseño debe viabilizar la compra en segundos.
-      </blockquote>
+        <!-- Right Side: Mobile (26%) -->
+        <div class="mobile-section">
+            <div class="phone-frame">
+                <div class="phone-header-real">
+                    <span>09:41</span>
+                    <div class="phone-notch-pill"></div>
+                    <div style="display:flex; gap: 4px; align-items:center;">
+                        <i class="fa-solid fa-signal" style="font-size:7px;"></i>
+                        <i class="fa-solid fa-wifi" style="font-size:7px;"></i>
+                        <i class="fa-solid fa-battery-three-quarters" style="font-size:8px;"></i>
+                    </div>
+                </div>
+                <div class="phone-content">
+                    <div style="font-family: var(--font-title); font-weight: 800; font-size: 11px; text-align: center; margin-bottom: 2px; color: var(--ui-text);">SUPER TOTAL</div>
+                    
+                    <div class="phone-card">
+                        <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=300&q=80" style="width: 100%; height: 50px; object-fit: contain; margin-bottom: 4px;">
+                        <h4 style="font-size: 9px; margin-bottom: 4px; color: var(--ui-text); font-weight: 600;">Xiaomi 65" 4K UHD</h4>
+                        <button class="web-btn" style="border-radius: 4px; padding: 4px; font-weight: 700; font-size: 9px; width: 100%;">12 x $149.999</button>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                        <div style="background: var(--ui-white); border-radius: 12px; padding: 8px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+                             <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&q=80" style="width: 100%; height: 32px; object-fit: cover; border-radius: 4px;">
+                             <button class="web-btn" style="border-radius: 4px; padding: 3px; font-weight: 700; font-size: 8px; width: 100%; margin-top: 4px;">$2.249</button>
+                        </div>
+                        <div style="background: var(--ui-white); border-radius: 12px; padding: 8px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+                             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300&q=80" style="width: 100%; height: 32px; object-fit: cover; border-radius: 4px;">
+                             <button class="web-btn" style="border-radius: 4px; padding: 3px; font-weight: 700; font-size: 8px; width: 100%; margin-top: 4px;">$1.809</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phone-nav-bar">
+                    <i class="fa-solid fa-house" style="color: var(--ui-terracota);"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                
+                <div class="phone-home-indicator"></div>
+            </div>
+
+            <!-- Recuadro de Texto Terracota debajo -->
+            <div class="info-box">
+                <p>
+                    <strong>Fricción Cero:</strong> La arquitectura Bento garantiza consistencia absoluta. El 72% del tráfico es móvil; nuestra interfaz prioriza la ergonomía del pulgar sin sacrificar la potencia visual del escritorio.
+                </p>
+            </div>
+        </div>
+
     </div>
   </div>
 </div>
@@ -906,33 +932,6 @@ document.addEventListener('keydown',e=>{
 let tx=0;
 document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
 document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1))});
-
-// Interacción Micro-UI para el prototipo PWA en el celular
-let cartCount = 0;
-const cartBadge = document.getElementById('cart-count');
-const ctaButtons = document.querySelectorAll('.cta-btn');
-
-ctaButtons.forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if(this.classList.contains('added')) return;
-    
-    const originalText = this.innerText;
-    this.innerText = 'Agregado ✓';
-    this.classList.add('added');
-    
-    cartCount++;
-    cartBadge.innerText = cartCount;
-    cartBadge.style.transform = 'scale(1.25)';
-    setTimeout(() => cartBadge.style.transform = 'scale(1)', 200);
-
-    setTimeout(() => {
-      this.innerText = originalText;
-      this.classList.remove('added');
-    }, 2000);
-  });
-});
 </script>
 </body>
 </html>
