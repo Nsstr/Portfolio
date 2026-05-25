@@ -9,24 +9,24 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-/* Nueva paleta: Sobria, tecnológica, con acento Terracota UI vibrante */
+/* Nueva paleta: Sobria, tecnológica, con acento Terracota UI vibrante y crema cálido */
 :root {
   --bg-dark: #09090B;      
-  --bg-app: #F4F4F6;       
+  --bg-app: #FDF8F0;       
   --ui-white: #FFFFFF;
   --ui-terracota: #FF5A36; 
-  --ui-terracota-glow: rgba(255, 90, 54, 0.3);
-  --ui-text-dark: #0F172A; 
-  --ui-text-muted: #64748B;
+  --ui-terracota-glow: rgba(255, 90, 54, 0.15);
+  --ui-text-dark: #2C2C2C; 
+  --ui-text-muted: #7A7A7A;
   --font-title: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
   
-  /* Sombras Premium */
-  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.08);
-  --shadow-hover: 0 20px 40px rgba(255, 90, 54, 0.15);
+  /* Sombras Premium - Re-habilitadas con efecto levitación */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.03);
+  --shadow-md: 0 12px 32px rgba(0,0,0,0.08);
+  --shadow-hover: 0 20px 48px rgba(0,0,0,0.12);
   
-  --rule: rgba(255, 255, 255, 0.1);
+  --rule: rgba(255, 90, 54, 0.1);
 }
 
 html,body{height:100%;overflow:hidden;background:var(--bg-dark);font-family:var(--font-body);color:#fff}
@@ -183,7 +183,7 @@ h2.slide-title em{
 /* ── S6 ECOSISTEMA OMNICANAL ADAPTATIVO (NUEVO DISEÑO FLOATING BENTO) ── */
 .slide-container-eco {
   width: 100vw; height: 100vh;
-  background: radial-gradient(circle at 50% -20%, #1a1a24 0%, var(--bg-dark) 100%);
+  background: radial-gradient(circle at 50% 50%, #15100F 0%, #09090B 100%); /* Sutil degradación radial con tinte chocolate profundo */
   padding: 40px 60px;
   display: flex; flex-direction: column;
   position: relative;
@@ -195,15 +195,15 @@ h2.slide-title em{
 .desktop-section { flex: 0 0 72%; display: flex; flex-direction: column; min-height: 0; }
 
 .browser-frame {
-  background-color: var(--bg-app); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);
-  flex: 1; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  background-color: var(--bg-app); border-radius: 24px; border: none;
+  flex: 1; overflow: hidden; box-shadow: 0 20px 50px rgba(44, 30, 28, 0.1);
   display: flex; flex-direction: column; min-height: 0;
 }
 
 .browser-header {
-  height: 48px; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px);
+  height: 52px; background: #FFFFFF;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 20px; border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 10;
+  padding: 0 20px; border-bottom: 2px solid rgba(224,93,58,0.08); z-index: 10;
 }
 
 .window-controls { display: flex; gap: 8px; }
@@ -211,9 +211,9 @@ h2.slide-title em{
 .dot.r { background: #FF5F56; } .dot.y { background: #FFBD2E; } .dot.g { background: #27C93F; }
 
 .search-bar-glass {
-  background: rgba(15, 23, 42, 0.04); border-radius: 100px; padding: 8px 16px;
+  background: #FFFFFF; border-radius: 100px; padding: 8px 16px;
   width: 300px; display: flex; align-items: center; gap: 10px;
-  font-size: 12px; color: var(--ui-text-muted); border: 1px solid rgba(0,0,0,0.02);
+  font-size: 12px; color: var(--ui-text-muted); border: 2px solid rgba(224,93,58,0.12);
 }
 
 .header-actions { display: flex; align-items: center; gap: 20px; color: var(--ui-text-dark); }
@@ -225,69 +225,192 @@ h2.slide-title em{
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.web-content-eco { flex: 1; padding: 30px; overflow-y: auto; }
+.web-content-eco { flex: 1; padding: 30px; overflow-y: auto; background-color: var(--bg-app); }
 .web-content-eco::-webkit-scrollbar,
 .phone-content-eco::-webkit-scrollbar { display: none; }
 
-.brand-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
+.brand-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
 .brand-logo { font-family: var(--font-title); font-size: 28px; font-weight: 900; color: var(--ui-text-dark); letter-spacing: -1px; }
 .nav-pills { display: flex; gap: 10px; }
-.nav-pill { background: var(--ui-white); padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; color: var(--ui-text-muted); box-shadow: var(--shadow-sm); cursor:pointer; transition: background 0.2s, color 0.2s; }
-.nav-pill.active { background: var(--ui-text-dark); color: #fff; }
+.nav-pill { background: #FFFFFF; padding: 8px 18px; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--ui-text-muted); border: none; cursor:pointer; transition: all 0.2s; }
+.nav-pill.active { background: var(--ui-terracota); color: #fff; }
 
 .web-hero-eco {
-  background: linear-gradient(135deg, var(--ui-text-dark), #1e293b); border-radius: 24px;
-  padding: 40px; color: #fff; display: flex; justify-content: space-between; align-items: center;
+  background: #FFFFFF; border-radius: 24px;
+  padding: 30px 40px; color: #2C2C2C; display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 30px; box-shadow: var(--shadow-md); position: relative; overflow: hidden;
-}
-.web-hero-eco::after {
-  content: ''; position: absolute; right: -10%; top: -50%; width: 50%; height: 200%;
-  background: radial-gradient(circle, var(--ui-terracota-glow) 0%, transparent 70%);
+  border: none;
 }
 
 .web-bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
+/* Bento Cards: Blanco puro sólido flotando en relieve gracias a una sombra sutil y muy difuminada. */
 .bento-card {
-  background: var(--ui-white); border-radius: 20px; padding: 20px;
+  background: #FFFFFF; border-radius: 24px; padding: 20px;
   display: flex; flex-direction: column; box-shadow: var(--shadow-md);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative; border: 1px solid rgba(0,0,0,0.02);
+  position: relative; border: none;
 }
 .bento-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
 
-.bento-card.large { grid-column: span 2; flex-direction: row; align-items: center; gap: 20px; }
-.bento-card.large img { width: 140px; height: 140px; object-fit: contain; }
+.bento-card.large { grid-column: span 2; flex-direction: row; align-items: center; gap: 24px; }
+.bento-card.large img { width: 150px; height: 150px; object-fit: contain; }
 
-.product-img-wrapper { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
+.product-img-wrapper { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; background: #FFFFFF; }
 .product-img-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply; }
 
-.bento-tag { position: absolute; top: 15px; left: 15px; background: #f1f5f9; color: var(--ui-text-dark); font-size: 9px; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
-.bento-tag.urgent { background: #ef4444; color: #fff; }
+.bento-tag { position: absolute; top: 15px; left: 15px; background: #FAF6F0; color: var(--ui-terracota); font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 8px; border: none; z-index: 2; }
+.bento-tag.urgent { background: var(--ui-terracota); color: #fff; border: none; }
 
-.card-content h4 { font-size: 14px; font-weight: 700; color: var(--ui-text-dark); line-height: 1.3; margin-bottom: 6px; }
-.card-content p { font-size: 11px; color: var(--ui-text-muted); margin-bottom: 15px; }
+.card-content h4 { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #2C2C2C; line-height: 1.3; margin-bottom: 6px; text-align: center; }
+.card-content p { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--ui-text-muted); margin-bottom: 12px; text-align: center; }
+.bento-card.large .card-content h4 { text-align: left; }
+.bento-card.large .card-content p { text-align: left; }
 
 .action-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; width: 100%; }
-.price-block { display: flex; flex-direction: column; }
-.price-main { font-family: var(--font-title); font-size: 20px; font-weight: 800; color: var(--ui-text-dark); }
-.price-sub { font-size: 10px; color: var(--ui-text-muted); }
+
+/* --- DISEÑO DE PRECIOS BENTO DE DOS PISOS --- */
+.bento-price-block {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  box-shadow: none;
+  border: none;
+}
+
+.price-validation-bar {
+  background: #000000;
+  color: #fff;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px;
+  border: none;
+  border-radius: 14px 14px 0 0;
+}
+
+.val-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #A5F3FC; /* Celeste muy suave */
+}
+
+.val-interest {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.val-cards {
+  display: flex;
+  gap: 3px;
+  font-size: 11px;
+}
+
+.val-right {
+  color: #94A3B8; /* Gris */
+}
+
+.val-final-price {
+  font-weight: 400;
+}
+
+.price-cta-btn {
+  background: #2B1E1C; /* Marrón Chocolate Sólido */
+  border: none;
+  width: 100%;
+  padding: 12px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+  color: var(--ui-terracota); /* Terracota vibrante */
+  font-family: 'Outfit', sans-serif;
+  line-height: 1;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 8px 16px var(--ui-terracota-glow);
+}
+
+.price-cta-btn:hover {
+  background: #3D2B28;
+}
+
+.price-cta-btn:active {
+  transform: scale(0.98);
+}
+
+.price-cta-btn.success {
+  background: #10B981 !important;
+  color: #FFFFFF !important;
+}
+
+.price-cta-btn.success .cta-prefix,
+.price-cta-btn.success .cta-curr,
+.price-cta-btn.success .cta-amount {
+  color: #FFFFFF !important;
+}
 
 .btn-buy {
-  background: var(--ui-terracota); color: #fff; border: none; border-radius: 10px;
-  padding: 10px 16px; font-family: var(--font-title); font-weight: 700; font-size: 12px;
-  cursor: pointer; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s, box-shadow 0.2s;
-  display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px var(--ui-terracota-glow);
+  background: #2B1E1C;
+  color: var(--ui-terracota);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 8px 16px var(--ui-terracota-glow);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
 }
-.btn-buy:active { transform: scale(0.92); }
-.btn-buy.success { background: #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+.btn-buy:hover {
+  background: #3D2B28;
+}
+.btn-buy:active {
+  transform: scale(0.95);
+}
+.btn-buy.success {
+  background: #10B981 !important;
+  color: #FFFFFF !important;
+}
+
+.cta-prefix {
+  font-weight: 400;
+  font-size: 11px;
+  text-transform: lowercase;
+  color: var(--ui-terracota);
+  font-family: var(--font-title);
+}
+
+.cta-curr {
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--ui-terracota);
+  font-family: var(--font-title);
+}
+
+.cta-amount {
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--ui-terracota);
+  font-family: var(--font-title);
+}
 
 /* --- MÓVIL (1/4) --- */
 .mobile-section-eco { flex: 1; display: flex; flex-direction: column; gap: 20px; min-height: 0; align-items: center; }
 
 .phone-device {
-  background: var(--bg-app); border: 10px solid #1e293b; border-radius: 48px;
+  background: var(--bg-app); border: 10px solid #2B1E1C; border-radius: 48px;
   width: 320px; height: 580px; position: relative; overflow: hidden; /* Altura ajustada para no desbordar 720px */
-  box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 0 0 2px rgba(255,255,255,0.1);
+  box-shadow: 0 30px 60px rgba(44, 30, 28, 0.15), inset 0 0 0 2px rgba(255,255,255,0.1);
   display: flex; flex-direction: column; flex-shrink: 0;
 }
 
@@ -298,31 +421,33 @@ h2.slide-title em{
 
 .phone-header-eco {
   padding: 45px 20px 15px; display: flex; justify-content: space-between; align-items: center;
-  background: var(--bg-app); z-index: 10;
+  background: #FFFFFF; z-index: 10; border-bottom: 1px solid rgba(224,93,58,0.1);
 }
-.phone-logo-eco { font-family: var(--font-title); font-size: 18px; font-weight: 900; color: var(--ui-text-dark); }
+.phone-logo-eco { font-family: var(--font-title); font-size: 18px; font-weight: 900; color: var(--ui-terracota); }
 
-.phone-content-eco { flex: 1; padding: 0 20px 100px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+.phone-content-eco { flex: 1; padding: 0 20px 100px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: var(--bg-app); }
 
 .floating-nav {
   position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%);
   width: 85%; height: 60px; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px);
   border-radius: 100px; display: flex; justify-content: space-around; align-items: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.5); z-index: 40;
+  box-shadow: 0 15px 35px rgba(44, 30, 28, 0.08); border: 1px solid rgba(224,93,58,0.1); z-index: 40;
+  margin-bottom: 25px;
 }
 .nav-icon { color: var(--ui-text-muted); font-size: 20px; transition: color 0.2s, transform 0.2s; }
 .nav-icon.active { color: var(--ui-terracota); transform: translateY(-2px); }
 
 /* Recuadro de Texto */
 .info-box-eco {
-  background: linear-gradient(135deg, var(--ui-terracota), #c2410c); border-radius: 16px;
-  padding: 16px; display: flex; flex-direction: column; justify-content: center;
-  box-shadow: 0 15px 30px var(--ui-terracota-glow); width: 100%; border: 1px solid rgba(255,255,255,0.2);
+  background: var(--ui-terracota); border-radius: 16px;
+  padding: 18px; display: flex; flex-direction: column; justify-content: center;
+  box-shadow: 0 15px 30px rgba(255, 90, 54, 0.2); width: 100%; border: none;
 }
-.info-box-eco p { color: #fff; font-size: 13px; font-weight: 500; line-height: 1.5; }
+.info-box-eco p { color: #FFFFFF; font-size: 13px; font-weight: 500; line-height: 1.5; font-family: var(--font-body); }
+.info-box-eco strong { color: #FFFFFF; font-weight: 800; }
 
 /* Efecto Pop de animación */
-@keyframes badgePop { 0% { transform: scale(1); } 50% { transform: scale(1.5); } 100% { transform: scale(1); } }
+@keyframes badgePop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
 .pop-anim { animation: badgePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
 /* Animación de entrada suave para Bento Cards (Garantiza micro-animaciones premium) */
@@ -444,7 +569,7 @@ body::before {
 /* --- DRAWER DEL CARRITO DE RETIRO (GLASSMORPHISM PREMIUM) --- */
 .cart-drawer-overlay {
   position: fixed; inset: 0;
-  background: rgba(9, 9, 11, 0.5);
+  background: rgba(44, 30, 28, 0.3);
   backdrop-filter: blur(8px);
   z-index: 1000;
   opacity: 0; pointer-events: none;
@@ -457,10 +582,10 @@ body::before {
 
 .cart-drawer {
   width: 420px; height: 100%;
-  background: rgba(24, 24, 27, 0.9);
+  background: rgba(253, 248, 240, 0.95);
   backdrop-filter: blur(25px);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
+  border-left: 1px solid rgba(224, 93, 58, 0.12);
+  box-shadow: -20px 0 50px rgba(44, 30, 28, 0.08);
   display: flex; flex-direction: column;
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -470,18 +595,18 @@ body::before {
 }
 
 .cart-drawer-header {
-  padding: 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px; border-bottom: 1px solid rgba(224, 93, 58, 0.12);
   display: flex; justify-content: space-between; align-items: center;
 }
 .cart-drawer-header h3 {
-  font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: #fff;
+  font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: #2C2C2C;
   display: flex; align-items: center;
 }
 .cart-drawer-close {
-  background: none; border: none; color: #a1a1aa; font-size: 2rem; cursor: pointer;
+  background: none; border: none; color: var(--ui-text-muted); font-size: 2rem; cursor: pointer;
   line-height: 1; transition: color 0.2s;
 }
-.cart-drawer-close:hover { color: #fff; }
+.cart-drawer-close:hover { color: #000; }
 
 .cart-drawer-content {
   flex: 1; padding: 24px; overflow-y: auto;
@@ -493,54 +618,54 @@ body::before {
 .cart-items-list { display: flex; flex-direction: column; gap: 15px; }
 .cart-item-row {
   display: flex; gap: 12px; align-items: center;
-  padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 15px; border-bottom: 1px solid rgba(224, 93, 58, 0.08);
   animation: cardFadeIn 0.3s ease-out both;
 }
-.cart-item-img { width: 50px; height: 50px; object-fit: contain; border-radius: 8px; background: #fff; padding: 4px; }
+.cart-item-img { width: 50px; height: 50px; object-fit: contain; border-radius: 8px; background: #fff; padding: 4px; border: 1px solid rgba(224, 93, 58, 0.08); }
 .cart-item-info { flex: 1; }
-.cart-item-info h5 { font-family: var(--font-title); font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.cart-item-info h5 { font-family: var(--font-title); font-size: 0.9rem; font-weight: 700; color: #2C2C2C; margin-bottom: 2px; }
 .cart-item-info p { font-size: 0.75rem; color: var(--ui-text-muted); }
 .cart-item-price-block { text-align: right; }
-.cart-item-price { font-family: var(--font-title); font-size: 0.9rem; font-weight: 700; color: #fff; }
+.cart-item-price { font-family: var(--font-title); font-size: 0.9rem; font-weight: 700; color: #2C2C2C; }
 .cart-item-qty { font-size: 0.75rem; color: var(--ui-terracota); font-weight: bold; margin-top: 2px; }
 .cart-item-remove {
   background: none; border: none; color: #ef4444; font-size: 0.85rem; cursor: pointer;
-  padding: 4px; transition: color 0.2s; opacity: 0.6; display: flex; align-items: center; gap: 4px;
+  padding: 4px; transition: color 0.2s; opacity: 0.7; display: flex; align-items: center; gap: 4px;
 }
 .cart-item-remove:hover { opacity: 1; }
 
 .cart-drawer-content h4 {
-  font-family: var(--font-title); font-size: 0.85rem; font-weight: 700; color: #a1a1aa;
+  font-family: var(--font-title); font-size: 0.85rem; font-weight: 700; color: var(--ui-text-muted);
   text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;
   display: flex; align-items: center; gap: 8px;
 }
 .cart-info-card {
-  background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(44, 30, 28, 0.03); border: 1px solid rgba(224, 93, 58, 0.08);
   border-radius: 12px; padding: 12px 16px;
 }
-.cart-info-card .main-info { font-size: 0.85rem; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.cart-info-card .main-info { font-size: 0.85rem; font-weight: 600; color: #2C2C2C; margin-bottom: 2px; }
 .cart-info-card .sub-info { font-size: 0.75rem; color: var(--ui-text-muted); }
 
 .cart-drawer-footer {
-  padding: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(15, 15, 17, 0.5);
+  padding: 24px; border-top: 1px solid rgba(224, 93, 58, 0.12);
+  background: #FAF6F0;
 }
 .cart-totals { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.totals-row { display: flex; justify-content: space-between; font-size: 0.9rem; color: #a1a1aa; }
+.totals-row { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--ui-text-muted); }
 .totals-row.total {
-  font-family: var(--font-title); font-size: 1.2rem; font-weight: 800; color: #fff;
-  border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px; margin-top: 5px;
+  font-family: var(--font-title); font-size: 1.2rem; font-weight: 800; color: #2C2C2C;
+  border-top: 1px solid rgba(224, 93, 58, 0.15); padding-top: 10px; margin-top: 5px;
 }
 .btn-checkout {
   width: 100%; background: var(--ui-terracota); color: #fff; border: none; border-radius: 12px;
   padding: 16px; font-family: var(--font-title); font-weight: 700; font-size: 1rem;
   cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 20px var(--ui-terracota-glow);
+  box-shadow: 0 8px 16px var(--ui-terracota-glow);
   display: flex; align-items: center; justify-content: center; gap: 10px;
 }
 .btn-checkout:active { transform: scale(0.97); }
 .btn-checkout:hover { background: #ff7354; }
-.btn-checkout:disabled { background: #4b5563; box-shadow: none; cursor: not-allowed; }
+.btn-checkout:disabled { background: #bdc3c7; box-shadow: none; cursor: not-allowed; }
 
 /* Éxito del Pago */
 .payment-success-screen {
@@ -692,7 +817,8 @@ body::before {
 
 <div class="slide" id="s6">
   <div class="slide-container-eco">
-    <h2 class="slide-title" style="font-size: 32px; margin-bottom: 20px;">Ecosistema Omnicanal Sincronizado</h2>
+    <div class="slide-index">06 &mdash; Caso de Estudio</div>
+    <h2 class="slide-title" style="font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 25px; color: #FFFFFF;">Ecosistema <em>Omnicanal Sincronizado</em></h2>
     
     <div class="layout-wrapper-eco">
       <div class="desktop-section">
@@ -706,89 +832,169 @@ body::before {
                 <i class="fa-solid fa-bag-shopping" style="font-size: 18px;"></i>
                 <div class="cart-badge global-cart-count">0</div>
               </div>
-              <div style="width: 28px; height: 28px; background: var(--ui-text-dark); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold;">NT</div>
+              <div style="width: 28px; height: 28px; background: #2B1E1C; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold;">NT</div>
             </div>
           </div>
 
           <div class="web-content-eco">
             <div class="brand-row">
-              <div class="brand-logo">SUPER TOTAL</div>
+              <div class="brand-logo-container" style="display: flex; align-items: center; gap: 15px;">
+                <span style="background: var(--ui-terracota); color: #FFFFFF; padding: 6px 18px; border-radius: 12px; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 29px; line-height: 1; letter-spacing: -1px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;">10% OFF</span>
+                <span style="font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 24px; color: #2C2C2C; letter-spacing: -1px; display: inline-flex; align-items: center; gap: 5px; line-height: 1;">
+                  SUPER T<span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #FFD700; border-radius: 50%; color: #000; font-size: 16px; font-weight: 900; box-sizing: border-box; padding-bottom: 2px;">+</span>TAL
+                </span>
+              </div>
               <div class="nav-pills">
                 <div class="nav-pill active">Destacados</div><div class="nav-pill">Almacén</div><div class="nav-pill">Frescos</div><div class="nav-pill">Tecnología</div>
               </div>
             </div>
 
             <div class="web-hero-eco">
-              <div style="max-width: 400px; position: relative; z-index: 2;">
-                <span style="background: var(--ui-terracota); padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Flash Sale</span>
-                <h2 style="font-family: var(--font-title); font-size: 32px; font-weight: 900; line-height: 1.1; margin: 15px 0;">SAMSUNG 75" NEO QLED</h2>
-                <p style="color: #cbd5e1; font-size: 13px;">La revolución visual con 12 cuotas sin interés exclusivas online.</p>
+              <div style="max-width: 450px; position: relative; z-index: 2;">
+                <span style="background: var(--ui-terracota); padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff;">Flash Sale</span>
+                <h2 style="font-family: var(--font-title); font-size: 30px; font-weight: 900; line-height: 1.1; margin: 12px 0; color: #2C2C2C;">SAMSUNG 75" NEO QLED</h2>
+                <p style="color: var(--ui-text-muted); font-size: 13px; margin-bottom: 0;">La revolución visual con 12 cuotas sin interés exclusivas online.</p>
               </div>
-              <button class="btn-buy global-btn" data-product-id="samsung-hero" style="z-index: 2; padding: 14px 24px; font-size: 14px;">12 x $210.999</button>
+              <div style="width: 250px; flex-shrink: 0; z-index: 2;">
+                <div class="bento-price-block">
+                  <div class="price-validation-bar">
+                    <div class="val-left">
+                      <span class="val-interest">Sin Interés</span>
+                      <span class="val-cards"><i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i></span>
+                    </div>
+                    <div class="val-right">
+                      <span class="val-final-price">Final: $2.531.988</span>
+                    </div>
+                  </div>
+                  <button class="price-cta-btn global-btn" data-product-id="samsung-hero">
+                    <span class="cta-prefix">12 cuotas de</span> <span class="cta-curr">$</span><span class="cta-amount">210.999</span>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div class="web-bento-grid">
               <!-- Fila 1 -->
               <div class="bento-card">
                 <div class="bento-tag urgent">Últimas 3</div>
-                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" style="border-radius: 10px; object-fit: contain;" alt="Hamburguesas Premium"></div>
+                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Hamburguesas Premium"></div>
                 <div class="card-content"><h4>Hamburguesas Premium</h4><p>Caja x 4 unidades</p></div>
-                <div class="action-row">
-                  <div class="price-block"><span class="price-main">$3.200</span></div>
-                  <button class="btn-buy global-btn"><i class="fa-solid fa-plus"></i> Add</button>
+                <div class="bento-price-block">
+                  <div class="price-validation-bar">
+                    <div class="val-left">
+                      <span class="val-interest">Sin Interés</span>
+                      <span class="val-cards"><i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i></span>
+                    </div>
+                    <div class="val-right">
+                      <span class="val-final-price">Final: $3.200</span>
+                    </div>
+                  </div>
+                  <button class="price-cta-btn global-btn" data-product-id="paty">
+                    <span class="cta-prefix">1 pago de</span> <span class="cta-curr">$</span><span class="cta-amount">3.200</span>
+                  </button>
                 </div>
               </div>
 
               <div class="bento-card">
-                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&q=80" style="border-radius: 10px; object-fit: contain;" alt="Leche Entera"></div>
+                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&q=80" alt="Leche Entera"></div>
                 <div class="card-content"><h4>Leche Entera Larga Vida</h4><p>Tregar - 1 Litro</p></div>
-                <div class="action-row">
-                  <div class="price-block"><span class="price-main">$2.249</span></div>
-                  <button class="btn-buy global-btn"><i class="fa-solid fa-plus"></i> Add</button>
+                <div class="bento-price-block">
+                  <div class="price-validation-bar">
+                    <div class="val-left">
+                      <span class="val-interest">Sin Interés</span>
+                      <span class="val-cards"><i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i></span>
+                    </div>
+                    <div class="val-right">
+                      <span class="val-final-price">Final: $2.249</span>
+                    </div>
+                  </div>
+                  <button class="price-cta-btn global-btn" data-product-id="leche">
+                    <span class="cta-prefix">1 pago de</span> <span class="cta-curr">$</span><span class="cta-amount">2.249</span>
+                  </button>
                 </div>
               </div>
 
               <div class="bento-card large">
-                <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&q=80" style="border-radius: 10px;" alt="Bicicleta MTB">
+                <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&q=80" alt="Bicicleta MTB">
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; height: 100%;">
                   <div class="bento-tag">Envío Gratis</div>
                   <div class="card-content" style="margin-top: 20px;"><h4>Bicicleta MTB SLP 25</h4><p>Rodado 29 - Frenos Disco</p></div>
-                  <div class="action-row">
-                    <div class="price-block"><span class="price-sub">Precio Final: $1.295.988</span><span class="price-main" style="color: var(--ui-terracota);">12 x $107.999</span></div>
-                    <button class="btn-buy global-btn"><i class="fa-solid fa-cart-arrow-down"></i></button>
+                  <div class="bento-price-block">
+                    <div class="price-validation-bar">
+                      <div class="val-left">
+                        <span class="val-interest">Sin Interés</span>
+                        <span class="val-cards"><i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i></span>
+                      </div>
+                      <div class="val-right">
+                        <span class="val-final-price">Final: $1.295.988</span>
+                      </div>
+                    </div>
+                    <button class="price-cta-btn global-btn" data-product-id="bici">
+                      <span class="cta-prefix">12 cuotas de</span> <span class="cta-curr">$</span><span class="cta-amount">107.999</span>
+                    </button>
                   </div>
                 </div>
               </div>
 
               <!-- Fila 2 (Nuevos Productos para mayor realismo) -->
               <div class="bento-card large">
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" style="border-radius: 10px;" alt="Auriculares Pro">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Auriculares Pro">
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; height: 100%;">
                   <div class="bento-tag urgent">Cyber Offer</div>
                   <div class="card-content" style="margin-top: 20px;"><h4>Auriculares Bluetooth Pro</h4><p>Aislación de Ruido Activa</p></div>
-                  <div class="action-row">
-                    <div class="price-block"><span class="price-sub">Total: $359.988</span><span class="price-main" style="color: var(--ui-terracota);">12 x $29.999</span></div>
-                    <button class="btn-buy global-btn"><i class="fa-solid fa-cart-arrow-down"></i></button>
+                  <div class="bento-price-block">
+                    <div class="price-validation-bar">
+                      <div class="val-left">
+                        <span class="val-interest">Sin Interés</span>
+                        <span class="val-cards"><i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i></span>
+                      </div>
+                      <div class="val-right">
+                        <span class="val-final-price">Final: $359.988</span>
+                      </div>
+                    </div>
+                    <button class="price-cta-btn global-btn" data-product-id="auriculares">
+                      <span class="cta-prefix">12 cuotas de</span> <span class="cta-curr">$</span><span class="cta-amount">29.999</span>
+                    </button>
                   </div>
                 </div>
               </div>
 
               <div class="bento-card">
-                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&q=80" style="border-radius: 10px; object-fit: contain;" alt="Café Premium"></div>
+                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&q=80" alt="Café Premium"></div>
                 <div class="card-content"><h4>Café Cabrales Molido</h4><p>Premium Blend - Bolsa 250g</p></div>
-                <div class="action-row">
-                  <div class="price-block"><span class="price-main">$4.850</span></div>
-                  <button class="btn-buy global-btn"><i class="fa-solid fa-plus"></i> Add</button>
+                <div class="bento-price-block">
+                  <div class="price-validation-bar">
+                    <div class="val-left">
+                      <span class="val-interest">Sin Interés</span>
+                      <span class="val-cards"><i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i></span>
+                    </div>
+                    <div class="val-right">
+                      <span class="val-final-price">Final: $4.850</span>
+                    </div>
+                  </div>
+                  <button class="price-cta-btn global-btn" data-product-id="cafe">
+                    <span class="cta-prefix">1 pago de</span> <span class="cta-curr">$</span><span class="cta-amount">4.850</span>
+                  </button>
                 </div>
               </div>
 
               <div class="bento-card">
                 <div class="bento-tag">Promo 2x1</div>
-                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=400&q=80" style="border-radius: 10px; object-fit: contain;" alt="Cerveza IPA"></div>
+                <div class="product-img-wrapper"><img src="https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=400&q=80" alt="Cerveza IPA"></div>
                 <div class="card-content"><h4>Cerveza Patagonia IPA</h4><p>Pack x 6 Latas 473ml</p></div>
-                <div class="action-row">
-                  <div class="price-block"><span class="price-main">$6.900</span></div>
-                  <button class="btn-buy global-btn"><i class="fa-solid fa-plus"></i> Add</button>
+                <div class="bento-price-block">
+                  <div class="price-validation-bar">
+                    <div class="val-left">
+                      <span class="val-interest">Sin Interés</span>
+                      <span class="val-cards"><i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i></span>
+                    </div>
+                    <div class="val-right">
+                      <span class="val-final-price">Final: $6.900</span>
+                    </div>
+                  </div>
+                  <button class="price-cta-btn global-btn" data-product-id="cerveza">
+                    <span class="cta-prefix">1 pago de</span> <span class="cta-curr">$</span><span class="cta-amount">6.900</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -800,7 +1006,12 @@ body::before {
         <div class="phone-device">
           <div class="dynamic-island"></div>
           <div class="phone-header-eco">
-            <div class="phone-logo-eco">ST.</div>
+            <div class="brand-logo-container" style="display: flex; align-items: center; gap: 8px;">
+              <span style="background: var(--ui-terracota); color: #FFFFFF; padding: 4px 10px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 19px; line-height: 1; letter-spacing: -0.5px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;">10% OFF</span>
+              <div class="phone-logo-eco" style="font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 16px; color: #2C2C2C; display: inline-flex; align-items: center; gap: 2px; letter-spacing: -1px; line-height: 1;">
+                SUPER T<span style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; background: #FFD700; border-radius: 50%; color: #000; font-size: 11px; font-weight: 900; box-sizing: border-box; padding-bottom: 2px;">+</span>TAL
+              </div>
+            </div>
             <div class="cart-wrapper" id="mobile-cart">
               <i class="fa-solid fa-bag-shopping" style="font-size: 20px; color: var(--ui-text-dark);"></i>
               <div class="cart-badge global-cart-count">0</div>
@@ -809,7 +1020,7 @@ body::before {
 
           <div class="phone-content-eco">
             <!-- Producto 1 (TV) -->
-            <div class="bento-card" style="padding: 15px;">
+            <div class="bento-card" style="padding: 20px;">
               <div class="bento-tag">Más Vendido</div>
               <div class="product-img-wrapper" style="height: 90px;"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400&q=80" style="border-radius: 8px;" alt="Smart TV Xiaomi"></div>
               <div class="card-content"><h4>Smart TV Xiaomi 65" 4K</h4></div>
@@ -821,12 +1032,12 @@ body::before {
 
             <!-- Fila 2 (Hamburguesas y Leche) -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-              <div class="bento-card" style="padding: 12px;">
+              <div class="bento-card" style="padding: 20px;">
                 <div class="product-img-wrapper" style="height: 50px;"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" style="border-radius: 6px; object-fit:contain;" alt="Hamburguesas"></div>
                 <div class="card-content"><h4 style="font-size: 11px;">Hamburguesas</h4></div>
                 <button class="btn-buy global-btn" style="width: 100%; justify-content: center; font-size: 11px; padding: 6px;">$3.200</button>
               </div>
-              <div class="bento-card" style="padding: 12px;">
+              <div class="bento-card" style="padding: 20px;">
                 <div class="product-img-wrapper" style="height: 50px;"><img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&q=80" style="border-radius: 6px; object-fit:contain;" alt="Leche"></div>
                 <div class="card-content"><h4 style="font-size: 11px;">Leche Tregar</h4></div>
                 <button class="btn-buy global-btn" style="width: 100%; justify-content: center; font-size: 11px; padding: 6px;">$2.249</button>
@@ -834,7 +1045,7 @@ body::before {
             </div>
 
             <!-- Producto 3 (Auriculares Pro - Scrollable) -->
-            <div class="bento-card" style="padding: 15px;">
+            <div class="bento-card" style="padding: 20px;">
               <div class="bento-tag urgent">Cyber Offer</div>
               <div class="product-img-wrapper" style="height: 90px;"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" style="border-radius: 8px;" alt="Auriculares Pro"></div>
               <div class="card-content"><h4>Auriculares Bluetooth Pro</h4></div>
@@ -846,12 +1057,12 @@ body::before {
 
             <!-- Fila 4 (Café y Cerveza IPA - Scrollable) -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-              <div class="bento-card" style="padding: 12px;">
+              <div class="bento-card" style="padding: 20px;">
                 <div class="product-img-wrapper" style="height: 50px;"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&q=80" style="border-radius: 6px; object-fit:contain;" alt="Café"></div>
                 <div class="card-content"><h4 style="font-size: 11px;">Café Cabrales</h4></div>
                 <button class="btn-buy global-btn" style="width: 100%; justify-content: center; font-size: 11px; padding: 6px;">$4.850</button>
               </div>
-              <div class="bento-card" style="padding: 12px;">
+              <div class="bento-card" style="padding: 20px;">
                 <div class="product-img-wrapper" style="height: 50px;"><img src="https://images.unsplash.com/photo-1566633806327-68e152aaf26d?w=400&q=80" style="border-radius: 6px; object-fit:contain;" alt="Cerveza"></div>
                 <div class="card-content"><h4 style="font-size: 11px;">Cerveza IPA</h4></div>
                 <button class="btn-buy global-btn" style="width: 100%; justify-content: center; font-size: 11px; padding: 6px;">$6.900</button>
@@ -868,7 +1079,7 @@ body::before {
         </div>
 
         <div class="info-box-eco">
-          <p><i class="fa-solid fa-bolt" style="margin-right: 5px;"></i> <strong>Omnicanalidad Viva:</strong> Hacé clic en cualquier botón de compra. El estado global sincroniza instantáneamente el carrito web y el móvil, demostrando un flujo de conversión sin fricciones.</p>
+          <p><i class="fa-solid fa-bolt" style="margin-right: 6px;"></i> <strong>Omnicanalidad Viva:</strong> Al hacer clic en cualquier botón de compra, el estado del carrito se sincroniza instantáneamente en tiempo real entre ambos mundos (Escritorio y Móvil). En la versión móvil, priorizamos la ergonomía del pulgar posicionando una barra flotante de cristal suspendida y tarjetas bento accesibles que aseguran un flujo de conversión sumamente fluido.</p>
         </div>
       </div>
     </div>
@@ -1259,6 +1470,56 @@ const productDb = [
   }
 ];
 
+// Helper para construir el bloque de precios Bento de dos pisos
+function getPriceBlockHtml(p) {
+  let isInstallments = p.price.includes('x');
+  let prefix = isInstallments ? `${p.price.split('x')[0].trim()} cuotas de` : '1 pago de';
+  let amount = isInstallments ? p.price.split('x')[1].trim() : p.price;
+  let cleanAmount = amount.replace('$', '').trim();
+  
+  // Calcular o formatear precio final para la barra superior
+  let finalPriceText = '';
+  if (p.priceSub) {
+    finalPriceText = p.priceSub.replace('Precio Final:', '').replace('Total:', '').replace('Exclusivo Online', '').trim();
+    if (!finalPriceText) finalPriceText = amount;
+    else if (!finalPriceText.startsWith('$')) finalPriceText = '$' + finalPriceText;
+  } else {
+    if (isInstallments) {
+      let cuotas = parseInt(p.price.split('x')[0].trim());
+      let val = parseFloat(cleanAmount.replace('.', '').trim());
+      if (!isNaN(cuotas) && !isNaN(val)) {
+        finalPriceText = '$' + (cuotas * val).toLocaleString('es-AR');
+      } else {
+        finalPriceText = amount;
+      }
+    } else {
+      finalPriceText = amount;
+    }
+  }
+  
+  return `
+    <div class="bento-price-block">
+      <div class="price-validation-bar">
+        <div class="val-left">
+          <span class="val-interest">Sin Interés</span>
+          <span class="val-cards">
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+          </span>
+        </div>
+        <div class="val-right">
+          <span class="val-final-price">Final: ${finalPriceText}</span>
+        </div>
+      </div>
+      <button class="price-cta-btn global-btn" data-product-id="${p.id}">
+        <span class="cta-prefix">${prefix}</span>
+        <span class="cta-curr">$</span>
+        <span class="cta-amount">${cleanAmount}</span>
+      </button>
+    </div>
+  `;
+}
+
 // Lógica de renderizado dinámico en Escritorio
 function renderDesktopGrid(category) {
   const grid = document.querySelector('.web-bento-grid');
@@ -1268,6 +1529,7 @@ function renderDesktopGrid(category) {
   
   let html = '';
   filtered.forEach(p => {
+    let priceBlock = getPriceBlockHtml(p);
     if (p.size === 'large') {
       html += `
         <div class="bento-card large">
@@ -1275,10 +1537,7 @@ function renderDesktopGrid(category) {
           <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; height: 100%;">
             ${p.tag ? `<div class="bento-tag ${p.tagClass}">${p.tag}</div>` : ''}
             <div class="card-content" style="margin-top: 20px;"><h4>${p.name}</h4><p>${p.desc}</p></div>
-            <div class="action-row">
-              <div class="price-block">${p.priceSub ? `<span class="price-sub">${p.priceSub}</span>` : ''}<span class="price-main" style="${p.id==='bici' || p.id==='auriculares' || p.id==='smartphone' ? 'color: var(--ui-terracota);' : ''}">${p.price}</span></div>
-              <button class="btn-buy global-btn" data-product-id="${p.id}">${p.btnIcon}</button>
-            </div>
+            ${priceBlock}
           </div>
         </div>
       `;
@@ -1288,10 +1547,7 @@ function renderDesktopGrid(category) {
           ${p.tag ? `<div class="bento-tag ${p.tagClass}">${p.tag}</div>` : ''}
           <div class="product-img-wrapper"><img src="${p.img}" style="border-radius: 10px; object-fit: contain;" alt="${p.name}"></div>
           <div class="card-content"><h4>${p.name}</h4><p>${p.desc}</p></div>
-          <div class="action-row">
-            <div class="price-block">${p.priceSub ? `<span class="price-sub">${p.priceSub}</span>` : ''}<span class="price-main">${p.price}</span></div>
-            <button class="btn-buy global-btn" data-product-id="${p.id}">${p.btnIcon}</button>
-          </div>
+          ${priceBlock}
         </div>
       `;
     }
@@ -1313,12 +1569,24 @@ function renderMobileContent(category) {
     if (normalBuffer.length === 0) return '';
     let subHtml = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%;">';
     normalBuffer.forEach(p => {
+      let isInstallments = p.price.includes('x');
+      let prefix = isInstallments ? `${p.price.split('x')[0].trim()} cuotas de` : '1 pago de';
+      let amount = isInstallments ? p.price.split('x')[1].trim() : p.price;
+      let cleanAmount = amount.replace('$', '').trim();
+      
       subHtml += `
-        <div class="bento-card" style="padding: 12px;">
+        <div class="bento-card" style="padding: 20px; gap: 8px;">
           ${p.tag ? `<div class="bento-tag ${p.tagClass}" style="top: 8px; left: 8px; font-size: 8px;">${p.tag}</div>` : ''}
-          <div class="product-img-wrapper" style="height: 50px;"><img src="${p.img}" style="border-radius: 6px; object-fit:contain;" alt="${p.name}"></div>
-          <div class="card-content"><h4 style="font-size: 11px;">${p.name}</h4></div>
-          <button class="btn-buy global-btn" data-product-id="${p.id}" style="width: 100%; justify-content: center; font-size: 11px; padding: 6px;">${p.price}</button>
+          <div class="product-img-wrapper" style="height: 55px; margin-bottom: 5px;"><img src="${p.img}" style="border-radius: 6px; object-fit:contain;" alt="${p.name}"></div>
+          <div class="card-content"><h4 style="font-size: 12px; margin-bottom: 2px;">${p.name}</h4></div>
+          
+          <div class="bento-price-block" style="border-radius: 8px;">
+            <button class="price-cta-btn global-btn" data-product-id="${p.id}" style="padding: 8px 4px; border-radius: 8px;">
+              <span class="cta-prefix" style="font-size: 9px;">${prefix}</span>
+              <span class="cta-curr" style="font-size: 11px;">$</span>
+              <span class="cta-amount" style="font-size: 13px;">${cleanAmount}</span>
+            </button>
+          </div>
         </div>
       `;
     });
@@ -1328,17 +1596,15 @@ function renderMobileContent(category) {
   }
   
   filtered.forEach(p => {
+    let priceBlock = getPriceBlockHtml(p);
     if (p.size === 'large') {
       html += flushNormalBuffer();
       html += `
-        <div class="bento-card" style="padding: 15px;">
+        <div class="bento-card" style="padding: 20px;">
           ${p.tag ? `<div class="bento-tag ${p.tagClass}">${p.tag}</div>` : ''}
-          <div class="product-img-wrapper" style="height: 90px;"><img src="${p.img}" style="border-radius: 8px;" alt="${p.name}"></div>
+          <div class="product-img-wrapper" style="height: 90px; margin-bottom: 10px;"><img src="${p.img}" style="border-radius: 8px;" alt="${p.name}"></div>
           <div class="card-content"><h4>${p.name}</h4></div>
-          <div class="action-row">
-            <div class="price-block">${p.priceSub ? `<span class="price-sub">${p.priceSub}</span>` : ''}<span class="price-main" style="font-size: 16px;">${p.price}</span></div>
-            <button class="btn-buy global-btn" data-product-id="${p.id}" style="padding: 8px 12px;">${p.btnIcon}</button>
-          </div>
+          ${priceBlock}
         </div>
       `;
     } else {
@@ -1351,15 +1617,13 @@ function renderMobileContent(category) {
   
   if (normalBuffer.length > 0) {
     const p = normalBuffer[0];
+    let priceBlock = getPriceBlockHtml(p);
     html += `
-      <div class="bento-card" style="padding: 15px;">
+      <div class="bento-card" style="padding: 20px;">
         ${p.tag ? `<div class="bento-tag ${p.tagClass}">${p.tag}</div>` : ''}
-        <div class="product-img-wrapper" style="height: 90px;"><img src="${p.img}" style="border-radius: 8px;" alt="${p.name}"></div>
+        <div class="product-img-wrapper" style="height: 90px; margin-bottom: 10px;"><img src="${p.img}" style="border-radius: 8px;" alt="${p.name}"></div>
         <div class="card-content"><h4>${p.name}</h4><p style="font-size: 11px; margin-bottom: 0;">${p.desc}</p></div>
-        <div class="action-row" style="margin-top: 10px;">
-          <div class="price-block"><span class="price-main" style="font-size: 16px;">${p.price}</span></div>
-          <button class="btn-buy global-btn" data-product-id="${p.id}" style="padding: 8px 12px;">${p.btnIcon}</button>
-        </div>
+        ${priceBlock}
       </div>
     `;
   }
