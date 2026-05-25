@@ -37,7 +37,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg-dark);font-family:'Int
 #s1{background:var(--bg-dark);display:flex;align-items:center;justify-content:center;overflow:hidden}
 #s1 .bg{
   position:absolute;inset:0;
-  background:url('imagenes/Retail UI/a.png') center/cover no-repeat;
+  background:url('imagenes/Retail UI/h.png') center/cover no-repeat;
   filter:brightness(.20) grayscale(.3); /* Más sobrio */
 }
 #s1 .vignette{
@@ -127,17 +127,14 @@ h2.slide-title em{
   width: 100%;
   height: 100%;
   background: #000;
-  padding: clamp(1rem, 4vw, 3rem);
+  padding: 0; /* Ocupa el ancho total del panel sin espaciado */
 }
 .video-wrapper {
   width: 100%;
-  max-width: 640px; /* No forzado en tamaño */
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/9; /* Proporción natural */
   position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--rule);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 .video-wrapper iframe {
   position: absolute;
@@ -420,14 +417,15 @@ body::before {
   </div>
 </div>
 
-<!-- ── S6 VIDEO CASE STUDY (NUEVO) ── -->
+<!-- ── S6 VIDEO CASE STUDY ── -->
 <div class="slide" id="s6">
   <div class="split">
     <div class="panel-img">
       <div class="video-container-bento">
         <div class="video-wrapper">
           <iframe 
-            src="https://www.youtube.com/embed/bso4h5OdQSE?autoplay=1&mute=1&loop=1&playlist=bso4h5OdQSE&rel=0&modestbranding=1" 
+            id="ytPlayerFrame"
+            src="" 
             title="Retail UI Case Study Showcase" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -478,6 +476,11 @@ const wrap=document.getElementById('ndWrap');
 const nc=document.getElementById('nc');
 let cur=0;
 
+// Elementos para control dinámico de video
+const iframe = document.getElementById('ytPlayerFrame');
+const videoSrc = "https://www.youtube.com/embed/bso4h5OdQSE?autoplay=1&mute=1&loop=1&playlist=bso4h5OdQSE&rel=0&modestbranding=1";
+let videoTimeout = null;
+
 slides.forEach((_,i)=>{
   const b=document.createElement('button');
   b.className='nd'+(i===0?' on':'');
@@ -487,12 +490,31 @@ slides.forEach((_,i)=>{
 });
 
 function go(n){
+  // Limpiar temporizador anterior si existiera
+  if (videoTimeout) {
+    clearTimeout(videoTimeout);
+    videoTimeout = null;
+  }
+
   slides[cur].classList.remove('active');
   wrap.children[cur].classList.remove('on');
+
+  // Si salimos de la diapositiva del video (índice 5), detenemos el video vaciando el src
+  if (cur === 5 && iframe) {
+    iframe.src = "";
+  }
+
   cur=(n+slides.length)%slides.length;
   slides[cur].classList.add('active');
   wrap.children[cur].classList.add('on');
   nc.textContent=`${cur+1}/${slides.length}`;
+
+  // Si entramos a la diapositiva del video (índice 5), cargamos el src con autoplay después de 1 segundo (1000ms)
+  if (cur === 5 && iframe) {
+    videoTimeout = setTimeout(() => {
+      iframe.src = videoSrc;
+    }, 1000);
+  }
 }
 
 document.getElementById('bNext').onclick=()=>go(cur+1);
