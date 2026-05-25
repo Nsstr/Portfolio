@@ -319,9 +319,9 @@ h2.slide-title em{
 .phone-frame {
   background-color: var(--ui-cream);
   border: 7px solid #27272a;
-  border-radius: 30px;
-  width: 215px;
-  height: 440px;
+  border-radius: 36px;
+  width: 258px;
+  height: 528px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 45px rgba(0,0,0,0.5);
@@ -333,12 +333,12 @@ h2.slide-title em{
 
 /* Elementos realistas del celular */
 .phone-header-real {
-  height: 22px;
+  height: 26px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 12px 0;
-  font-size: 7.5px;
+  padding: 6px 14px 0;
+  font-size: 9px;
   color: #71717a;
   font-weight: 600;
   flex-shrink: 0;
@@ -349,11 +349,11 @@ h2.slide-title em{
 
 .phone-notch-pill {
   position: absolute;
-  top: 4px;
+  top: 5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
-  height: 10px;
+  width: 60px;
+  height: 12px;
   background: #27272a;
   border-radius: 6px;
   box-shadow: inset 0 1px 2px rgba(255,255,255,0.15);
@@ -361,10 +361,10 @@ h2.slide-title em{
 
 .phone-content {
   flex: 1;
-  padding: 8px 10px 40px; /* Espacio extra para el tab bar de 32px */
+  padding: 10px 12px 48px; /* Espacio extra para el tab bar de 38px */
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   overflow-y: auto;
   scrollbar-width: none;
 }
@@ -383,14 +383,14 @@ h2.slide-title em{
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 32px;
+  height: 38px;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(6px);
   border-top: 1px solid #e4e4e7;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--ui-muted);
   flex-shrink: 0;
   z-index: 15;
@@ -779,29 +779,29 @@ body::before {
                 <div class="phone-header-real">
                     <span>09:41</span>
                     <div class="phone-notch-pill"></div>
-                    <div style="display:flex; gap: 4px; align-items:center;">
-                        <i class="fa-solid fa-signal" style="font-size:6px;"></i>
-                        <i class="fa-solid fa-wifi" style="font-size:6px;"></i>
-                        <i class="fa-solid fa-battery-three-quarters" style="font-size:7px;"></i>
+                    <div style="display:flex; gap: 5px; align-items:center;">
+                        <i class="fa-solid fa-signal" style="font-size:8px;"></i>
+                        <i class="fa-solid fa-wifi" style="font-size:8px;"></i>
+                        <i class="fa-solid fa-battery-three-quarters" style="font-size:9px;"></i>
                     </div>
                 </div>
                 <div class="phone-content">
-                    <div style="font-family: var(--font-title); font-weight: 800; font-size: 11px; text-align: center; margin-bottom: 2px; color: var(--ui-text);">SUPER TOTAL</div>
+                    <div style="font-family: var(--font-title); font-weight: 800; font-size: 13px; text-align: center; margin-bottom: 4px; color: var(--ui-text);">SUPER TOTAL</div>
                     
                     <div class="phone-card">
-                        <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=300&q=80" style="width: 100%; height: 48px; object-fit: contain; margin-bottom: 4px;">
-                        <h4 style="font-size: 8.5px; margin-bottom: 4px; color: var(--ui-text); font-weight: 600;">Xiaomi 65" 4K UHD</h4>
-                        <button class="web-btn" style="border-radius: 4px; padding: 4px; font-weight: 700; font-size: 8px; width: 100%;">12 x $149.999</button>
+                        <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=300&q=80" style="width: 100%; height: 58px; object-fit: contain; margin-bottom: 6px;">
+                        <h4 style="font-size: 10.5px; margin-bottom: 4px; color: var(--ui-text); font-weight: 600;">Xiaomi 65" 4K UHD</h4>
+                        <button class="web-btn" style="border-radius: 4px; padding: 4px; font-weight: 700; font-size: 9.5px; width: 100%;">12 x $149.999</button>
                     </div>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                        <div style="background: var(--ui-white); border-radius: 12px; padding: 6px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
-                             <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&q=80" style="width: 100%; height: 28px; object-fit: cover; border-radius: 4px;">
-                             <button class="web-btn" style="border-radius: 4px; padding: 3px; font-weight: 700; font-size: 7.5px; width: 100%; margin-top: 4px;">$2.249</button>
+                        <div style="background: var(--ui-white); border-radius: 12px; padding: 7px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+                             <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&q=80" style="width: 100%; height: 34px; object-fit: cover; border-radius: 4px;">
+                             <button class="web-btn" style="border-radius: 4px; padding: 3px; font-weight: 700; font-size: 9px; width: 100%; margin-top: 4px;">$2.249</button>
                         </div>
-                        <div style="background: var(--ui-white); border-radius: 12px; padding: 6px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
-                             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300&q=80" style="width: 100%; height: 28px; object-fit: cover; border-radius: 4px;">
-                             <button class="web-btn" style="border-radius: 4px; padding: 3px; font-weight: 700; font-size: 7.5px; width: 100%; margin-top: 4px;">$1.809</button>
+                        <div style="background: var(--ui-white); border-radius: 12px; padding: 7px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+                             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300&q=80" style="width: 100%; height: 34px; object-fit: cover; border-radius: 4px;">
+                             <button class="web-btn" style="border-radius: 4px; padding: 3px; font-weight: 700; font-size: 9px; width: 100%; margin-top: 4px;">$1.809</button>
                         </div>
                     </div>
                 </div>
