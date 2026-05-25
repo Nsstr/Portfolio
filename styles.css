@@ -17,10 +17,11 @@ body {
 /* =============================================== */
 header.hero {
   height: 100vh;
-  background-image: url("imagenes/hero.png");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("imagenes/hero.png") !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
   position: relative;
   display: flex;
   align-items: center;
@@ -30,10 +31,10 @@ header.hero {
 
 @media (max-width: 768px) {
   header.hero {
-    background-image: url("imagenes/hero-mobile.png");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url("imagenes/hero-mobile.png") !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
   }
 }
 
