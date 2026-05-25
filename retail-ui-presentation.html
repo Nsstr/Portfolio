@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Retail UI — Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* Nueva paleta: Sobria, tecnológica, con acento Terracota UI */
+:root{
+  --bg-dark: #09090B;      /* Grafito profundo */
+  --bg-panel: #18181B;     /* Gris UI oscuro */
+  --text-main: #F4F4F5;    /* Blanco off-white */
+  --text-muted: #A1A1AA;   /* Gris neutro para lectura */
+  --accent: #E05D3A;       /* Terracota Bento */
+  --accent-dim: rgba(224, 93, 58, 0.15);
+  --rule: rgba(255, 255, 255, 0.1);
+}
+
+html,body{height:100%;overflow:hidden;background:var(--bg-dark);font-family:'Inter',sans-serif;color:var(--text-main)}
+
+/* DECK */
+.deck{width:100vw;height:100vh;position:relative}
+
+/* SLIDES */
+.slide{
+  position:absolute;inset:0;
+  opacity:0;pointer-events:none;
+  transition:opacity .5s ease,transform .5s ease;
+  transform:translateY(20px);
+}
+.slide.active{opacity:1;pointer-events:all;transform:translateY(0)}
+
+/* ── S1 COVER ── */
+#s1{background:var(--bg-dark);display:flex;align-items:center;justify-content:center;overflow:hidden}
+#s1 .bg{
+  position:absolute;inset:0;
+  background:url('imagenes/Retail UI/a.png') center/cover no-repeat;
+  filter:brightness(.20) grayscale(.3); /* Más sobrio */
+}
+#s1 .vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 20%,var(--bg-dark) 100%);
+}
+#s1 .c{position:relative;text-align:center;padding:2rem}
+.cover-rule{width:1px;height:60px;background:var(--accent);margin:0 auto 2.5rem}
+
+#s1 h1{
+  font-family:'Outfit',sans-serif;font-weight:800;
+  font-size:clamp(4.5rem,11vw,9rem);line-height:1;
+  color:var(--text-main);letter-spacing:-.03em;
+  text-transform: uppercase;
+}
+#s1 .sub{
+  margin-top:1.5rem;
+  font-family:'Inter',sans-serif;font-weight:500;
+  letter-spacing:.3em;font-size:clamp(.75rem,1.2vw,.9rem);
+  color:var(--text-muted);text-transform:uppercase;
+}
+#s1 .tag{
+  display:inline-flex;align-items:center;gap:.8rem;
+  margin-top:3rem;
+  border:1px solid var(--rule);
+  border-radius:100px;padding:.6rem 1.5rem;
+  font-family:'Inter',sans-serif;font-weight:400;
+  font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--text-muted);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+}
+.dot-dec{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+/* ── SHARED SPLIT ── */
+.split{display:flex;height:100%}
+.split .panel-img{flex:0 0 52%;position:relative;overflow:hidden;background:#000}
+.split .panel-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.9;}
+.split .panel-text{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(2.5rem,6vw,5.5rem) clamp(2.5rem,5vw,5rem);
+  background:var(--bg-panel);overflow-y:auto;
+}
+.split.reverse .panel-img{order:2}
+.split.reverse .panel-text{order:1}
+
+/* SHARED TEXT PARTS */
+.slide-index{
+  font-family:'Inter',sans-serif;font-weight:500;
+  font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.slide-index::before{content:'';display:block;width:30px;height:2px;background:var(--accent)}
+
+h2.slide-title{
+  font-family:'Outfit',sans-serif;font-weight:800;
+  font-size:clamp(2.5rem,4.5vw,3.8rem);line-height:1.1;
+  color:var(--text-main); letter-spacing:-.02em;
+}
+h2.slide-title em{
+  font-style:normal; 
+  color:var(--accent);
+}
+
+.rule{width:50px;height:3px;background:var(--text-main);margin:2rem 0;opacity:.15}
+
+.body{
+  font-family:'Inter',sans-serif;font-weight:300;
+  font-size:clamp(.9rem,1.3vw,1rem);color:var(--text-muted);
+  line-height:1.8;max-width:460px;
+}
+
+.pull-quote{
+  margin-top:2.5rem;
+  font-family:'Inter',sans-serif;font-weight:400;
+  font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--text-main);
+  border-left:3px solid var(--accent);padding-left:1.5rem;
+  line-height:1.5;
+}
+
+/* ── VIDEO CONTAINER (S6) ── */
+.video-container-bento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+.video-wrapper {
+  width: 100%;
+  max-width: 640px; /* No forzado en tamaño */
+  aspect-ratio: 16/9;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* ── S3 ADN VISUAL (BENTO GRID) ── */
+.type-rows{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+.type-row{
+  display:flex;align-items:baseline;gap:1.5rem;
+  padding-bottom:1.5rem;border-bottom:1px solid var(--rule);
+}
+.type-label{
+  font-family:'Outfit',sans-serif;font-weight:600;
+  font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--text-main);min-width:110px;
+}
+.type-def{
+  font-family:'Inter',sans-serif;font-weight:300;
+  font-size:clamp(.85rem,1.2vw,.95rem);color:var(--text-muted);
+  line-height:1.6;
+}
+
+.bento-icon-block{display:flex;align-items:center;gap:1.5rem;margin-top:2.5rem; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid var(--rule);}
+.bento-icon-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:4px;
+  width:46px;height:46px; flex-shrink: 0;
+}
+.bento-square{background:var(--accent);border-radius:4px;opacity:1;}
+.bento-square:first-child{grid-column:span 2;height:20px; background:var(--text-main);}
+
+.bento-caption{
+  font-family:'Inter',sans-serif;font-weight:400;
+  font-size:clamp(.85rem,1.2vw,.95rem);color:var(--text-main);
+  line-height:1.4;
+}
+
+/* ── S4 Y S5 LISTAS ── */
+.tag-list{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+.tag-item{display:flex;gap:1.2rem;align-items:flex-start}
+.tag-num{
+  flex-shrink:0;width:32px;height:32px;border-radius:6px;
+  background:var(--accent-dim); color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:800;
+}
+.tag-body h4{
+  font-family:'Outfit',sans-serif;font-weight:600;
+  font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-main);margin-bottom:.4rem; margin-top:.3rem;
+}
+.tag-body p{
+  font-family:'Inter',sans-serif;font-weight:300;
+  font-size:clamp(.85rem,1.1vw,.95rem);color:var(--text-muted);
+  line-height:1.6;
+}
+
+/* ── S7 CIERRE ── */
+#s7{
+  background:var(--bg-dark);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+}
+#s7 .c{position:relative;padding:2rem; z-index: 2;}
+#s7 .eye{
+  font-family:'Inter',sans-serif;font-weight:500;
+  letter-spacing:.25em;font-size:.75rem;
+  color:var(--accent);text-transform:uppercase;margin-bottom:2rem;
+}
+#s7 h2{
+  font-family:'Outfit',sans-serif;font-weight:800;
+  font-size:clamp(3.5rem,8vw,6.5rem);line-height:1;color:var(--text-main);
+  letter-spacing: -0.02em; text-transform: uppercase;
+}
+#s7 .sub{
+  margin-top:1.5rem;
+  font-family:'Inter',sans-serif;font-weight:400;
+  letter-spacing:.2em;font-size:clamp(.75rem,1.1vw,.9rem);
+  color:var(--text-muted);text-transform:uppercase;
+}
+#s7 .line{width:1px;height:60px;background:var(--rule);margin:3rem auto}
+.contact-row{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap}
+.ci .lbl{
+  font-family:'Inter',sans-serif;font-weight:600;
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:.5rem;
+}
+.ci a,.ci span{
+  font-family:'Inter',sans-serif;font-weight:400;
+  font-size:clamp(.9rem,1.2vw,1rem);
+  color:var(--text-main);text-decoration:none;
+  transition:color .2s;
+}
+.ci a:hover{color:var(--accent)}
+
+/* NAV */
+.nav{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:1.2rem;
+  background:rgba(24,24,27,.8);backdrop-filter:blur(10px);
+  border:1px solid var(--rule);
+  border-radius:100px;padding:.6rem 1.5rem;z-index:100;
+}
+.nb{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:1.2rem;padding:0 .5rem;transition:color .2s}
+.nb:hover{color:var(--text-main)}
+.nd-wrap{display:flex;gap:.5rem}
+.nd{
+  width:8px;height:8px;border-radius:50%;background:var(--rule);
+  cursor:pointer;transition:all .3s;border:none;padding:0;
+}
+.nd.on{background:var(--accent);transform:scale(1.2)}
+.nc{font-family:'Inter',sans-serif;font-weight:500;font-size:.7rem;letter-spacing:.1em;color:var(--text-muted);min-width:36px;text-align:right}
+
+/* BACK */
+.back{
+  position:fixed;top:2rem;left:2.5rem;z-index:100;
+  font-family:'Inter',sans-serif;font-weight:600;
+  font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--text-muted);text-decoration:none;
+  display:flex;align-items:center;gap:.5rem;transition:color .2s;
+}
+.back:hover{color:var(--text-main)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+#s1 .c>*{animation:fadeUp .6s cubic-bezier(0.16, 1, 0.3, 1) both}
+#s1 .cover-rule{animation-delay:.1s}
+#s1 h1{animation-delay:.2s}
+#s1 .sub{animation-delay:.3s}
+#s1 .tag{animation-delay:.4s}
+
+/* Efectos visuales de fondo sutiles */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(circle at 15% 50%, rgba(224, 93, 58, 0.03), transparent 25%),
+              radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.02), transparent 25%);
+  pointer-events: none;
+  z-index: 99;
+}
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">← Portfolio</a>
+
+<div class="deck" id="deck">
+
+<!-- ── S1 COVER ── -->
+<div class="slide active" id="s1">
+  <div class="bg"></div>
+  <div class="vignette"></div>
+  <div class="c">
+    <div class="cover-rule"></div>
+    <h1>Retail UI</h1>
+    <p class="sub">Reingeniería Visual · Case Study</p>
+    <div class="tag"><span class="dot-dec"></span>Bento Grid · UX/UI · Conversión<span class="dot-dec"></span></div>
+  </div>
+</div>
+
+<!-- ── S2 EL PROBLEMA ── -->
+<div class="slide" id="s2">
+  <div class="split">
+    <div class="panel-img">
+      <img src="imagenes/Retail UI/b.png" alt="El caos del diseño tradicional en retail"/>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">02 &mdash; El Problema</div>
+      <h2 class="slide-title">El Caos del<br><em>Ruido Visual</em></h2>
+      <div class="rule"></div>
+      <p class="body">
+        El folleto tradicional de retail colapsó en la era móvil. La sobrecarga informativa y el hacinamiento de productos generan una profunda fricción cognitiva en el consumidor. Si el cliente no puede escanear la oferta de manera rápida e intuitiva, la conversión se pierde.
+      </p>
+      <blockquote class="pull-quote">
+        Diseñar para el papel ya no es suficiente.<br>Si la interfaz satura, la oferta desaparece.
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ── S3 LA SOLUCIÓN ── -->
+<div class="slide" id="s3">
+  <div class="split">
+    <div class="panel-img">
+      <img src="imagenes/Retail UI/c.png" alt="Sistema Bento Grid aplicado a Retail"/>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">03 &mdash; La Solución</div>
+      <h2 class="slide-title">La Matriz<br><em>Bento Grid</em></h2>
+      <div class="rule"></div>
+      <div class="type-rows">
+        <div class="type-row">
+          <span class="type-label">Modularidad</span>
+          <span class="type-def">Cada producto se aísla en su propia tarjeta. Se elimina el ruido periférico permitiendo que la oferta respire y el escaneo sea fluido.</span>
+        </div>
+        <div class="type-row">
+          <span class="type-label">Jerarquía (CTA)</span>
+          <span class="type-def">El precio deja de ser texto plano y se convierte en un botón de acción en alto contraste, guiando el ojo directo al cierre.</span>
+        </div>
+      </div>
+      <div class="bento-icon-block">
+        <div class="bento-icon-grid">
+          <div class="bento-square"></div>
+          <div class="bento-square"></div>
+          <div class="bento-square"></div>
+        </div>
+        <p class="bento-caption">Arquitectura modular.<br>Cada oferta, una decisión independiente.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S4 ADAPTABILIDAD ── -->
+<div class="slide" id="s4">
+  <div class="split">
+    <div class="panel-img">
+      <img src="imagenes/Retail UI/e.png" alt="Adaptación del Bento Grid para productos de ticket alto"/>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">04 &mdash; Escalabilidad Dinámica</div>
+      <h2 class="slide-title">Interfaz<br><em>Adaptativa</em></h2>
+      <div class="rule"></div>
+      <p class="body">El sistema muta orgánicamente según la estrategia comercial. Mientras el consumo masivo usa módulos compactos, los productos de ticket alto expanden su arquitectura para facilitar la venta.</p>
+      <div class="tag-list">
+        <div class="tag-item">
+          <div class="tag-num">01</div>
+          <div class="tag-body">
+            <h4>Módulos Full Width</h4>
+            <p>Los electrodomésticos ocupan el ancho total de la grilla. El producto recupera su escala premium y respira en pantalla.</p>
+          </div>
+        </div>
+        <div class="tag-item">
+          <div class="tag-num">02</div>
+          <div class="tag-body">
+            <h4>Foco en Financiación</h4>
+            <p>El precio total pasa a segundo plano. El CTA principal se destina exclusivamente a la cuota mensual, viabilizando la compra.</p>
+          </div>
+        </div>
+        <div class="tag-item">
+          <div class="tag-num">03</div>
+          <div class="tag-body">
+            <h4>Validación Visual</h4>
+            <p>Ubicación estratégica de etiquetas bancarias y cuotas sin interés en el flujo natural de lectura del usuario.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S5 OMNICANALIDAD ── -->
+<div class="slide" id="s5">
+  <div class="split reverse">
+    <div class="panel-img">
+      <img src="imagenes/Retail UI/g.png" alt="Diseño nativo para móvil y WhatsApp"/>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">05 &mdash; Omnicanalidad Real</div>
+      <h2 class="slide-title">Diseño Nativo<br><em>Móvil</em></h2>
+      <div class="rule"></div>
+      <p class="body">El rediseño no consiste en achicar la gráfica para que quepa en la pantalla, sino en estructurar la información nativamente para los canales donde el cliente interactúa.</p>
+      <div class="tag-list">
+        <div class="tag-item">
+          <div class="tag-num">A</div>
+          <div class="tag-body">
+            <h4>Optimizado para WhatsApp</h4>
+            <p>Formato vertical escalable, ideal para el canal de distribución más rápido y de mayor conversión del retail operativo.</p>
+          </div>
+        </div>
+        <div class="tag-item">
+          <div class="tag-num">B</div>
+          <div class="tag-body">
+            <h4>Directo al Consumidor</h4>
+            <p>La oferta viaja directo al bolsillo del cliente con una experiencia UI limpia, legible y de decisión inmediata.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S6 VIDEO CASE STUDY (NUEVO) ── -->
+<div class="slide" id="s6">
+  <div class="split">
+    <div class="panel-img">
+      <div class="video-container-bento">
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/bso4h5OdQSE?autoplay=1&mute=1&loop=1&playlist=bso4h5OdQSE&rel=0&modestbranding=1" 
+            title="Retail UI Case Study Showcase" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <div class="panel-text">
+      <div class="slide-index">06 &mdash; Video Showcase</div>
+      <h2 class="slide-title">Diseño en<br><em>Movimiento</em></h2>
+      <div class="rule"></div>
+      <p class="body">
+        La experiencia modular cobra dinamismo a través de transiciones perfectamente orquestadas. El movimiento guía de manera intuitiva el recorrido visual del cliente, eliminando la sobrecarga y destacando las ofertas en el momento exacto de la interacción.
+      </p>
+      <blockquote class="pull-quote">
+        La animación estratégica no adorna, dirige. Facilita el escaneo y acelera el camino a la conversión.
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ── S7 CIERRE ── -->
+<div class="slide" id="s7">
+  <div class="c">
+    <div class="eye">Néstor Tártalo · Diseño Estratégico y Operaciones Retail</div>
+    <h2>Conversión<br><em>Modular</em></h2>
+    <p class="sub">Retail UI · Bento Grid · 2026</p>
+    <div class="line"></div>
+    <div class="contact-row">
+      <div class="ci"><p class="lbl">WhatsApp</p><a href="https://wa.me/+541169620563" target="_blank">+54 11 6962 0563</a></div>
+      <div class="ci"><p class="lbl">Email</p><a href="mailto:tartalonestor@gmail.com">tartalonestor@gmail.com</a></div>
+      <div class="ci"><p class="lbl">LinkedIn</p><a href="https://www.linkedin.com/in/n%C3%A9stort%C3%A1rtalo/" target="_blank">Néstor Tártalo</a></div>
+    </div>
+  </div>
+</div>
+
+</div><nav class="nav">
+  <button class="nb" id="bPrev">&#8249;</button>
+  <div class="nd-wrap" id="ndWrap"></div>
+  <button class="nb" id="bNext">&#8250;</button>
+  <span class="nc" id="nc">1/7</span>
+</nav>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const wrap=document.getElementById('ndWrap');
+const nc=document.getElementById('nc');
+let cur=0;
+
+slides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  b.className='nd'+(i===0?' on':'');
+  b.setAttribute('aria-label',`Slide ${i+1}`);
+  b.onclick=()=>go(i);
+  wrap.appendChild(b);
+});
+
+function go(n){
+  slides[cur].classList.remove('active');
+  wrap.children[cur].classList.remove('on');
+  cur=(n+slides.length)%slides.length;
+  slides[cur].classList.add('active');
+  wrap.children[cur].classList.add('on');
+  nc.textContent=`${cur+1}/${slides.length}`;
+}
+
+document.getElementById('bNext').onclick=()=>go(cur+1);
+document.getElementById('bPrev').onclick=()=>go(cur-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);
+});
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1))});
+</script>
+</body>
+</html>

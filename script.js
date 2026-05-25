@@ -157,6 +157,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'soul-cafe-presentation.html';
         return;
       }
+      if (this.classList.contains('retail-ui-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'retail-ui-presentation.html';
+        return;
+      }
 
       // Solo abrir si no se hizo clic en el botón de info
       if (e.target.closest('.info-btn') && !this.classList.contains('inbox-trigger')) {
@@ -215,11 +220,16 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      // Si el botón pertenece a la tarjeta Soul Cafè, abrir el Case Study en lugar del modal
+      // Si el botón pertenece a la tarjeta Soul Cafè o Retail UI, abrir el Case Study en lugar del modal
       const card = this.closest('.project-card');
       if (card && card.classList.contains('soul-cafe-card')) {
         sessionStorage.setItem('portfolioScrollY', window.scrollY);
         window.location.href = 'soul-cafe-presentation.html';
+        return;
+      }
+      if (card && card.classList.contains('retail-ui-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'retail-ui-presentation.html';
         return;
       }
       console.log('Abriendo modal de info');
