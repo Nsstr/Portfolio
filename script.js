@@ -162,6 +162,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'retail-ui-presentation.html';
         return;
       }
+      if (this.classList.contains('quoro-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'quoro-case.html';
+        return;
+      }
 
       // Solo abrir si no se hizo clic en el botón de info
       if (e.target.closest('.info-btn') && !this.classList.contains('inbox-trigger')) {
@@ -230,6 +235,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (card && card.classList.contains('retail-ui-card')) {
         sessionStorage.setItem('portfolioScrollY', window.scrollY);
         window.location.href = 'retail-ui-presentation.html';
+        return;
+      }
+      if (card && card.classList.contains('quoro-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'quoro-case.html';
         return;
       }
       console.log('Abriendo modal de info');

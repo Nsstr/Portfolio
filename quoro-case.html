@@ -331,6 +331,18 @@
     </div>
     
     <div class="sticky-right">
+      <div class="content-box fade-up hover-target">
+        <h3 style="font-size: 2rem; margin-bottom: 1rem;">Quoro: Identidad y Seguridad Institucional</h3>
+        <p class="text-secondary" style="font-size: 1.1rem; margin-bottom: 2.5rem;">
+          El principal desafío de este proyecto fue dotar de peso y seriedad a una plataforma de gestión de cuidadores. Se descartó el naming original para diseñar una identidad fonética y visual que respirara verificación y respaldo desde el primer impacto.
+        </p>
+        
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">La Raíz del Nombre</h3>
+        <p class="text-secondary" style="font-size: 1.1rem;">
+          Inspirado en la fuerza de la palabra "Quórum", el nombre Quoro nace para representar el consenso y la validación. Es una marca estructurada para proyectar un halo de seguridad inquebrantable. A través de este concepto, la identidad deja de ser simplemente amigable para convertirse en un sello de garantía, comunicando de forma directa que cada profesional dentro de la red ha sido estrictamente revisado y avalado.
+        </p>
+      </div>
+
       <div class="insight-box fade-up hover-target">
         "La letra Q actúa como identificador de marca y símbolo implícito de validación."
       </div>
@@ -706,8 +718,12 @@
     const carouselPhones = document.querySelectorAll('.carousel-phone');
     const phoneCarouselArea = document.getElementById('phone-carousel');
     let phoneAngle = 0;
+    let targetAngle = 0;
+    let currentIndex = 0;
     let phoneRadius = 380; // Radio horizontal para separar los teléfonos
     let isPhonePaused = false;
+    let timeSinceLastSwitch = 0;
+    let lastTimestamp = 0;
 
     if (carouselPhones.length > 0) {
       if(phoneCarouselArea) {
@@ -715,13 +731,28 @@
         phoneCarouselArea.addEventListener('mouseleave', () => isPhonePaused = false);
       }
       
-      function animatePhoneCarousel() {
+      function animatePhoneCarousel(timestamp) {
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        const deltaTime = Math.min(timestamp - lastTimestamp, 100);
+        lastTimestamp = timestamp;
+
         // En pantallas pequeñas desactivar carrusel 3D
-        if (window.innerWidth <= 768) return; 
+        if (window.innerWidth <= 768) {
+          requestAnimationFrame(animatePhoneCarousel);
+          return;
+        }
 
         if (!isPhonePaused) {
-          phoneAngle -= 0.0035; // Velocidad suave
+          timeSinceLastSwitch += deltaTime;
+          if (timeSinceLastSwitch > 3500) { // Espera 3.5 segundos por teléfono
+            currentIndex++;
+            targetAngle = -(currentIndex * (Math.PI * 2 / carouselPhones.length));
+            timeSinceLastSwitch = 0;
+          }
         }
+        
+        // Easing: acercarse al target de forma progresiva y rápida
+        phoneAngle += (targetAngle - phoneAngle) * 0.08;
         
         carouselPhones.forEach((phone, index) => {
           // Ángulo distribuido
@@ -733,7 +764,7 @@
           
           const normalizedZ = (z + phoneRadius) / (phoneRadius * 2);
           
-          const blur = (1 - normalizedZ) * 8; 
+          const blur = Math.max(0, (1 - normalizedZ) * 8); 
           const opacity = 0.5 + (normalizedZ * 0.5); 
           const scale = 0.75 + (normalizedZ * 0.25); 
           
@@ -747,7 +778,7 @@
         requestAnimationFrame(animatePhoneCarousel);
       }
       
-      animatePhoneCarousel();
+      requestAnimationFrame(animatePhoneCarousel);
       
       window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
@@ -757,8 +788,6 @@
              phone.style.opacity = '';
              phone.style.zIndex = '';
            });
-        } else {
-           animatePhoneCarousel();
         }
       });
     }
