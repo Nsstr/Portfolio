@@ -309,6 +309,24 @@
     .b-recomendado { background: #e8f5e9; color: #388e3c; border: 1px solid #c8e6c9; }
     .b-referente { background: #fbe9e7; color: #d84315; border: 1px solid #ffccbc; }
     .b-destacado { background: #fff8e1; color: #f57f17; border: 1px solid #ffecb3; box-shadow: 0 0 10px rgba(245, 127, 23, 0.2); }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(61, 44, 58, 0.95); z-index: 10000;
+      display: flex; justify-content: center; align-items: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    .lightbox-overlay.active { opacity: 1; pointer-events: auto; cursor: zoom-out; }
+    .lightbox-image {
+      max-width: 90vw; max-height: 90vh; border-radius: 12px;
+      transform: scale(0.9); transition: transform 0.3s ease;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .lightbox-overlay.active .lightbox-image { transform: scale(1); }
+    .zoomable { cursor: zoom-in; transition: transform 0.3s ease; }
+    .zoomable:hover { transform: scale(1.02); z-index: 10; position: relative; }
   </style>
 </head>
 <body>
@@ -456,7 +474,7 @@
         
         <!-- DIAGRAMA DE FLUJO -->
         <div style="background: var(--lino); padding: 1rem; border-radius: 12px; border: 1px solid var(--linea-sutil); margin-bottom: 2rem;" class="fade-up">
-          <img src="imagenes/Quoro/registro.jpg" alt="Diagrama de Flujo - Registro" style="width: 100%; border-radius: 8px;">
+          <img src="imagenes/Quoro/registro.jpg" alt="Diagrama de Flujo - Registro" class="zoomable hover-target" style="width: 100%; border-radius: 8px;" onclick="openLightbox(this.src)">
         </div>
         
         <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--berenjena-oscuro);">Plan de Carrera</h3>
@@ -852,6 +870,24 @@
         }
       });
     }
+
+    // Lightbox Logic
+    function openLightbox(src) {
+      const overlay = document.getElementById('lightbox-overlay');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      overlay.classList.add('active');
+    }
+    
+    function closeLightbox() {
+      const overlay = document.getElementById('lightbox-overlay');
+      overlay.classList.remove('active');
+    }
   </script>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox-overlay hover-target" id="lightbox-overlay" onclick="closeLightbox()">
+    <img src="" alt="Zoomed image" class="lightbox-image" id="lightbox-img">
+  </div>
 </body>
 </html>
