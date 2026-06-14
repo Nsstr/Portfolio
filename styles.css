@@ -17,7 +17,7 @@ body {
 /* =============================================== */
 header.hero {
   height: 100vh;
-  background-image: url("imagenes/hero.png") !important;
+  background-image: url("imagenes/hero.jpg") !important;
   background-position: center center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
