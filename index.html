@@ -100,20 +100,20 @@
               .baby-tomas-card .video-thumbnail-container {
                 width: 60%; height: 100%; border-radius: 20px 0 0 20px; overflow: hidden; position: relative; flex-shrink: 0;
               }
-              .baby-tomas-card .video-thumbnail-container iframe {
-                width: 125%; height: 125%;
+              .baby-tomas-card .video-thumbnail-container video {
+                width: 100%; height: 100%; object-fit: cover;
                 position: absolute; top: 50%; left: 50%;
                 transform: translate(-50%, -50%);
                 transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 pointer-events: none; border: none;
               }
-              .baby-tomas-card:hover .video-thumbnail-container iframe {
+              .baby-tomas-card:hover .video-thumbnail-container video {
                 transform: translate(-50%, -50%) scale(1.05);
               }
             </style>
             <div class="item project-card featured-card baby-tomas-card" onclick="window.location.href='baby-tomas-case.html'" style="cursor:pointer;">
               <div class="video-thumbnail-container">
-                <iframe src="https://www.youtube.com/embed/k47wAHeloxQ?autoplay=1&mute=1&loop=1&playlist=k47wAHeloxQ&controls=0&showinfo=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media"></iframe>
+                <video src="imagenes/Tomas/saludovideo.mp4" autoplay loop muted playsinline></video>
               </div>
               <div class="featured-content">
                 <h3>Baby Tomâs: Eficiencia 3D</h3>
