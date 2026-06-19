@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby Tomâs - Innovación 3D y Conversión</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #0d0e15;
+      --accent-1: #00d1ff;
+      --accent-2: #8BC34A;
+      --text-main: #f8fafc;
+      --text-muted: #a0aab2;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Urbanist', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3 { font-family: 'Comfortaa', cursive; margin: 0; }
+    
+    .sidebar-nav {
+      position: fixed;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 100;
+    }
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .nav-dot.active {
+      background: var(--accent-1);
+      box-shadow: 0 0 15px var(--accent-1);
+    }
+    
+    .scroll-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+    
+    section {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    /* Hero Bento */
+    .hero-bento-wrapper {
+      max-width: 1200px;
+      width: 100%;
+      height: 80vh;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 30px;
+      z-index: 2;
+      align-items: stretch;
+    }
+    .hero-bento-left {
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.05);
+      aspect-ratio: 9/16; /* Ajustado al formato vertical */
+      height: 100%;
+    }
+    .hero-bento-left iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      transform: scale(1.05); /* hide borders */
+      border: none; pointer-events: none;
+    }
+    .hero-bento-right {
+      display: flex; flex-direction: column; gap: 30px;
+    }
+    .hero-info-box {
+      background: rgba(20,20,30,0.6);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 30px;
+      padding: 50px;
+      backdrop-filter: blur(10px);
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-info-box.top-box h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; color: var(--text-main); }
+    .hero-info-box.top-box p { font-size: 1.5rem; color: var(--accent-1); }
+    .hero-info-box.bottom-box { background: rgba(0, 209, 255, 0.05); border-color: rgba(0, 209, 255, 0.2); }
+    .hero-info-box.bottom-box p { font-size: 1.2rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; }
+    .tags-container { display: flex; gap: 15px; flex-wrap: wrap; margin-top: auto; }
+    .hero-tag { background: rgba(139, 195, 74, 0.2); padding: 8px 16px; border-radius: 20px; font-size: 1rem; color: var(--accent-2); border: 1px solid rgba(139, 195, 74, 0.4); }
+    
+    /* Reusable layout classes */
+    .content-box {
+      max-width: 1200px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: var(--accent-2);
+      margin: 30px auto;
+      border-radius: 2px;
+    }
+    
+    /* S1: Vision Comercial */
+    .vision-text { text-align: center; font-size: 1.5rem; line-height: 1.8; max-width: 800px; margin: 0 auto; }
+    
+    /* S2: Eficiencia */
+    .efficiency-table {
+      width: 100%; max-width: 1000px; margin: 0 auto;
+      background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    .table-row { display: flex; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center; }
+    .table-row:last-child { border-bottom: none; }
+    .table-col { flex: 1; padding: 25px; text-align: center; }
+    .table-header { background: rgba(0, 209, 255, 0.1); font-family: 'Comfortaa', cursive; color: var(--accent-1); font-size: 1.2rem;}
+    .process-col { font-size: 1.3rem; font-weight: 600; color: var(--text-main); border-right: 1px solid rgba(255,255,255,0.05); }
+    .traditional-col { font-size: 1.4rem; font-weight: 600; color: var(--text-muted); }
+    .ia-col { font-size: 1.4rem; font-weight: 800; color: var(--accent-1); }
+    
+    /* S3: Tecnologia Bento */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .bento-card {
+      background: rgba(20,20,30,0.6); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 20px; padding: 40px; text-align: center;
+      transition: transform 0.3s;
+      backdrop-filter: blur(10px);
+    }
+    .bento-card:hover { transform: translateY(-10px); border-color: var(--accent-1); }
+    .bento-icon { font-size: 3rem; color: var(--accent-2); margin-bottom: 25px; }
+    .bento-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--text-main); }
+    .bento-card p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
+    
+    /* S4: Impacto */
+    .impact-content { text-align: center; }
+    .impact-number { font-size: 12rem; font-weight: 800; color: var(--accent-2); line-height: 1; margin-bottom: 20px; font-family: 'Urbanist', sans-serif; text-shadow: 0 10px 30px rgba(139, 195, 74, 0.3);}
+    .impact-text { font-size: 2rem; max-width: 600px; margin: 0 auto; font-family: 'Comfortaa', cursive; }
+    
+    /* S5: Cierre */
+    .closing-content { text-align: center; }
+    .logo-placeholder { font-size: 4rem; color: var(--text-muted); margin-bottom: 30px; }
+    .contact-info { font-size: 1.2rem; color: var(--text-muted); }
+    
+    .back-btn {
+      position: fixed; top: 30px; left: 30px; z-index: 100;
+      color: #fff; text-decoration: none; font-size: 1rem;
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 20px; background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 30px;
+      backdrop-filter: blur(10px); transition: all 0.3s;
+      font-family: 'Urbanist', sans-serif;
+    }
+    .back-btn:hover { background: rgba(0, 209, 255, 0.2); border-color: var(--accent-1); }
+    
+    ::-webkit-scrollbar { width: 0; }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+
+  <div class="sidebar-nav">
+    <div class="nav-dot active"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+  </div>
+
+  <div class="scroll-container" id="main-scroll">
+    
+    <!-- 0. Hero (Bento Layout) -->
+    <section>
+      <div class="hero-bento-wrapper">
+        <div class="hero-bento-left">
+          <iframe src="https://www.youtube.com/embed/lTfKqwKeJew?autoplay=1&mute=0&loop=1&playlist=lTfKqwKeJew&controls=1&showinfo=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media"></iframe>
+        </div>
+        <div class="hero-bento-right">
+          <div class="hero-info-box top-box">
+            <h1>Baby Tomâs: Innovación & Venta</h1>
+            <p>Hackeando la producción del retail mediante IA Generativa</p>
+          </div>
+          <div class="hero-info-box bottom-box">
+            <h3 style="font-size: 2rem; color: var(--accent-1); margin-bottom: 15px; font-family: 'Comfortaa', cursive;">Caso de Éxito</h3>
+            <p>Optimización completa de flujos de producción para la campaña del Mes de la Niñez en ChangoMás, logrando un impacto visual sin precedentes con tiempos récord.</p>
+            <div class="tags-container">
+              <span class="hero-tag">AI Video</span>
+              <span class="hero-tag">UI/UX</span>
+              <span class="hero-tag">3D Animation</span>
+              <span class="hero-tag">Retail Marketing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. Visión Comercial -->
+    <section>
+      <div class="content-box vision-text">
+        <h2 style="font-size: 3rem; margin-bottom: 10px; color: var(--text-main);">Visión Comercial</h2>
+        <div class="divider"></div>
+        <p>Un proyecto diseñado para capturar la atención en una de las temporadas más competitivas: el Mes de la Niñez. La premisa fue clara: elevar la calidad visual al estándar internacional sin comprometer los tiempos operativos del retail. Utilizamos una combinación híbrida de Animación 3D tradicional y generación de entornos mediante Inteligencia Artificial.</p>
+      </div>
+    </section>
+
+    <!-- 2. Pipeline de Transformación -->
+    <section>
+      <div class="content-box" style="width: 100%; max-width: 1200px;">
+        <h2 style="font-size: 3rem; margin-bottom: 50px; text-align: center; color: #00d1ff;">El Pipeline de Transformación</h2>
+        <div class="bento-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; align-items: center;">
+          
+          <div class="bento-card" style="padding: 40px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px;">
+            <h3 style="font-size: 2rem; margin-bottom: 20px; margin-top:0; font-family: 'Comfortaa', cursive; color: #fff;">Del Asset Plano a la Experiencia 3D</h3>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: #aaa; margin:0;">Aprovechamos un asset estático básico (flat vector) de la marca y diseñamos un flujo de trabajo que elevó su fidelidad visual a un nivel cinematográfico, escalando texturas e iluminación volumétrica sin requerir modelado desde cero.</p>
+          </div>
+
+          <div class="bento-card slider-card" style="padding: 0; position: relative; height: 400px; overflow: hidden; border-radius: 20px; border: 1px solid rgba(0, 209, 255, 0.3);">
+            <style>
+              .ba-slider { position: relative; width: 100%; height: 100%; overflow: hidden; }
+              .ba-slider img, .ba-slider video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+              .ba-slider .img-after { z-index: 1; }
+              .ba-slider .img-before { z-index: 2; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
+              .ba-slider input[type=range] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; opacity: 0; cursor: ew-resize; margin:0; padding:0; }
+              .ba-slider .slider-line { position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background: #00d1ff; z-index: 2; pointer-events: none; transform: translateX(-50%); box-shadow: 0 0 10px rgba(0,209,255,0.5); }
+              .ba-slider .slider-button { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; background: #00d1ff; border-radius: 50%; z-index: 2; pointer-events: none; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; color: #0d0e15; font-size: 16px; box-shadow: 0 0 15px rgba(0,209,255,0.8); }
+              .ba-badge { position: absolute; padding: 6px 12px; background: rgba(0,0,0,0.8); color: #fff; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); }
+              .ba-badge.left { bottom: 15px; left: 15px; z-index: 2; }
+              .ba-badge.right { top: 15px; right: 15px; z-index: 1; color: #00d1ff; border-color: rgba(0,209,255,0.3); }
+            </style>
+            
+            <div class="ba-slider" id="transform-slider">
+              <video src="imagenes/Tomas/tomas%20animado.mp4" class="img-after" autoplay loop muted playsinline></video>
+              <img src="imagenes/Tomas/al%20costado.png" class="img-before" alt="Asset Base">
+              
+              <div class="ba-badge left">Asset Base Plano (Illustrator)</div>
+              <div class="ba-badge right">Output Cinematográfico (AI Upscaling)</div>
+
+              <div class="slider-line" id="slider-line"></div>
+              <div class="slider-button" id="slider-button"><i class="fas fa-arrows-alt-h"></i></div>
+              
+              <input type="range" min="0" max="100" value="50" oninput="document.querySelector('#transform-slider .img-before').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`; document.getElementById('slider-line').style.left = `${this.value}%`; document.getElementById('slider-button').style.left = `${this.value}%`;">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Eficiencia (La Tabla) -->
+    <section>
+      <div class="content-box">
+        <h2 style="font-size: 3rem; margin-bottom: 50px; text-align: center;">Métricas de Optimización</h2>
+        <div class="efficiency-table">
+          <div class="table-row table-header">
+            <div class="table-col process-col" style="border:none;">Proceso</div>
+            <div class="table-col">Modelo Tradicional</div>
+            <div class="table-col">Flujo IA Integrado</div>
+          </div>
+          <div class="table-row">
+            <div class="table-col process-col">Modelado y Rigging 3D</div>
+            <div class="table-col traditional-col">10 - 15 Días</div>
+            <div class="table-col ia-col">Instantáneo (Asset base)</div>
+          </div>
+          <div class="table-row">
+            <div class="table-col process-col">Animación y Renderizado</div>
+            <div class="table-col traditional-col">5 - 7 Días</div>
+            <div class="table-col ia-col">3 Horas (Magnific AI)</div>
+          </div>
+          <div class="table-row">
+            <div class="table-col process-col">Post-producción / UI</div>
+            <div class="table-col traditional-col">2 - 3 Días</div>
+            <div class="table-col ia-col">4 Horas (After Effects)</div>
+          </div>
+          <div class="table-row" style="background: rgba(139, 195, 74, 0.1);">
+            <div class="table-col process-col" style="color: #fff; font-weight: 800;">Time-to-Market Total</div>
+            <div class="table-col traditional-col" style="color: #fff; font-weight: 800;">~3 Semanas</div>
+            <div class="table-col ia-col" style="color: var(--accent-2); font-size: 1.8rem;">~10 Horas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Tecnología (Bento Cards) -->
+    <section>
+      <div class="content-box">
+        <h2 style="font-size: 3rem; margin-bottom: 50px; text-align: center;">Stack Tecnológico</h2>
+        <div class="bento-grid">
+          <div class="bento-card">
+            <i class="fas fa-brain bento-icon"></i>
+            <h3>AI Upscaling & Motion</h3>
+            <p>Integración de algoritmos generativos en el pipeline de producción para recrear iluminación cinematográfica y animaciones complejas en tiempo récord.</p>
+          </div>
+          <div class="bento-card">
+            <i class="fas fa-layer-group bento-icon"></i>
+            <h3>Bento UI</h3>
+            <p>Maquetación modular de esta misma presentación. Diseño fluido, responsivo y orientado a la retención de lectura rápida.</p>
+          </div>
+          <div class="bento-card">
+            <i class="fas fa-clock bento-icon"></i>
+            <h3>Eficiencia Optimizada</h3>
+            <p>Reducción del 60% en los tiempos de render y post-producción, permitiendo ajustes ágiles de último momento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Ecosistema Omnicanal -->
+    <section>
+      <div class="content-box" style="width: 100%; max-width: 1200px;">
+        <style>
+          .omnicanal-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; height: 100%; }
+          .omnicanal-subgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 250px; }
+          @media (max-width: 768px) {
+            .omnicanal-grid { grid-template-columns: 1fr; }
+            .omnicanal-grid > div { grid-row: auto !important; height: auto !important; min-height: 250px; }
+            .omnicanal-subgrid { grid-template-columns: 1fr; height: auto !important; }
+          }
+        </style>
+        <h2 style="font-size: 3rem; margin-bottom: 40px; text-align: center;">Ecosistema <span style="color: var(--accent-1);">Omnicanal</span></h2>
+        
+        <div class="omnicanal-grid">
+            
+            <div class="image-card" style="position: relative; grid-row: span 2; height: 100%; border: 1px solid rgba(0, 209, 255, 0.3); border-radius: 20px; overflow: hidden;">
+                <img src="imagenes/Tomas/baby-tomas-banner.jpg" alt="Banner Vertical Baby Tomâs" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="card-info" style="position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.8);">
+                    <h3 style="color: #00d1ff; font-size: 1.2rem; margin:0; font-family: 'Comfortaa', cursive;">Formato Digital</h3>
+                </div>
+            </div>
+
+            <div class="image-card" style="position: relative; height: 500px; border: 1px solid rgba(139, 195, 74, 0.3); border-radius: 20px; overflow: hidden; background: #0d0e15;">
+                <img src="imagenes/Tomas/baby-tomas-cluter-papel.jpg" alt="Clúter Aéreo Papel" style="width: 100%; height: 100%; object-fit: contain;">
+                <div class="card-info" style="position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.8);">
+                    <h3 style="color: #8BC34A; font-size: 1.2rem; margin:0; font-family: 'Comfortaa', cursive;">Clúter Aéreo (Impresión PDV)</h3>
+                </div>
+            </div>
+
+            <div class="omnicanal-subgrid">
+                <div class="image-card" style="position: relative; height: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; background: #fff;">
+                    <img src="imagenes/Tomas/bandera.jpg" alt="Bandera Cartel de Precio" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="bento-card" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 20px; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="color: #fff; font-size: 1.5rem; margin-top: 0; margin-bottom: 15px; font-family: 'Comfortaa', cursive;">Adaptabilidad Total</h3>
+                    <p style="font-size: 1rem; color: #aaa; margin: 0; line-height: 1.6;">
+                        Un único render de alta calidad centraliza toda la comunicación. Desde la experiencia inmersiva del video hasta la tracción en góndola ("Bandera") y la dominancia física en sucursal.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Impacto (Highlight) -->
+    <section>
+      <div class="content-box impact-content">
+        <div class="impact-number">75%</div>
+        <div class="impact-text">Ahorro en costos de producción visual manteniendo una estética cinematográfica premium.</div>
+      </div>
+    </section>
+
+    <!-- 5. Cierre (Logo) -->
+    <section>
+      <div class="content-box closing-content">
+        <div class="logo-placeholder">
+          <!-- Textura de crayón animada sugerida por el usuario -->
+          <i class="fas fa-robot" style="font-size: 6rem; color: var(--accent-1); filter: drop-shadow(0 0 20px rgba(0, 209, 255, 0.4));"></i>
+        </div>
+        <h2>Innovación Orientada a Resultados</h2>
+        <div class="divider"></div>
+        <div class="contact-info">
+          <p>Néstor Tártalo | Diseño Estratégico y Automatización</p>
+          <p style="margin-top: 15px;">
+            <a href="mailto:tartalonestor@gmail.com" style="color: var(--accent-1); text-decoration: none;">tartalonestor@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const scrollContainer = document.getElementById('main-scroll');
+    const sections = document.querySelectorAll('section');
+    const dots = document.querySelectorAll('.nav-dot');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Array.from(sections).indexOf(entry.target);
+          dots.forEach(d => d.classList.remove('active'));
+          dots[index].classList.add('active');
+        }
+      });
+    }, { threshold: 0.5, root: scrollContainer });
+    
+    sections.forEach(sec => observer.observe(sec));
+    
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        sections[idx].scrollIntoView();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      let activeIdx = Array.from(dots).findIndex(d => d.classList.contains('active'));
+      if (e.key === 'ArrowDown' && activeIdx < sections.length - 1) {
+        sections[activeIdx + 1].scrollIntoView();
+      } else if (e.key === 'ArrowUp' && activeIdx > 0) {
+        sections[activeIdx - 1].scrollIntoView();
+      }
+    });
+  </script>
+</body>
+</html>
