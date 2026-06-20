@@ -357,23 +357,23 @@
         
         <div class="omnicanal-grid">
             
-            <div class="image-card" style="position: relative; grid-row: span 2; height: 100%; border: 1px solid rgba(0, 209, 255, 0.3); border-radius: 20px; overflow: hidden;">
-                <img src="imagenes/Tomas/baby-tomas-banner.jpg" alt="Banner Vertical Baby Tomâs" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="card-info" style="position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.8);">
+            <div class="image-card" style="position: relative; grid-row: span 2; height: 100%; border: 1px solid rgba(0, 209, 255, 0.3); border-radius: 20px; overflow: hidden; cursor: zoom-in;" onclick="openLightbox('imagenes/Tomas/baby-tomas-banner.jpg')">
+                <img src="imagenes/Tomas/baby-tomas-banner.jpg" alt="Banner Vertical Baby Tomâs" class="clickable-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                <div class="card-info" style="position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.8); z-index: 2;">
                     <h3 style="color: #00d1ff; font-size: 1.2rem; margin:0; font-family: 'Comfortaa', cursive;">Formato Digital</h3>
                 </div>
             </div>
 
-            <div class="image-card" style="position: relative; height: 500px; border: 1px solid rgba(139, 195, 74, 0.3); border-radius: 20px; overflow: hidden; background: #0d0e15;">
-                <img src="imagenes/Tomas/baby-tomas-cluter-papel.jpg" alt="Clúter Aéreo Papel" style="width: 100%; height: 100%; object-fit: contain;">
-                <div class="card-info" style="position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.8);">
+            <div class="image-card" style="position: relative; height: 500px; border: 1px solid rgba(139, 195, 74, 0.3); border-radius: 20px; overflow: hidden; background: #0d0e15; cursor: zoom-in;" onclick="openLightbox('imagenes/Tomas/baby-tomas-cluter-papel.jpg')">
+                <img src="imagenes/Tomas/baby-tomas-cluter-papel.jpg" alt="Clúter Aéreo Papel" class="clickable-img" style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease;">
+                <div class="card-info" style="position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.8); z-index: 2;">
                     <h3 style="color: #8BC34A; font-size: 1.2rem; margin:0; font-family: 'Comfortaa', cursive;">Clúter Aéreo (Impresión PDV)</h3>
                 </div>
             </div>
 
             <div class="omnicanal-subgrid">
-                <div class="image-card" style="position: relative; height: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; background: #fff;">
-                    <img src="imagenes/Tomas/bandera.jpg" alt="Bandera Cartel de Precio" style="width: 100%; height: 100%; object-fit: contain;">
+                <div class="image-card" style="position: relative; height: 100%; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; background: #fff; cursor: zoom-in;" onclick="openLightbox('imagenes/Tomas/bandera.jpg')">
+                    <img src="imagenes/Tomas/bandera.jpg" alt="Bandera Cartel de Precio" class="clickable-img" style="width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease;">
                 </div>
                 <div class="bento-card" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 20px; display: flex; flex-direction: column; justify-content: center;">
                     <h3 style="color: #fff; font-size: 1.5rem; margin-top: 0; margin-bottom: 15px; font-family: 'Comfortaa', cursive;">Adaptabilidad Total</h3>
@@ -446,6 +446,37 @@
         sections[activeIdx - 1].scrollIntoView();
       }
     });
+  </script>
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+  <style>
+    .lightbox {
+      display: none; position: fixed; z-index: 9999; padding-top: 50px;
+      left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+      background-color: rgba(13, 14, 21, 0.95);
+      align-items: center; justify-content: center;
+      cursor: zoom-out;
+    }
+    .lightbox-content {
+      margin: auto; display: block; width: 90%; max-width: 1200px; max-height: 90vh; object-fit: contain;
+      border-radius: 10px; box-shadow: 0 0 30px rgba(0, 209, 255, 0.2);
+      animation-name: zoom; animation-duration: 0.4s;
+    }
+    @keyframes zoom { from {transform:scale(0.95); opacity:0;} to {transform:scale(1); opacity:1;} }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 10000;
+    }
+    .lightbox-close:hover, .lightbox-close:focus { color: #00d1ff; text-decoration: none; cursor: pointer; }
+    .clickable-img:hover { transform: scale(1.02); }
+  </style>
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox').style.display = 'flex';
+      document.getElementById('lightbox-img').src = src;
+    }
   </script>
 </body>
 </html>
