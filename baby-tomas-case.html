@@ -708,10 +708,16 @@
           // Controlar el video de YouTube (pausar al salir de la primera sección)
           const heroVideo = document.getElementById('hero-video');
           if (heroVideo && heroVideo.contentWindow) {
+            // Asegurar que el iframe tenga el origin correcto para que la API acepte los mensajes
+            if (!heroVideo.src.includes('origin=')) {
+              heroVideo.src += "&origin=" + encodeURIComponent(window.location.origin);
+            }
+            
+            // Usamos un objeto JSON estandarizado para la API
             if (index === 0) {
-              heroVideo.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+              heroVideo.contentWindow.postMessage(JSON.stringify({event: "command", func: "playVideo", args: []}), '*');
             } else {
-              heroVideo.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+              heroVideo.contentWindow.postMessage(JSON.stringify({event: "command", func: "pauseVideo", args: []}), '*');
             }
           }
         }
