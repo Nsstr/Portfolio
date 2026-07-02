@@ -172,6 +172,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'baby-tomas-case.html';
         return;
       }
+      if (this.classList.contains('vivi-sanjuan-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'vivi-san-juan-case.html';
+        return;
+      }
 
       // Solo abrir si no se hizo clic en el botón de info
       if (e.target.closest('.info-btn') && !this.classList.contains('inbox-trigger')) {
@@ -250,6 +255,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (card && card.classList.contains('baby-tomas-card')) {
         sessionStorage.setItem('portfolioScrollY', window.scrollY);
         window.location.href = 'baby-tomas-case.html';
+        return;
+      }
+      if (card && card.classList.contains('vivi-sanjuan-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'vivi-san-juan-case.html';
         return;
       }
       console.log('Abriendo modal de info');

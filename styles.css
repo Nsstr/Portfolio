@@ -944,7 +944,8 @@ p {
 .gallery img:hover,
 .gallery iframe:hover {
   border-color: #a5d8ff;
-  transform: scale(1.05);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(165, 216, 255, 0.3);
 }
 
 .gallery .selected { 
@@ -1501,41 +1502,43 @@ footer::before {
 
 /* Contenedor del modal - ajuste de altura */
 .modal-content {
-  max-height: 95vh !important; /* Cambia de 90% a 95vh */
+  max-height: 95vh !important; 
   height: auto !important;
-  overflow: visible !important; /* Cambia de auto a visible */
+  overflow: hidden !important; /* Oculta lo que sobresale si es muy grande */
   display: flex !important;
   flex-direction: column !important;
+  padding: 30px 40px 20px 40px !important;
 }
 
 /* Contenedor principal de imágenes - ajuste flexible */
 #modal-main-image {
-  height: 65vh !important; /* Aumenta un poco la altura */
-  max-height: 65vh !important;
-  min-height: 400px !important;
-  flex-shrink: 0 !important; /* Evita que se encoja */
-  margin-bottom: 20px !important;
+  flex: 1 1 auto !important; /* Permite que la imagen se encoja para caber en pantalla */
+  height: 70vh !important;
+  max-height: 70vh !important;
+  min-height: 150px !important; /* Menor altura mínima para pantallas chicas */
+  margin-bottom: 10px !important;
 }
 
 /* Galería de miniaturas - altura fija */
 .gallery {
-  max-height: 120px !important;
-  min-height: 120px !important;
-  flex-shrink: 0 !important;
-  margin-bottom: 20px !important;
+  flex: 0 0 auto !important;
+  max-height: 110px !important;
+  min-height: 90px !important;
+  padding: 10px 0 0 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* Título y descripción - ajuste automático */
 #modal-title {
   font-size: 2rem !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 5px !important;
   line-height: 1.2 !important;
   flex-shrink: 0 !important;
 }
 
 #modal-description {
   font-size: 1rem !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 10px !important;
   line-height: 1.4 !important;
   max-height: 80px !important;
   overflow: hidden !important;
@@ -1557,9 +1560,10 @@ footer::before {
 
 @media (max-height: 600px) {
   #modal-main-image {
-    height: 50vh !important;
+    flex: 1 1 auto !important;
+    height: auto !important;
     max-height: 50vh !important;
-    min-height: 300px !important;
+    min-height: 100px !important;
   }
   
   #modal-title {
