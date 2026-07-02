@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caso de Estudio - Viví San Juan</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* VARIABLES Y RESET (Hereda de styles.css, pero definimos específicos aquí) */
+    :root {
+      --color-primary: #2c3e50;
+      --color-secondary: #3498db;
+      --color-accent: #a5d8ff;
+      --color-accent-dark: #4ecdc4;
+      --bg-light: #f8fafc;
+    }
+
+    body {
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* BLOQUE A: Hero Section */
+    .case-hero {
+      width: 100%;
+      height: 100vh; /* Altura pantalla completa */
+      background-image: url('imagenes/Publicidad Via Publica/campaña_v4a.png');
+      background-size: cover; /* Con 100vh y parallax esto llenará la pantalla exacta */
+      background-position: center;
+      background-attachment: fixed; /* Parallax restaurado */
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .case-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 40px 60px;
+      border-radius: 20px 20px 0 0;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: none;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      width: 90%;
+      transform: translateY(20px); /* Para un overlap suave con el contenido de abajo */
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #fff;
+      margin: 0 0 10px 0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .hero-content p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 400;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* CONTENEDOR GENERAL PARA LAS SECCIONES */
+    .case-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    /* BLOQUE B: Contexto y Estrategia */
+    .context-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .context-text {
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      border-left: 5px solid var(--color-accent-dark);
+    }
+
+    .context-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .context-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .context-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      object-fit: cover;
+    }
+
+    /* BLOQUE C: Galería de Conceptos */
+    .gallery-section {
+      margin-bottom: 80px;
+    }
+
+    .gallery-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: var(--color-primary);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(165, 216, 255, 0.4);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-tag {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 0.9rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-tag {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* BLOQUE D: Implementación OOH */
+    .ooh-section {
+      margin-bottom: 80px;
+    }
+
+    .ooh-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+      color: var(--color-primary);
+    }
+
+    .ooh-row {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    .ooh-row.reverse {
+      grid-template-columns: 1.5fr 1fr;
+    }
+
+    .ooh-text {
+      padding: 20px;
+    }
+
+    .ooh-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--color-secondary);
+    }
+
+    .ooh-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #666;
+    }
+
+    .ooh-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    .ooh-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .ooh-grid-2 img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    /* BLOQUE F: Formato Dinámico (DOOH) */
+    .dynamic-section {
+      background-color: #121212;
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .dynamic-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .dynamic-content h2 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .dynamic-content p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 700px;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0;
+    }
+
+    /* BLOQUE E: Escalabilidad */
+    .scalability-section {
+      background-color: var(--bg-light);
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .scalability-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .scalability-content img {
+      width: 80%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    .scalability-content p {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Botón flotante para volver */
+    .back-btn {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 30px;
+      color: var(--color-primary);
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 100;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      background: #fff;
+    }
+
+    /* MEDIA QUERIES PARA RESPONSIVE */
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .context-section {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item img {
+        aspect-ratio: 16/9; /* Mejor proporción para mobile */
+      }
+
+      .ooh-row, .ooh-row.reverse {
+        grid-template-columns: 1fr;
+      }
+      
+      .ooh-row.reverse .ooh-text {
+        order: 2; /* Para que el texto siempre quede debajo de la imagen en mobile */
+      }
+      
+      .ooh-row.reverse .ooh-image {
+        order: 1;
+      }
+
+      .ooh-grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .scalability-content img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-btn">← Volver al Portfolio</a>
+
+  <!-- BLOQUE A: Hero Section -->
+  <section class="case-hero">
+    <div class="hero-content">
+      <h1>Innovación OOH con IA</h1>
+      <p>Dirección de Arte y optimización de assets turísticos</p>
+    </div>
+  </section>
+
+  <main class="case-container">
+    
+    <!-- BLOQUE B: Contexto y Estrategia -->
+    <section class="context-section">
+      <div class="context-text">
+        <h2>El desafío</h2>
+        <p>Crear una campaña visualmente impactante y escalable para turismo usando Inteligencia Artificial. <br><br>
+        <strong>Conceptos clave:</strong> Naturaleza, Calidez, Inmensidad.</p>
+      </div>
+      <div class="context-image">
+        <img src="imagenes/Publicidad Via Publica/campaña_v5.png" alt="Contexto y Estrategia">
+      </div>
+    </section>
+
+    <!-- BLOQUE C: Galería de Conceptos -->
+    <section class="gallery-section">
+      <h2>Galería de Conceptos</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="imagenes/Publicidad Via Publica/campaña_v1.png" alt="Horizonte">
+          <div class="gallery-tag">Horizonte</div>
+        </div>
+        <div class="gallery-item">
+          <img src="imagenes/Publicidad Via Publica/campaña_v2.png" alt="Luz">
+          <div class="gallery-tag">Luz</div>
+        </div>
+        <div class="gallery-item">
+          <img src="imagenes/Publicidad Via Publica/campaña_v3.png" alt="Naturaleza">
+          <div class="gallery-tag">Naturaleza</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE D: Implementación OOH -->
+    <section class="ooh-section">
+      <h2>Implementación en Vía Pública y Aeropuertos</h2>
+      
+      <div class="ooh-row">
+        <div class="ooh-text">
+          <h3>Impacto Urbano</h3>
+          <p>La adaptación de los visuales a grandes formatos requirió un cuidadoso balance técnico para mantener la nitidez y el dramatismo de los colores, asegurando visibilidad en condiciones de alta luminosidad.</p>
+        </div>
+        <div class="ooh-image">
+          <img src="imagenes/Publicidad Via Publica/Publi_v1.png" alt="Implementación OOH 1">
+        </div>
+      </div>
+
+      <div class="ooh-row reverse">
+        <div class="ooh-image">
+          <img src="imagenes/Publicidad Via Publica/Publi_v4.png" alt="Implementación OOH 4">
+        </div>
+        <div class="ooh-text">
+          <h3>Presencia en Terminales</h3>
+          <p>Para entornos de tránsito cerrado, el foco estuvo en la calidez de la luz y el contraste, capturando la atención del pasajero con paisajes inmersivos y una lectura clara de la marca.</p>
+        </div>
+      </div>
+
+      <div class="ooh-grid-2">
+        <img src="imagenes/Publicidad Via Publica/Publi_v2.png" alt="Implementación Vertical 1">
+        <img src="imagenes/Publicidad Via Publica/Publi_v3.png" alt="Implementación Vertical 2">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BLOQUE F: Formato Dinámico (DOOH y Social) -->
+  <section class="dynamic-section">
+    <div class="dynamic-content">
+      <h2>Formato Dinámico (DOOH y Social)</h2>
+      <p>Expansión a Social Media y DOOH. Integración de contenido dinámico en formato vertical (9:16) para maximizar el alcance en ecosistemas digitales.</p>
+      <iframe width="315" height="560" src="https://www.youtube.com/embed/DHTfr6o6qbU?autoplay=1&mute=1&loop=1&playlist=DHTfr6o6qbU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
+    </div>
+  </section>
+
+  <!-- BLOQUE E: Escalabilidad -->
+  <section class="scalability-section">
+    <div class="scalability-content">
+      <img src="imagenes/Publicidad Via Publica/muestra.png" alt="Escalabilidad del proyecto">
+      <p>Generación de variaciones iterativas y escalabilidad del proyecto.</p>
+    </div>
+  </section>
+
+</body>
+</html>
