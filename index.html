@@ -84,7 +84,7 @@
         <p class="sobre-mi-footer">
           Concibo la tecnología no como un fin, sino como el motor para escalar la creatividad.
           En un mercado que exige agilidad, mi enfoque garantiza resultados consistentes, operaciones
-          optimizadas y un estándar visual <span style="cursor: default; position: relative; z-index: 9999; pointer-events: auto;" onclick="event.stopPropagation(); desbloquearTomas()">premium</span>.
+          optimizadas y un estándar visual premium.
         </p>
       </div>
     </section>
@@ -1161,33 +1161,7 @@ El resultado: una portada que se convierte en la puerta de entrada a un universo
 
   <script src="script.js"></script>
 
-  <script>
-    // Ocultar la tarjeta desde el arranque
-    document.addEventListener("DOMContentLoaded", () => {
-      const tomasCard = document.querySelector('.baby-tomas-card');
-      if(tomasCard) {
-        tomasCard.parentElement.style.display = 'none';
-        // Le asignamos un ID dinámico al padre para llamarlo fácil después
-        tomasCard.parentElement.id = 'tarjeta-tomas-oculta';
-      }
-    });
 
-    // Función del Easter Egg
-    function desbloquearTomas() {
-      let clave = prompt("Acceso Restringido. Ingrese la clave operativa:");
-      
-      if (clave === "MKT2026") {
-        const tarjeta = document.getElementById('tarjeta-tomas-oculta');
-        if(tarjeta) {
-          tarjeta.style.display = 'block'; 
-          // Desplaza la vista hacia la tarjeta recién revelada
-          tarjeta.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      } else if (clave !== null) {
-        alert("Clave incorrecta. Acceso denegado.");
-      }
-    }
-  </script>
 </body>
 
 </html>
