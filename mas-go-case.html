@@ -213,7 +213,10 @@
 
     /* ECOSISTEMA DE MARCAS */
     .brand-ecosystem-section {
-      background: #000000;
+      background: 
+        radial-gradient(circle at center, transparent 0%, #000000 90%),
+        repeating-linear-gradient(180deg, rgba(25,25,25,0.7) 0px, rgba(25,25,25,0.7) 78px, rgba(12,12,12,0.9) 78px, rgba(12,12,12,0.9) 80px),
+        #111111;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -328,7 +331,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.9rem;
       line-height: 1.7;
-      color: #CCCCCC;
+      color: #FFFFFF;
       margin-bottom: 15px;
     }
     
@@ -791,6 +794,10 @@
       width: 100%;
     }
 
+    .interactive-zoom:hover {
+      transform: scale(1.5);
+    }
+
     @media (max-width: 900px) {
       .pricing-block.reverse-block {
         flex-direction: column;
@@ -854,6 +861,19 @@
     </div>
   </header>
 
+  <!-- MANIFIESTO CONCEPTUAL -->
+  <section class="variants-section">
+    <div class="variants-layout" style="height: auto; min-height: 40vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px;">
+      <div class="variants-info" style="flex: 1; max-width: 900px; display: flex; justify-content: center;">
+        <div class="interactive-card variants-card-container" style="max-width: 100%; text-align: center; padding: 40px;">
+          <p style="font-size: 1.3rem; line-height: 1.8; margin: 0;">
+            Este ejercicio práctico propone una <strong>exploración visual alternativa</strong> para el ecosistema GO. La intención es ensayar nuevas rutas de síntesis gráfica que dinamicen la lectura entre el <strong>soporte físico y digital</strong>, aportando una mirada complementaria que respeta la <strong>esencia de la identidad actual</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ECOSISTEMA DE MARCAS -->
   <section class="brand-ecosystem-section">
     <div class="ecosystem-container">
@@ -865,9 +885,10 @@
           <img src="imagenes/MasGO/ADN.png" alt="ADN - Ecosistema de Marcas" class="adn-sketch-img">
         </div>
         <div class="bento-box">
-          <h3>Arquitectura de Marca y ADN de Grupo</h3>
-          <p>El análisis del ecosistema de GDN Argentina parte de una premisa central: la cohesión visual. El prefijo "Mâs" y su tipografía característica funcionan como el núcleo genético de la marca, unificando formatos diversos —desde hipermercados hasta tiendas de conveniencia y servicios financieros— bajo un mismo paraguas de confianza y proximidad.</p>
-          <p>Desarrollar el rebranding de Mâs GO implicó aislar ese ADN común para potenciarlo, logrando que la nueva identidad mantenga lazos firmes con la familia corporativa mientras proyecta la agilidad, la velocidad de compra y el dinamismo nativo que exige el formato de conveniencia moderno.</p>
+          <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 1px; line-height: 1.1; margin-bottom: 20px; text-transform: none;">ARQUITECTURA DE MARCA Y ADN DE GRUPO</h3>
+          <p>"Centro en la familia, ¿qué nos une?, ¿qué tenemos en similitud?"</p>
+          <p>Dinamismo, circunflejo, flecha, <strong>ADN del GRUPO</strong>.</p>
+          <p>Se usa la letra “g” pero en mayúscula <strong>“G”</strong>, indicando un <strong>crecimiento, madurez del negocio, solidez</strong>. Es conjunción de la inicial de los negocios físicos HiperChango, SuperChango y ChangoMas como <strong>condensación del retail</strong> en una expresión más compacta pero totalmente pulida.</p>
         </div>
       </div>
     </div>
@@ -1072,7 +1093,9 @@
       <h2 class="interactive-panel-title">ARQUITECTURA DE CENEFAS</h2>
       <div class="variants-content-split">
         <div class="pricing-gallery" style="flex: 1.5; display: flex; align-items: center; justify-content: center;">
-          <img src="imagenes/MasGO/7_tarjeton.png" alt="Tarjetón Único" class="pricing-img full-img" style="box-shadow: 0 15px 35px rgba(0,0,0,0.5); border-radius: 12px; width: 100%;">
+          <div class="interactive-pan-container" style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); cursor: crosshair; position: relative;">
+            <img src="imagenes/MasGO/7_tarjeton.png" alt="Tarjetón Único" class="pricing-img full-img interactive-zoom" style="width: 100%; transition: transform 0.6s ease-in-out; display: block; transform-origin: center center;">
+          </div>
         </div>
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
@@ -1092,7 +1115,9 @@
       <h2 class="interactive-panel-title">SISTEMA VOLUMÉTRICO DE SALIENTES</h2>
       <div class="variants-content-split">
         <div class="pricing-gallery" style="flex: 1.5; display: flex; align-items: center; justify-content: center;">
-          <img src="imagenes/MasGO/saliente-morfologia.png" alt="Morfología del Saliente" class="pricing-img full-img" style="box-shadow: 0 15px 35px rgba(0,0,0,0.5); border-radius: 12px; width: 100%;">
+          <div class="interactive-pan-container" style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); cursor: crosshair; position: relative;">
+            <img src="imagenes/MasGO/saliente-morfologia.png" alt="Morfología del Saliente" class="pricing-img full-img interactive-zoom" style="width: 100%; transition: transform 0.6s ease-in-out; display: block; transform-origin: center center;">
+          </div>
         </div>
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
@@ -1119,6 +1144,27 @@
             <h3>Sincronización Operativa</h3>
             <p style="margin-bottom: 12px;">La migración a tinta electrónica permite una <strong>sincronización instantánea</strong> de precios en la sucursal, asegurando que la caja y la góndola manejen siempre el mismo dato.</p>
             <p>Este sistema garantiza <strong>cero margen de error operativo</strong> y reduce drásticamente el uso de <strong>papel</strong>, alineando el punto de venta con políticas de eficiencia y sustentabilidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVOLUCIÓN DE FACHADA: DIGITALIZACIÓN VS. PAPEL -->
+  <section class="variants-section">
+    <div class="variants-layout">
+      <h2 class="interactive-panel-title">EVOLUCIÓN DE FACHADA: DIGITALIZACIÓN VS. PAPEL</h2>
+      <div class="variants-content-split">
+        <div class="pricing-gallery" style="flex: 1.5; display: flex; align-items: center; justify-content: center;">
+          <div class="interactive-pan-container" style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); cursor: crosshair; position: relative;">
+            <video src="imagenes/MasGO/papelpantalla.mp4" class="pricing-img full-img interactive-zoom" style="width: 100%; transition: transform 0.6s ease-in-out; display: block; transform-origin: center center; object-fit: cover;" autoplay muted loop playsinline></video>
+          </div>
+        </div>
+        <div class="variants-info">
+          <div class="interactive-card variants-card-container">
+            <h3>Migración Digital</h3>
+            <p style="margin-bottom: 12px;">La evolución de la fachada propone una transición desde la <strong>cartelería estática de papel</strong> (vulnerable al desgaste ambiental) hacia un sistema de <strong>soportes digitales centralizados</strong>.</p>
+            <p>Esto permite una <strong>actualización instantánea</strong> de promociones y un impacto visual limpio, erradicando la <strong>obsolescencia</strong> de los carteles de papel en la vía pública.</p>
           </div>
         </div>
       </div>
@@ -1254,6 +1300,24 @@
 
           // Iniciar loop automático
           startAutoPlay();
+        }
+      });
+
+      // Lógica de Lupa / Panning interactivo genérico
+      const panContainers = document.querySelectorAll('.interactive-pan-container');
+      panContainers.forEach(container => {
+        const zoomImg = container.querySelector('.interactive-zoom');
+        if (zoomImg) {
+          container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            zoomImg.style.transformOrigin = `${x}% ${y}%`;
+          });
+          
+          container.addEventListener('mouseleave', () => {
+            zoomImg.style.transformOrigin = 'center center';
+          });
         }
       });
     });
