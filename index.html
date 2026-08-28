@@ -94,6 +94,40 @@
         <h2>Portfolio</h2>
         <div class="portfolio-items">
           
+          <!-- Tarjeta Mâs GO (Destacada) -->
+          <div class="featured-card-wrapper">
+            <style>
+              .mas-go-card .yt-thumbnail-container {
+                width: 60%; height: 100%; border-radius: 20px 0 0 20px; overflow: hidden; position: relative; flex-shrink: 0; pointer-events: none;
+              }
+              .mas-go-card .yt-thumbnail-container iframe {
+                width: 150%; height: 150%; position: absolute; top: 50%; left: 50%;
+                transform: translate(-50%, -50%); border: none;
+                transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+              }
+              .mas-go-card:hover .yt-thumbnail-container iframe {
+                transform: translate(-50%, -50%) scale(1.05);
+              }
+              @media (max-width: 992px) {
+                .mas-go-card .yt-thumbnail-container {
+                  width: 100% !important; height: 250px !important; border-radius: 20px 20px 0 0 !important;
+                }
+              }
+            </style>
+            <div class="item project-card featured-card mas-go-card" onclick="window.location.href='mas-go-case.html'" style="cursor:pointer;">
+              <div class="yt-thumbnail-container">
+                <iframe src="https://www.youtube.com/embed/8XrFl-tSleQ?autoplay=1&mute=1&loop=1&playlist=8XrFl-tSleQ&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
+              </div>
+              <div class="featured-content">
+                <h3>Rebranding Mâs GO</h3>
+                <p class="featured-description">Evolución visual orientada a la agilidad y velocidad para el formato de conveniencia.</p>
+                <div class="info-btn">
+                  <img class="info-icon" src="favicon.png" alt="Ver Proyecto"><span>Ver Proyecto</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Tarjeta Baby Tomâs -->
           <div class="featured-card-wrapper">
             <style>
