@@ -15,32 +15,19 @@
 
 <body>
   <header class="hero">
-    <div class="geometric-element"></div>
-    <div class="geometric-element"></div>
-    <div class="geometric-element"></div>
-    <!-- Coloca esto DENTRO de header.hero, después de .hero-overlay -->
-    <div class="tarjeta-movil">
-      <div class="nombre-tarjeta">Néstor Tártalo</div>
-      <div class="titulo-principal">Diseñador Gráfico Estratégico</div>
-      <div class="subtitulo">Automatización de Contenido Visual</div>
-      <div class="subtitulo">Liderazgo Operativo</div>
-
+    <div class="hero-content">
+      <h1 class="nombre fade-in-up delay-1">Néstor Tártalo</h1>
+      <p class="hero-subtitle fade-in-up delay-1-5">Customer Availability Manager & Creative Director</p>
+      <div class="tagline-single fade-in-up delay-2">
+        Diseño Estratégico &nbsp;|&nbsp; Automatización & IA &nbsp;|&nbsp; Liderazgo Operativo
+      </div>
+      <div class="hero-cta-container fade-in-up delay-3">
+        <a href="Nestor _A _Tartalo.pdf" target="_blank" class="btn-executive-cv">Descargar CV Ejecutivo</a>
+      </div>
     </div>
-    <div class="hero-overlay">
-      <div class="glass-card animate-entrance">
-        <h1 class="nombre fade-in-up delay-1">Néstor Tártalo</h1>
-        <div class="tagline-grid fade-in-up delay-2">
-          <div class="tagline-item">Diseño Estratégico</div>
-          <div class="tagline-divider"></div>
-          <div class="tagline-item">Automatización & IA</div>
-          <div class="tagline-divider"></div>
-          <div class="tagline-item">Liderazgo Operativo</div>
-        </div>
-      </div>
-      <div class="scroll-indicator">
-        Scroll
-        <span>↓</span>
-      </div>
+    <div class="scroll-indicator">
+      Scroll
+      <span>↓</span>
     </div>
   </header>
 
@@ -54,31 +41,52 @@
           transformando problemas de comunicación en ventajas competitivas reales.
         </p>
 
+        <!-- Bloque de Métricas Clave / Impacto Ajustado -->
+        <div class="metrics-grid">
+          <div class="metric-item">
+            <span class="metric-number">360°</span>
+            <span class="metric-label">Visión de Negocio y Operaciones</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-number">Retail</span>
+            <span class="metric-label">Escala y Disponibilidad Operativa</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-number">IA & Ops</span>
+            <span class="metric-label">Reducción de Time-to-Market</span>
+          </div>
+        </div>
+
         <div class="pilares-estrategicos-grid">
           <div class="pilar-card">
-            <span class="pilar-icon">✦</span>
             <h3>Dirección de Arte y Branding</h3>
             <p>Construcción de identidades de marca sólidas y dirección creativa de campañas de alto rendimiento.</p>
           </div>
           <div class="pilar-card">
-            <span class="pilar-icon">⚡</span>
             <h3>Optimización de Procesos (IA)</h3>
             <p>Integración de automatización e inteligencia artificial para maximizar la productividad y acelerar el
               <em>time-to-market</em>.
             </p>
           </div>
           <div class="pilar-card">
-            <span class="pilar-icon">❖</span>
             <h3>Gestión y Liderazgo Operativo</h3>
             <p>Coordinación multidisciplinaria orientada a objetivos, fomentando el talento y garantizando entregas de
               máxima calidad.</p>
           </div>
           <div class="pilar-card">
-            <span class="pilar-icon">🎯</span>
             <h3>Storytelling Visual (Retail & Vía Pública)</h3>
             <p>Creación de narrativas impactantes que conectan con el consumidor en espacios comerciales y entornos
               urbanos.</p>
           </div>
+        </div>
+
+        <!-- Stack Tecnológico / Ecosistema -->
+        <div class="tech-stack-container">
+          <span class="stack-tag">Adobe Creative Cloud</span>
+          <span class="stack-tag">Automatización & IA Generativa</span>
+          <span class="stack-tag">Gestión Operativa Retail</span>
+          <span class="stack-tag">JavaScript / Node.js</span>
+          <span class="stack-tag">Dirección de Arte</span>
         </div>
 
         <p class="sobre-mi-footer">
@@ -89,9 +97,23 @@
       </div>
     </section>
 
+    <!-- Sección de Testimonio / Validación Real de LinkedIn -->
+    <section id="testimonio" class="section">
+      <div class="container">
+        <div class="testimonial-card">
+          <p class="testimonial-quote">
+            "Nestor desarrolla un desempeño de alto rendimiento, es autónomo y disfruta de los desafíos. Se caracteriza por poseer un nivel de compromiso muy elevado, no solo con sus áreas directas, sino también, con las que son cercanas a él. Sabe liderar y acompañar ese rol, destacándose por adaptarse a los distintos escenarios sin dificultad."
+          </p>
+          <div class="testimonial-author">
+            <h4>Lucia Corsich</h4>
+            <span>Jefe de Retail / Validación Oficial en LinkedIn</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="portfolio" class="section">
       <div class="container">
-        <h2>Portfolio</h2>
         <div class="portfolio-items">
           
           <!-- Tarjeta Mâs GO (Destacada) -->
@@ -1195,6 +1217,10 @@ El resultado: una portada que se convierte en la puerta de entrada a un universo
 
   <script src="script.js"></script>
 
+  <!-- Botón Flotante de Contacto Rápido -->
+  <a href="https://wa.me/+541169620563" target="_blank" class="floating-contact-btn" data-tooltip="Contacto Rápido">
+    <img src="imagenes/botones/w.png" alt="WhatsApp" />
+  </a>
 
 </body>
 
