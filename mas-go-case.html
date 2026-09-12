@@ -843,6 +843,25 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* AJUSTE PARA SLIDER VÍA PÚBLICA (MEZCLA VERTICAL / HORIZONTAL) */
+    .ooh-slider {
+      height: 65vh;
+    }
+
+    .ooh-slider .variant-slide {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 15, 15, 0.6);
+    }
+
+    .ooh-slider .variant-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   </style>
 </head>
 <body>
@@ -1165,6 +1184,47 @@
             <h3>Migración Digital</h3>
             <p style="margin-bottom: 12px;">La evolución de la fachada propone una transición desde la <strong>cartelería estática de papel</strong> (vulnerable al desgaste ambiental) hacia un sistema de <strong>soportes digitales centralizados</strong>.</p>
             <p>Esto permite una <strong>actualización instantánea</strong> de promociones y un impacto visual limpio, erradicando la <strong>obsolescencia</strong> de los carteles de papel en la vía pública.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPAÑA VÍA PÚBLICA (OOH) -->
+  <section class="variants-section">
+    <div class="variants-layout">
+      <h2 class="interactive-panel-title">CAMPAÑA VÍA PÚBLICA (OOH)</h2>
+      <div class="variants-content-split">
+        <div class="variants-gallery-container">
+          <div class="variants-slider ooh-slider">
+            <div class="variant-slide" id="ooh-1">
+              <img src="imagenes/MasGO/banner via publica_A.png" alt="Refugio de Colectivo">
+            </div>
+            <div class="variant-slide" id="ooh-2">
+              <img src="imagenes/MasGO/banner via publica_B.png" alt="Mupi Urbano Vertical">
+            </div>
+            <div class="variant-slide" id="ooh-3">
+              <img src="imagenes/MasGO/banner via publica_C.png" alt="Cartelera Gran Formato">
+            </div>
+          </div>
+          <div class="variants-controls">
+            <button class="variant-btn active" data-target="ooh-1" aria-label="Ver refugio"></button>
+            <button class="variant-btn" data-target="ooh-2" aria-label="Ver mupi vertical"></button>
+            <button class="variant-btn" data-target="ooh-3" aria-label="Ver gran formato"></button>
+          </div>
+        </div>
+        <div class="variants-info">
+          <div class="interactive-card variants-card-container">
+            <h3>Presencia e Impacto Urbano</h3>
+            <p style="margin-bottom: 12px;">
+              <strong>Refugios y Mobiliario Urbano:</strong> Despliegue en paradas de transporte público combinando la experiencia de compra cotidiana con la agilidad del lineal y el foco en el producto.
+            </p>
+            <p style="margin-bottom: 12px;">
+              <strong>Mupis de Proximidad:</strong> Formato vertical geolocalizado en avenidas de alto tránsito peatonal, reforzando el concepto de cercanía y rapidez de compra en el barrio.
+            </p>
+            <p>
+              <strong>Cartelería de Gran Formato:</strong> Impacto a escala masiva en nodos estratégicos, asegurando legibilidad inmediata a distancia mediante el contraste del <strong>Verde GO</strong> sobre fotografía de contexto real.
+            </p>
           </div>
         </div>
       </div>
