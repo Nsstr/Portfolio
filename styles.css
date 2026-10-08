@@ -1,3 +1,13 @@
+/* =============================================== */
+/* TOKENS DE DISEÑO */
+/* =============================================== */
+:root {
+  --site-bg-dark: #0b0b0b;
+  --site-accent: #a5d8ff;
+  --site-font-display: 'Playfair Display', serif;
+  --site-font-body: 'Montserrat', sans-serif;
+}
+
 * { 
   margin: 0; 
   padding: 0; 
@@ -5,7 +15,7 @@
 }
 
 body { 
-  font-family: 'Montserrat', sans-serif; 
+  font-family: var(--site-font-body); 
   background-color: #f9f9f9; 
   color: #333; 
   line-height: 1.6; 
@@ -17,10 +27,10 @@ body {
 /* =============================================== */
 header.hero {
   height: 100vh;
-  background-image: url("imagenes/hero.webp") !important;
+  background-image: url("imagenes/hero.webp");
   background-position: left center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
   display: flex;
   align-items: center;
@@ -45,7 +55,7 @@ header.hero {
 }
 
 header.hero .nombre {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 4.5rem;
   font-weight: 700;
   color: #ffffff;
@@ -56,7 +66,7 @@ header.hero .nombre {
 }
 
 .tagline-single {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-weight: 300;
   font-size: 0.95rem;
   letter-spacing: 2px;
@@ -81,17 +91,6 @@ header.hero .nombre {
   z-index: 1;
 }
 
-.hero-overlay {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centrado absoluto */
-  position: relative;
-  z-index: 2;
-  padding: 0 5%;
-}
-
 /* Contenedor Edgy & Profesional - Glassmorphism Refinado */
 .glass-card {
   background: rgba(255, 255, 255, 0.02); /* Muy transparente */
@@ -114,7 +113,7 @@ header.hero .nombre {
 
 /* Nombre - Tipografía imponente Serif */
 .nombre {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 5.5rem;
   font-weight: 700;
   color: #ffffff;
@@ -125,16 +124,9 @@ header.hero .nombre {
 }
 
 /* Grid de taglines - Técnico y limpio */
-.tagline-grid {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
 
 .tagline-item {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-weight: 300;
   font-size: 0.95rem;
   letter-spacing: 3px;
@@ -143,18 +135,7 @@ header.hero .nombre {
   white-space: nowrap;
 }
 
-.tagline-divider {
-  width: 1px;
-  height: 25px;
-  background: rgba(255, 255, 255, 0.3);
-}
-
 /* Animaciones de Entrada */
-.animate-entrance .fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
 
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.8s; }
@@ -169,8 +150,6 @@ header.hero .nombre {
 /* Responsive adjustments para Hero */
 @media (max-width: 900px) {
   .nombre { font-size: 4rem; margin-bottom: 1.5rem; }
-  .tagline-grid { flex-direction: column; gap: 1.2rem; }
-  .tagline-divider { width: 50px; height: 1px; }
   .glass-card { padding: 3rem 2rem; }
 }
 
@@ -239,38 +218,6 @@ header.hero .nombre {
   50% { transform: translateY(5px); }
 }
 
-/* Elementos decorativos geométricos sutiles */
-.geometric-element {
-  position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.geometric-element:nth-child(1) {
-  top: 20%;
-  left: 10%;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
-
-.geometric-element:nth-child(2) {
-  bottom: 30%;
-  right: 15%;
-  width: 40px;
-  height: 40px;
-  transform: rotate(45deg);
-}
-
-.geometric-element:nth-child(3) {
-  top: 60%;
-  left: 85%;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
 /* RESPONSIVE - Diseño adaptativo */
 @media (max-width: 992px) {
   .glass-card {
@@ -280,10 +227,6 @@ header.hero .nombre {
   
   .nombre {
     font-size: 3.8rem;
-  }
-  
-  .tagline-grid {
-    gap: 40px;
   }
   
   .tagline-item {
@@ -312,12 +255,6 @@ header.hero .nombre {
     width: 100px;
   }
   
-  .tagline-grid {
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 40px;
-  }
-  
   .tagline-item {
     min-width: auto;
     padding: 20px;
@@ -334,10 +271,6 @@ header.hero .nombre {
   .scroll-indicator {
     bottom: 30px;
     font-size: 0.8rem;
-  }
-  
-  .geometric-element {
-    opacity: 0.5; /* Más sutiles en móviles */
   }
 }
 
@@ -399,7 +332,7 @@ h2::after {
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #a5d8ff, transparent);
+  background: linear-gradient(90deg, transparent, var(--site-accent), transparent);
 }
 
 p { 
@@ -413,7 +346,7 @@ p {
 /* =============================================== */
 #sobre-mi {
   position: relative;
-  background-color: #0b0b0b;
+  background-color: var(--site-bg-dark);
   color: #f5f5f5;
   padding: 50px 20px 60px 20px; /* Padding superior reducido y equilibrado respecto al inferior */
 }
@@ -424,7 +357,7 @@ p {
 }
 
 #sobre-mi h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 15px; /* Margen ajustado para que respire con precisión */
@@ -441,7 +374,7 @@ p {
 
 /* Párrafo de introducción contenido */
 .lead-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-size: 0.95rem;
   line-height: 1.7;
   color: #a0a0a0;
@@ -484,12 +417,9 @@ p {
 }
 
 /* Ocultamos o removemos por completo el espacio del icono */
-.pilar-icon {
-  display: none !important;
-}
 
 .pilar-card h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 10px;
@@ -498,7 +428,7 @@ p {
 }
 
 .pilar-card p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-size: 0.85rem;
   line-height: 1.6;
   color: #888888;
@@ -508,7 +438,7 @@ p {
 
 /* Cierre conceptual sobrio */
 .sobre-mi-footer {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-size: 0.9rem;
   line-height: 1.7;
   color: #777777;
@@ -525,7 +455,7 @@ p {
 /* PORTFOLIO - GRILLA BENTO EQUILIBRADA (3 COLUMNAS) */
 /* =============================================== */
 #portfolio.section {
-  background-color: #0b0b0b !important;
+  background-color: var(--site-bg-dark);
   padding: 40px 20px 120px 20px;
 }
 
@@ -544,19 +474,19 @@ p {
 
 /* 1. Tarjetas Principales / Destacadas (Ocupan todo el ancho - 12 columnas) */
 #portfolio .featured-card-wrapper {
-  grid-column: span 12 !important;
-  margin: 0 !important;
+  grid-column: span 12;
+  margin: 0;
 }
 
 .featured-card {
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 100%;
   height: 400px !important;
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: row;
   background: rgba(255, 255, 255, 0.025) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   overflow: hidden !important;
   position: relative;
   cursor: pointer;
@@ -575,7 +505,7 @@ p {
   width: 60% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: 20px 0 0 20px !important;
+  border-radius: 20px 0 0 20px;
 }
 
 .featured-content {
@@ -589,7 +519,7 @@ p {
 
 /* 2. Tarjetas Secundarias (Exactamente 3 columnas por fila -> span 4) */
 #portfolio .item:not(.featured-card) {
-  grid-column: span 4 !important;
+  grid-column: span 4;
   height: 360px;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -613,7 +543,7 @@ p {
   width: 100% !important;
   height: 230px !important;
   object-fit: cover !important;
-  object-position: center !important;
+  object-position: center;
   transition: transform 0.6s ease;
 }
 
@@ -623,7 +553,7 @@ p {
 
 #portfolio .item:not(.featured-card) h3,
 .featured-card h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   color: #ffffff;
   font-weight: 700;
 }
@@ -634,14 +564,14 @@ p {
   margin: 0;
   text-align: left;
   background: none !important;
-  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .featured-card h3 {
   font-size: 1.8rem;
   margin-bottom: 12px;
   background: none !important;
-  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .featured-description {
@@ -659,7 +589,7 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 6px 14px;
   border-radius: 30px;
-  color: #fff !important;
+  color: #fff;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -688,12 +618,12 @@ p {
   
   #portfolio .item:not(.featured-card),
   #portfolio .featured-card-wrapper {
-    grid-column: span 12 !important;
+    grid-column: span 12;
     width: 100% !important;
   }
   
   .featured-card {
-    flex-direction: column !important;
+    flex-direction: column;
     height: auto !important;
   }
   
@@ -702,7 +632,7 @@ p {
   .featured-card .video-thumbnail-container {
     width: 100% !important;
     height: 220px !important;
-    border-radius: 20px 20px 0 0 !important;
+    border-radius: 20px 20px 0 0;
   }
   
   .featured-content {
@@ -715,7 +645,7 @@ p {
 /* SECCIÓN CONTACTO - MODO OSCURO EJECUTIVO Y FUNCIONAL */
 /* =============================================== */
 #contacto.section {
-  background-color: #0b0b0b !important;
+  background-color: var(--site-bg-dark);
   padding: 80px 20px 100px 20px;
   position: relative;
   opacity: 1;
@@ -731,13 +661,13 @@ p {
 
 /* Título de contacto sobrio */
 #contacto h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 40px;
   color: #ffffff;
   background: none !important;
-  -webkit-text-fill-color: initial !important;
+  -webkit-text-fill-color: initial;
   padding-bottom: 0;
   letter-spacing: 1px;
 }
@@ -760,12 +690,12 @@ p {
 /* Estilo unificado y minimalista para los botones manteniendo sus enlaces */
 .contact-buttons a {
   display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  align-items: center;
+  justify-content: center;
   background: rgba(255, 255, 255, 0.03) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 14px !important;
-  padding: 14px 28px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 14px 28px;
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
   filter: none !important;
 }
@@ -782,7 +712,7 @@ p {
 .contact-buttons img {
   width: 110px !important;
   height: auto !important;
-  border-radius: 0 !important;
+  border-radius: 0;
   transition: opacity 0.3s ease;
   filter: brightness(0.9);
 }
@@ -804,7 +734,7 @@ p {
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.8rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -925,7 +855,7 @@ p {
   padding: 20px 0;
   justify-content: flex-start;
   scrollbar-width: thin;
-  scrollbar-color: #a5d8ff transparent;
+  scrollbar-color: var(--site-accent) transparent;
 }
 
 .gallery::-webkit-scrollbar {
@@ -938,7 +868,7 @@ p {
 }
 
 .gallery::-webkit-scrollbar-thumb {
-  background: #a5d8ff;
+  background: var(--site-accent);
   border-radius: 4px;
 }
 
@@ -955,7 +885,7 @@ p {
 
 .gallery img:hover,
 .gallery iframe:hover {
-  border-color: #a5d8ff;
+  border-color: var(--site-accent);
   transform: translateY(-4px);
   box-shadow: 0 4px 10px rgba(165, 216, 255, 0.3);
 }
@@ -983,7 +913,7 @@ p {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   padding-bottom: 15px;
-  border-bottom: 2px solid #a5d8ff;
+  border-bottom: 2px solid var(--site-accent);
 }
 
 #info-modal p {
@@ -991,23 +921,6 @@ p {
   color: #555;
   line-height: 1.8;
   text-align: justify;
-}
-
-.video-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-top: 40px;
-  justify-content: center;
-}
-
-.video-container iframe {
-  width: 100%;
-  max-width: 500px;
-  height: 300px;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* =============================================== */
@@ -1029,7 +942,7 @@ footer::before {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #a5d8ff, transparent);
+  background: linear-gradient(90deg, transparent, var(--site-accent), transparent);
 }
 
 /* =============================================== */
@@ -1039,10 +952,6 @@ footer::before {
 /* Para móviles */
 @media (max-width: 768px) {
   /* HERO MOBILE */
-  .hero-overlay {
-    align-items: center;
-    justify-content: center;
-  }
   
   .glass-card {
     padding: 40px 30px;
@@ -1059,12 +968,6 @@ footer::before {
   .nombre::after {
     left: 20%;
     width: 60%;
-  }
-  
-  .tagline-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    margin-top: 30px;
   }
   
   .tagline-item {
@@ -1101,7 +1004,7 @@ footer::before {
   
   .project-card:not(.featured-card) {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 100%;
     margin: 0 auto;
   }
   
@@ -1116,7 +1019,7 @@ footer::before {
   
   /* TARJETA DESTACADA EN MÓVIL */
   .featured-card {
-    flex-direction: column !important;
+    flex-direction: column;
     height: auto;
   }
   
@@ -1184,10 +1087,6 @@ footer::before {
     width: 90px;
     height: 60px;
   }
-  
-  .video-container iframe {
-    height: 200px;
-  }
 }
 
 /* Para tablets */
@@ -1198,10 +1097,6 @@ footer::before {
   
   .nombre {
     font-size: 3.8rem;
-  }
-  
-  .tagline-grid {
-    gap: 20px;
   }
   
   .tagline-item {
@@ -1250,139 +1145,14 @@ footer::before {
   }
 }
 
-
-
-
-/* Elimina la sección anterior de .tarjeta-movil y reemplázala con esta: */
-
-/* =============================================== */
-/* TARJETA DE PRESENTACIÓN MOBILE OPTIMIZADA */
-/* =============================================== */
-.tarjeta-movil {
-    position: absolute;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-    max-width: 300px;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.345);
-    backdrop-filter: blur(10px);
-    border-radius: 26px;
-    box-shadow: 
-        0 8px 24px rgba(0, 0, 0, 0.15),
-        0 2px 8px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    line-height: 1.4;
-    z-index: 10;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Nombre optimizado para móvil */
-.tarjeta-movil .nombre-tarjeta {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    color: #222;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Título principal */
-.tarjeta-movil .titulo-principal {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #222;
-    margin-bottom: 0.3rem;
-    letter-spacing: 0.5px;
-}
-
-/* Subtítulos compactos */
-.tarjeta-movil .subtitulo {
-    font-size: 0.9rem;
-    color: #222;
-    margin-bottom: 0.25rem;
-    line-height: 1.3;
-    font-weight: 400;
-}
-
-/* Información en línea compacta */
-.tarjeta-movil .info-linea {
-    font-size: 0.75rem;
-    color: #777;
-    margin-top: 0.7rem;
-    padding-top: 0.7rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    display: flex;
-    justify-content: space-between;
-    letter-spacing: 0.3px;
-}
-
-/* Para que no tape la foto importante en móvil */
-@media (max-width: 768px) {
-    .tarjeta-movil {
-        bottom: 90px;
-        width: 90%;
-        max-width: 280px;
-        padding: 0.9rem;
-    }
-    
-    .tarjeta-movil .nombre-tarjeta {
-        font-size: 1.3rem;
-    }
-    
-    .tarjeta-movil .titulo-principal {
-        font-size: 0.95rem;
-    }
-    
-    .tarjeta-movil .subtitulo {
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .tarjeta-movil {
-        bottom: 20px;
-        width: 92%;
-        max-width: 260px;
-        padding: 0.8rem;
-    }
-    
-    .tarjeta-movil .nombre-tarjeta {
-        font-size: 1.2rem;
-    }
-    
-    .tarjeta-movil .titulo-principal {
-        font-size: 0.9rem;
-    }
-    
-    .tarjeta-movil .subtitulo {
-        font-size: 0.8rem;
-    }
-    
-    .tarjeta-movil .info-linea {
-        font-size: 0.7rem;
-    }
-}
-
 /* Ocultar la tarjeta grande de escritorio en móvil */
 @media (max-width: 768px) {
     .glass-card {
         display: none !important;
     }
     
-    .tagline-grid {
-        display: none !important;
-    }
-    
     .scroll-indicator {
-        bottom: 100px !important;
-    }
-}
-
-/* Mostrar la tarjeta grande solo en escritorio */
-@media (min-width: 769px) {
-    .tarjeta-movil {
-        display: none !important;
+        bottom: 100px;
     }
 }
 
@@ -1390,20 +1160,20 @@ footer::before {
 /* ESTILOS CRÍTICOS PARA LOS BOTONES DE CERRAR */
 /* =============================================== */
 .close-button, .close-info {
-  cursor: pointer !important;
-  pointer-events: auto !important;
+  cursor: pointer;
+  pointer-events: auto;
   z-index: 100000 !important;
-  position: absolute !important;
+  position: absolute;
   top: 20px !important;
-  right: 25px !important;
-  font-size: 2.5rem !important;
-  color: #999 !important;
+  right: 25px;
+  font-size: 2.5rem;
+  color: #999;
   width: 40px !important;
   height: 40px !important;
   display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 50% !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   background: rgba(0, 0, 0, 0.05) !important;
   transition: all 0.3s !important;
 }
@@ -1421,7 +1191,7 @@ footer::before {
 }
 
 .modal-content {
-  position: relative !important;
+  position: relative;
   z-index: 100001 !important;
 }
 
@@ -1431,15 +1201,15 @@ footer::before {
 
 #project-modal, #info-modal {
   display: none !important;
-  position: fixed !important;
+  position: fixed;
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
   background: rgba(0,0,0,0.95) !important;
   z-index: 999999 !important;
-  align-items: center !important;
-  justify-content: center !important;
+  align-items: center;
+  justify-content: center;
   overflow: hidden !important;
 }
 
@@ -1453,28 +1223,28 @@ footer::before {
   padding: 40px !important;
   width: 95% !important;
   max-width: 1200px !important;
-  max-height: 90vh !important;
+  max-height: 90vh;
   overflow-y: auto !important;
-  position: relative !important;
-  border-radius: 20px !important;
+  position: relative;
+  border-radius: 20px;
   z-index: 1000000 !important;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5) !important;
-  animation: modalAppear 0.3s ease !important;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  animation: modalAppear 0.3s ease;
 }
 
 .close-button, .close-info {
-  position: absolute !important;
+  position: absolute;
   top: 20px !important;
-  right: 25px !important;
-  font-size: 2.5rem !important;
-  color: #999 !important;
-  cursor: pointer !important;
+  right: 25px;
+  font-size: 2.5rem;
+  color: #999;
+  cursor: pointer;
   width: 40px !important;
   height: 40px !important;
   display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 50% !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   background: rgba(0,0,0,0.05) !important;
   transition: all 0.3s !important;
   z-index: 1000001 !important;
@@ -1491,16 +1261,16 @@ footer::before {
   width: 100% !important;
   height: 60vh !important;
   background: #000 !important;
-  border-radius: 15px !important;
+  border-radius: 15px;
   overflow: hidden !important;
-  margin-bottom: 30px !important;
+  margin-bottom: 30px;
 }
 
 .gallery {
   display: flex !important;
-  gap: 15px !important;
+  gap: 15px;
   overflow-x: auto !important;
-  padding: 20px 0 !important;
+  padding: 20px 0;
 }
 
 /* =============================================== */
@@ -1514,113 +1284,106 @@ footer::before {
 
 /* Contenedor del modal - ajuste de altura */
 .modal-content {
-  max-height: 95vh !important; 
+  max-height: 95vh; 
   height: auto !important;
   overflow: hidden !important; /* Oculta lo que sobresale si es muy grande */
   display: flex !important;
-  flex-direction: column !important;
+  flex-direction: column;
   padding: 30px 40px 20px 40px !important;
 }
 
 /* Contenedor principal de imágenes - ajuste flexible */
 #modal-main-image {
-  flex: 1 1 auto !important; /* Permite que la imagen se encoja para caber en pantalla */
+  flex: 1 1 auto; /* Permite que la imagen se encoja para caber en pantalla */
   height: 70vh !important;
-  max-height: 70vh !important;
-  min-height: 150px !important; /* Menor altura mínima para pantallas chicas */
-  margin-bottom: 10px !important;
+  max-height: 70vh;
+  min-height: 150px; /* Menor altura mínima para pantallas chicas */
+  margin-bottom: 10px;
 }
 
 /* Galería de miniaturas - altura fija */
 .gallery {
-  flex: 0 0 auto !important;
-  max-height: 110px !important;
-  min-height: 90px !important;
-  padding: 10px 0 0 0 !important;
-  margin-bottom: 0 !important;
+  flex: 0 0 auto;
+  max-height: 110px;
+  min-height: 90px;
+  padding: 10px 0 0 0;
+  margin-bottom: 0;
 }
 
 /* Título y descripción - ajuste automático */
 #modal-title {
-  font-size: 2rem !important;
-  margin-bottom: 5px !important;
-  line-height: 1.2 !important;
-  flex-shrink: 0 !important;
+  font-size: 2rem;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  flex-shrink: 0;
 }
 
 #modal-description {
-  font-size: 1rem !important;
-  margin-bottom: 10px !important;
-  line-height: 1.4 !important;
-  max-height: 80px !important;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  max-height: 80px;
   overflow: hidden !important;
-  flex-shrink: 0 !important;
+  flex-shrink: 0;
 }
 
 /* Para pantallas más pequeñas - ajustes responsive */
 @media (max-height: 800px) {
   #modal-main-image {
     height: 55vh !important;
-    max-height: 55vh !important;
+    max-height: 55vh;
   }
   
   .modal-content {
-    max-height: 90vh !important;
+    max-height: 90vh;
     padding: 30px !important;
   }
 }
 
 @media (max-height: 600px) {
   #modal-main-image {
-    flex: 1 1 auto !important;
+    flex: 1 1 auto;
     height: auto !important;
-    max-height: 50vh !important;
-    min-height: 100px !important;
+    max-height: 50vh;
+    min-height: 100px;
   }
   
   #modal-title {
-    font-size: 1.5rem !important;
-    margin-bottom: 8px !important;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
   }
   
   #modal-description {
-    font-size: 0.9rem !important;
-    max-height: 60px !important;
-    margin-bottom: 15px !important;
+    font-size: 0.9rem;
+    max-height: 60px;
+    margin-bottom: 15px;
   }
   
   .gallery {
-    max-height: 100px !important;
-    min-height: 100px !important;
+    max-height: 100px;
+    min-height: 100px;
   }
 }
 
 /* Para móviles en landscape */
 @media (max-width: 768px) and (orientation: landscape) {
   .modal-content {
-    max-height: 85vh !important;
+    max-height: 85vh;
     padding: 20px !important;
   }
   
   #modal-main-image {
     height: 50vh !important;
-    max-height: 50vh !important;
+    max-height: 50vh;
   }
 }
 
 /* Asegurar que las imágenes dentro del modal se ajusten */
 #modal-main-image img {
-  max-height: 100% !important;
+  max-height: 100%;
   width: auto !important;
-  max-width: 100% !important;
+  max-width: 100%;
   object-fit: contain !important;
-}
-
-/* Si aún hay scroll, esta versión más agresiva elimina todo scroll */
-.modal-content.no-scroll {
-  overflow: hidden !important;
-  max-height: none !important;
-  height: auto !important;
 }
 
 /* =============================================== */
@@ -1859,7 +1622,7 @@ footer::before {
   color: #1a1a1a;
   max-width: 600px;
   margin: 0 auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
 }
 
 /* Animations Cascading */
@@ -1919,7 +1682,7 @@ footer::before {
 .moda-title {
   position: relative;
   z-index: 3;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 4rem;
   color: #fff;
   line-height: 1.1;
@@ -1956,7 +1719,7 @@ footer::before {
 }
 
 .moda-brand-story h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 2.2rem;
   font-weight: 400;
   margin-bottom: 20px;
@@ -2003,7 +1766,7 @@ footer::before {
 }
 
 .moda-item h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 1.4rem;
   font-weight: 400;
   margin-bottom: 5px;
@@ -2068,7 +1831,7 @@ footer::before {
 }
 
 .moda-journal-text h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 2.2rem;
   font-weight: 400;
   margin-bottom: 20px;
@@ -2090,7 +1853,7 @@ footer::before {
 }
 
 .moda-accessories h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 2.2rem;
   font-weight: 400;
   margin-bottom: 40px;
@@ -2133,7 +1896,7 @@ footer::before {
 }
 
 .moda-acc-details h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 1.1rem;
   font-weight: 400;
   margin-bottom: 5px;
@@ -2148,7 +1911,7 @@ footer::before {
 }
 
 .moda-quote-banner blockquote {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 1.8rem;
   font-style: italic;
   line-height: 1.4;
@@ -2170,7 +1933,7 @@ footer::before {
 }
 
 .moda-community h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 30px;
@@ -2269,7 +2032,7 @@ footer::before {
 /* DECO */
 /* NORDIC DECO - CATALOGUE SCROLL */
 .email-mock.deco {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   background: #fff;
   color: #333;
   max-width: 600px;
@@ -2281,7 +2044,7 @@ footer::before {
 
 /* Typography Overrides */
 .email-mock.deco h1, .email-mock.deco h2, .email-mock.deco h3, .email-mock.deco h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-weight: 400;
   margin: 0;
 }
@@ -2536,7 +2299,7 @@ footer::before {
 .deco-banner-text {
   position: relative;
   z-index: 3;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 1.8rem;
   font-style: italic;
   color: #333;
@@ -2608,7 +2371,7 @@ footer::before {
 
 /* RETAIL - ORGANIC FLUID DESIGN (ChangoMás Style) */
 .email-mock.retail {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   background: #fdfdfd;
   color: #111;
   max-width: 600px;
@@ -3053,7 +2816,7 @@ footer::before {
   padding: 60px 40px;
   text-align: center;
   border-radius: 40px 40px 0 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   line-height: 1.6;
 }
 
@@ -3101,7 +2864,7 @@ footer::before {
 .email-mock.tech {
   background: #000000;
   color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   overflow: hidden;
   position: relative;
   display: flex; /* Centrado solicitado */
@@ -3270,25 +3033,10 @@ footer::before {
   font-size: 0.8rem;
 }
 
-.terminal-line { margin-bottom: 10px; }
-.terminal-line span { color: #555; }
-.terminal-prompt { color: #39ff14; font-weight: bold; }
-
-.terminal-link {
-  color: #00F3FF;
-  text-decoration: none;
-  margin-right: 20px;
-}
-
-.terminal-link:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
 /* FINTECH */
 /* FINTECH - BANCO HORIZONTE INSTITUCIONAL */
 .email-mock.fintech {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   background: #ffffff;
   color: #001A3D;
   overflow: hidden;
@@ -3547,15 +3295,15 @@ footer::before {
 
 .metric-number {
   display: block;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 2rem;
   font-weight: 700;
-  color: #a5d8ff;
+  color: var(--site-accent);
   margin-bottom: 5px;
 }
 
 .metric-label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-size: 0.75rem;
   color: #888;
   text-transform: uppercase;
@@ -3580,14 +3328,14 @@ footer::before {
   border-radius: 20px;
   font-size: 0.8rem;
   color: #ccc;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
 }
 
 /* =============================================== */
 /* SECCIÓN TESTIMONIO LINKEDIN */
 /* =============================================== */
 #testimonio {
-  background-color: #0b0b0b;
+  background-color: var(--site-bg-dark);
   padding: 40px 20px 60px 20px;
 }
 
@@ -3595,7 +3343,7 @@ footer::before {
   max-width: 800px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.025);
-  border-left: 3px solid #a5d8ff;
+  border-left: 3px solid var(--site-accent);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-right: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -3605,7 +3353,7 @@ footer::before {
 }
 
 .testimonial-quote {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--site-font-display);
   font-size: 1.15rem;
   font-style: italic;
   line-height: 1.6;
@@ -3614,7 +3362,7 @@ footer::before {
 }
 
 .testimonial-author h4 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-size: 0.95rem;
   font-weight: 700;
   color: #fff;
@@ -3636,10 +3384,10 @@ footer::before {
 /* HERO OPTIMIZADO PARA RECLUTADORES EJECUTIVOS */
 /* =============================================== */
 .hero-subtitle {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-size: 1.1rem;
   font-weight: 500;
-  color: #a5d8ff;
+  color: var(--site-accent);
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -3656,7 +3404,7 @@ footer::before {
   color: #ffffff;
   padding: 12px 28px;
   border-radius: 30px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--site-font-body);
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -3678,7 +3426,7 @@ footer::before {
 @media (max-width: 768px) {
   .hero {
     padding: 60px 20px !important;
-    text-align: center !important;
+    text-align: center;
     height: auto !important;
     min-height: 100vh;
     display: flex;
@@ -3699,29 +3447,29 @@ footer::before {
   }
   
   .hero-subtitle {
-    font-size: 0.75rem !important;
-    letter-spacing: 1px !important;
-    line-height: 1.4 !important;
-    margin-top: 12px !important;
-    margin-bottom: 15px !important;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    margin-top: 12px;
+    margin-bottom: 15px;
     padding: 0 10px;
-    white-space: normal !important;
+    white-space: normal;
   }
   
   .tagline-single {
-    font-size: 0.7rem !important;
-    letter-spacing: 0.5px !important;
-    line-height: 1.5 !important;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
     padding: 0 10px;
   }
 
   .hero-cta-container {
-    margin-top: 25px !important;
+    margin-top: 25px;
   }
 
   .btn-executive-cv {
-    padding: 10px 22px !important;
-    font-size: 0.78rem !important;
+    padding: 10px 22px;
+    font-size: 0.78rem;
   }
 }
 
@@ -3730,17 +3478,17 @@ footer::before {
 /* =============================================== */
 @media (max-width: 768px) {
   .contact-buttons {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 15px !important;
-    padding: 0 20px !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
   }
   
   .contact-buttons a {
     width: 240px !important;
-    max-width: 100% !important;
-    padding: 12px 20px !important;
-    border-radius: 14px !important;
+    max-width: 100%;
+    padding: 12px 20px;
+    border-radius: 14px;
   }
   
   .contact-buttons img {
