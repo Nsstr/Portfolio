@@ -16,7 +16,7 @@
 
 body { 
   font-family: var(--site-font-body); 
-  background-color: #f9f9f9; 
+  background-color: var(--site-bg-dark); 
   color: #333; 
   line-height: 1.6; 
   overflow-x: hidden;
@@ -299,7 +299,7 @@ header.hero .nombre {
   padding: 80px 20px;
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .section.visible {

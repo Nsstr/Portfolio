@@ -344,7 +344,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const observerOptions = {
     threshold: 0,
-    rootMargin: '0px 0px -50px 0px'
+    // Revela un poco antes de que entre en pantalla para no mostrar huecos vacíos
+    rootMargin: '0px 0px 120px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
