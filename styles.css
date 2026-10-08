@@ -3540,3 +3540,142 @@ footer::before {
     width: 60px !important;
   }
 }
+
+/* =============================================== */
+/* NAVEGACIÓN FIJA */
+/* =============================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+#sobre-mi,
+#portfolio,
+#contacto {
+  scroll-margin-top: 64px;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.85rem clamp(1rem, 4vw, 3rem);
+  background: rgba(11, 11, 11, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.35s ease, opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.site-nav.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.site-nav-brand {
+  font-family: var(--site-font-display);
+  font-size: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.5vw, 2rem);
+  list-style: none;
+}
+
+.site-nav-links a {
+  font-family: var(--site-font-body);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-nav-links a:hover,
+.site-nav-links a:focus-visible,
+.site-nav-links a[aria-current="true"] {
+  color: var(--site-accent);
+  border-bottom-color: var(--site-accent);
+}
+
+.site-nav-links .site-nav-cv {
+  border: 1px solid rgba(165, 216, 255, 0.4);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  color: var(--site-accent);
+}
+
+.site-nav-links .site-nav-cv:hover,
+.site-nav-links .site-nav-cv:focus-visible {
+  background: rgba(165, 216, 255, 0.1);
+  border-color: var(--site-accent);
+}
+
+@media (max-width: 600px) {
+  .site-nav {
+    justify-content: center;
+  }
+
+  .site-nav-brand,
+  .site-nav-links li:last-child {
+    display: none;
+  }
+
+  .site-nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* =============================================== */
+/* TIPOGRAFÍA FLUIDA DEL HERO */
+/* Crece de forma continua entre 375px y 1024px */
+/* =============================================== */
+.hero .nombre {
+  font-size: clamp(2.2rem, 0.87rem + 5.67vw, 4.5rem) !important;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.75rem, 0.55rem + 0.86vw, 1.1rem);
+}
+
+.tagline-single {
+  font-size: clamp(0.7rem, 0.56rem + 0.62vw, 0.95rem);
+}
+
+/* =============================================== */
+/* MOVIMIENTO REDUCIDO (preferencia del sistema) */
+/* =============================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}

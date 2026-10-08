@@ -411,8 +411,8 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     const aboutSection = document.querySelector('#sobre-mi');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ 
-        behavior: 'smooth',
+      aboutSection.scrollIntoView({
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
         block: 'start'
       });
     }
@@ -466,6 +466,33 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // ===========================
+  // NAVEGACIÓN FIJA
+  // ===========================
+  const siteNav = document.querySelector('.site-nav');
+  if (siteNav && hero) {
+    // Aparece recién cuando el hero deja de verse
+    new IntersectionObserver(([entry]) => {
+      siteNav.classList.toggle('is-visible', !entry.isIntersecting);
+    }, { rootMargin: '-64px 0px 0px 0px' }).observe(hero);
+
+    // Marca el link de la sección que se está viendo
+    const navLinks = siteNav.querySelectorAll('.site-nav-links a[href^="#"]');
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(a => {
+          if (a.getAttribute('href') === '#' + entry.target.id) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    navLinks.forEach(a => {
+      const section = document.querySelector(a.getAttribute('href'));
+      if (section) sectionObserver.observe(section);
+    });
+  }
 
   console.log('=== PORTFOLIO INICIALIZADO CORRECTAMENTE ===');
 });
