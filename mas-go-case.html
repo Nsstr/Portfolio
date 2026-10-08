@@ -873,6 +873,101 @@
       height: 100%;
       object-fit: contain;
     }
+
+    /* =============================================== */
+    /* ESTILOS MOVIDOS DESDE mas-go-case.html (antes inline) */
+    /* =============================================== */
+    .mg-variants-layout {
+      height: auto !important;
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px;
+    }
+
+    .mg-variants-info {
+      flex: 1;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mg-interactive-card {
+      max-width: 100%;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .mg-interactive-card-p {
+      font-size: 1.3rem !important;
+      line-height: 1.8 !important;
+      margin: 0;
+    }
+
+    .mg-bento-box-h3 {
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-size: 2.2rem !important;
+      letter-spacing: 1px !important;
+      line-height: 1.1 !important;
+      margin-bottom: 20px;
+      text-transform: none !important;
+    }
+
+    .mg-swatch-color {
+      background-color: #FFC220;
+    }
+
+    .mg-swatch-color-2 {
+      background-color: #00A650;
+    }
+
+    .mg-swatch-color-3 {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .mg-interactive-card-p-2 {
+      margin-bottom: 12px !important;
+    }
+
+    .mg-pricing-gallery {
+      flex: 1.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mg-interactive-pan-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      cursor: crosshair;
+      position: relative;
+    }
+
+    .mg-pricing-img {
+      width: 100%;
+      transition: transform 0.6s ease-in-out;
+      display: block;
+      transform-origin: center center;
+    }
+
+    .mg-pricing-img-2 {
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      border-radius: 12px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .mg-pricing-img-3 {
+      width: 100%;
+      transition: transform 0.6s ease-in-out;
+      display: block;
+      transform-origin: center center;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body>
@@ -893,10 +988,10 @@
 
   <!-- MANIFIESTO CONCEPTUAL -->
   <section class="variants-section">
-    <div class="variants-layout" style="height: auto; min-height: 40vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px;">
-      <div class="variants-info" style="flex: 1; max-width: 900px; display: flex; justify-content: center;">
-        <div class="interactive-card variants-card-container" style="max-width: 100%; text-align: center; padding: 40px;">
-          <p style="font-size: 1.3rem; line-height: 1.8; margin: 0;">
+    <div class="variants-layout mg-variants-layout">
+      <div class="variants-info mg-variants-info">
+        <div class="interactive-card variants-card-container mg-interactive-card">
+          <p class="mg-interactive-card-p">
             Este ejercicio práctico propone una <strong>exploración visual alternativa</strong> para el ecosistema GO. La intención es ensayar nuevas rutas de síntesis gráfica que dinamicen la lectura entre el <strong>soporte físico y digital</strong>, aportando una mirada complementaria que respeta la <strong>esencia de la identidad actual</strong>.
           </p>
         </div>
@@ -915,7 +1010,7 @@
           <img src="imagenes/MasGO/ADN.webp" alt="ADN - Ecosistema de Marcas" class="adn-sketch-img">
         </div>
         <div class="bento-box">
-          <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 1px; line-height: 1.1; margin-bottom: 20px; text-transform: none;">ARQUITECTURA DE MARCA Y ADN DE GRUPO</h3>
+          <h3 class="mg-bento-box-h3">ARQUITECTURA DE MARCA Y ADN DE GRUPO</h3>
           <p>"Centro en la familia, ¿qué nos une?, ¿qué tenemos en similitud?"</p>
           <p>Dinamismo, circunflejo, flecha, <strong>ADN del GRUPO</strong>.</p>
           <p>Se usa la letra “g” pero en mayúscula <strong>“G”</strong>, indicando un <strong>crecimiento, madurez del negocio, solidez</strong>. Es conjunción de la inicial de los negocios físicos HiperChango, SuperChango y ChangoMas como <strong>condensación del retail</strong> en una expresión más compacta pero totalmente pulida.</p>
@@ -961,21 +1056,21 @@
         
         <div class="swatches-container">
           <div class="swatch-item" data-color-index="1">
-            <div class="swatch-color" style="background-color: #FFC220;"></div>
+            <div class="swatch-color mg-swatch-color"></div>
             <div class="swatch-info">
               <h4>Amarillo Institucional</h4>
               <p>HEX #FFC220</p>
             </div>
           </div>
           <div class="swatch-item" data-color-index="2">
-            <div class="swatch-color" style="background-color: #00A650;"></div>
+            <div class="swatch-color mg-swatch-color-2"></div>
             <div class="swatch-info">
               <h4>Verde GO</h4>
               <p>HEX #00A650</p>
             </div>
           </div>
           <div class="swatch-item" data-color-index="3">
-            <div class="swatch-color" style="background-color: #FFFFFF; border: 1px solid rgba(255,255,255,0.2);"></div>
+            <div class="swatch-color mg-swatch-color-3"></div>
             <div class="swatch-info">
               <h4>Blanco Puro</h4>
               <p>HEX #FFFFFF</p>
@@ -1024,8 +1119,8 @@
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
             <h3>Criterios de Aplicación</h3>
-            <p style="margin-bottom: 12px;"><strong>Versión Principal:</strong> Aplicación apaisada preferente para marquesinas y fachadas principales, priorizando el reconocimiento de marca en el entorno urbano.</p>
-            <p style="margin-bottom: 12px;"><strong>Alta Densidad:</strong> Adaptaciones modulares y compactas diseñadas estratégicamente para señalética interna y espacios reducidos de góndola.</p>
+            <p class="mg-interactive-card-p-2"><strong>Versión Principal:</strong> Aplicación apaisada preferente para marquesinas y fachadas principales, priorizando el reconocimiento de marca en el entorno urbano.</p>
+            <p class="mg-interactive-card-p-2"><strong>Alta Densidad:</strong> Adaptaciones modulares y compactas diseñadas estratégicamente para señalética interna y espacios reducidos de góndola.</p>
             <p><strong>Reducción de Isotipo:</strong> Síntesis tipográfica mínima para avatares, redes sociales y soportes donde la identidad ya está validada por el contexto.</p>
           </div>
         </div>
@@ -1053,8 +1148,8 @@
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
             <h3>Protección de la Propiedad Visual</h3>
-            <p style="margin-bottom: 12px;">Para garantizar la integridad visual, queda estrictamente prohibido aplicar <strong>deformaciones geométricas</strong> o alterar la proporción del logotipo.</p>
-            <p style="margin-bottom: 12px;">No se permite ningún tipo de <strong>alteración cromática</strong>, uso de gradientes no autorizados, ni aplicaciones sobre fondos de bajo contraste que dificulten su legibilidad.</p>
+            <p class="mg-interactive-card-p-2">Para garantizar la integridad visual, queda estrictamente prohibido aplicar <strong>deformaciones geométricas</strong> o alterar la proporción del logotipo.</p>
+            <p class="mg-interactive-card-p-2">No se permite ningún tipo de <strong>alteración cromática</strong>, uso de gradientes no autorizados, ni aplicaciones sobre fondos de bajo contraste que dificulten su legibilidad.</p>
             <p>Se prohíbe la <strong>ruptura de proporciones</strong> entre el imagotipo y la tipografía base, así como la invasión del área de respeto del sistema marcario.</p>
           </div>
         </div>
@@ -1108,8 +1203,8 @@
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
             <h3>Implementación Omnicanal</h3>
-            <p style="margin-bottom: 12px;">La flexibilidad del sistema visual permite una adaptación consistente hacia los distintos <strong>espacios físicos</strong>, asegurando que la fachada y el entorno de retail comuniquen agilidad y proximidad.</p>
-            <p style="margin-bottom: 12px;">El comportamiento en la <strong>cartelería corpórea y vía pública (OOH)</strong> explota el altísimo contraste del Verde GO y el Amarillo Institucional para favorecer el reconocimiento a distancia.</p>
+            <p class="mg-interactive-card-p-2">La flexibilidad del sistema visual permite una adaptación consistente hacia los distintos <strong>espacios físicos</strong>, asegurando que la fachada y el entorno de retail comuniquen agilidad y proximidad.</p>
+            <p class="mg-interactive-card-p-2">El comportamiento en la <strong>cartelería corpórea y vía pública (OOH)</strong> explota el altísimo contraste del Verde GO y el Amarillo Institucional para favorecer el reconocimiento a distancia.</p>
             <p>La adaptación a <strong>soportes táctiles y merchandising</strong> consolida la experiencia de marca en las manos del consumidor, cerrando el círculo del formato de conveniencia.</p>
           </div>
         </div>
@@ -1122,15 +1217,15 @@
     <div class="variants-layout">
       <h2 class="interactive-panel-title">ARQUITECTURA DE CENEFAS</h2>
       <div class="variants-content-split">
-        <div class="pricing-gallery" style="flex: 1.5; display: flex; align-items: center; justify-content: center;">
-          <div class="interactive-pan-container" style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); cursor: crosshair; position: relative;">
-            <img loading="lazy" decoding="async" src="imagenes/MasGO/7_tarjeton.webp" alt="Tarjetón Único" class="pricing-img full-img interactive-zoom" style="width: 100%; transition: transform 0.6s ease-in-out; display: block; transform-origin: center center;">
+        <div class="pricing-gallery mg-pricing-gallery">
+          <div class="interactive-pan-container mg-interactive-pan-container">
+            <img loading="lazy" decoding="async" src="imagenes/MasGO/7_tarjeton.webp" alt="Tarjetón Único" class="pricing-img full-img interactive-zoom mg-pricing-img">
           </div>
         </div>
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
             <h3>Señalética de Lectura Rápida</h3>
-            <p style="margin-bottom: 12px;">El sistema de precios físicos prioriza la <strong>lectura rápida</strong> y el orden visual en el lineal de venta. Se integra un <strong>código QR de Mâs Online</strong> para sincronizar la experiencia física con la plataforma digital.</p>
+            <p class="mg-interactive-card-p-2">El sistema de precios físicos prioriza la <strong>lectura rápida</strong> y el orden visual en el lineal de venta. Se integra un <strong>código QR de Mâs Online</strong> para sincronizar la experiencia física con la plataforma digital.</p>
             <p>La arquitectura normativa de la cenefa incorpora <strong>gatillos de descuento</strong> mediante jerarquías cromáticas, destacando ofertas especiales y precios exclusivos de <strong>Mâs Club</strong> de forma directa y contundente.</p>
           </div>
         </div>
@@ -1144,16 +1239,16 @@
     <div class="variants-layout">
       <h2 class="interactive-panel-title">SISTEMA VOLUMÉTRICO DE SALIENTES</h2>
       <div class="variants-content-split">
-        <div class="pricing-gallery" style="flex: 1.5; display: flex; align-items: center; justify-content: center;">
-          <div class="interactive-pan-container" style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); cursor: crosshair; position: relative;">
-            <img loading="lazy" decoding="async" src="imagenes/MasGO/saliente-morfologia.webp" alt="Morfología del Saliente" class="pricing-img full-img interactive-zoom" style="width: 100%; transition: transform 0.6s ease-in-out; display: block; transform-origin: center center;">
+        <div class="pricing-gallery mg-pricing-gallery">
+          <div class="interactive-pan-container mg-interactive-pan-container">
+            <img loading="lazy" decoding="async" src="imagenes/MasGO/saliente-morfologia.webp" alt="Morfología del Saliente" class="pricing-img full-img interactive-zoom mg-pricing-img">
           </div>
         </div>
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
             <h3>Disrupción Visual en Góndola</h3>
-            <p style="margin-bottom: 12px;">El saliente volumétrico está diseñado para <strong>romper la ortogonalidad lineal</strong> de la estantería comercial, capturando la atención del flujo de clientes desde múltiples ángulos.</p>
-            <p style="margin-bottom: 12px;">Se generan <strong>zonas de alto impacto visual</strong> exclusivas para destacar ofertas o <strong>productos ganadores</strong>, utilizando el contraste dinámico de la marca.</p>
+            <p class="mg-interactive-card-p-2">El saliente volumétrico está diseñado para <strong>romper la ortogonalidad lineal</strong> de la estantería comercial, capturando la atención del flujo de clientes desde múltiples ángulos.</p>
+            <p class="mg-interactive-card-p-2">Se generan <strong>zonas de alto impacto visual</strong> exclusivas para destacar ofertas o <strong>productos ganadores</strong>, utilizando el contraste dinámico de la marca.</p>
             <p>La vista superior y lateral norma la <strong>construcción geométrica y de troquel</strong>, asegurando una aplicación estandarizada del soporte físico en toda la cadena.</p>
           </div>
         </div>
@@ -1166,13 +1261,13 @@
     <div class="variants-layout">
       <h2 class="interactive-panel-title">ETIQUETAS ELECTRÓNICAS</h2>
       <div class="variants-content-split">
-        <div class="pricing-gallery" style="flex: 1.5; display: flex; align-items: center; justify-content: center;">
-          <video src="imagenes/MasGO/etiqueta_electronica.mp4" class="pricing-img full-img" style="box-shadow: 0 15px 35px rgba(0,0,0,0.5); border-radius: 12px; width: 100%; object-fit: cover;" autoplay muted loop playsinline></video>
+        <div class="pricing-gallery mg-pricing-gallery">
+          <video src="imagenes/MasGO/etiqueta_electronica.mp4" class="pricing-img full-img mg-pricing-img-2" autoplay muted loop playsinline></video>
         </div>
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
             <h3>Sincronización Operativa</h3>
-            <p style="margin-bottom: 12px;">La migración a tinta electrónica permite una <strong>sincronización instantánea</strong> de precios en la sucursal, favoreciendo la consistencia entre el precio exhibido y el registrado en caja.</p>
+            <p class="mg-interactive-card-p-2">La migración a tinta electrónica permite una <strong>sincronización instantánea</strong> de precios en la sucursal, favoreciendo la consistencia entre el precio exhibido y el registrado en caja.</p>
             <p>Este sistema busca <strong>reducir significativamente el margen de error operativo</strong> y reduce el uso de <strong>papel</strong>y facilita la actualización de precios, alineando el punto de venta con políticas de eficiencia y sustentabilidad.</p>
           </div>
         </div>
@@ -1185,15 +1280,15 @@
     <div class="variants-layout">
       <h2 class="interactive-panel-title">EVOLUCIÓN DE FACHADA: DIGITALIZACIÓN VS. PAPEL</h2>
       <div class="variants-content-split">
-        <div class="pricing-gallery" style="flex: 1.5; display: flex; align-items: center; justify-content: center;">
-          <div class="interactive-pan-container" style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); cursor: crosshair; position: relative;">
-            <video src="imagenes/MasGO/papelpantalla.mp4" class="pricing-img full-img interactive-zoom" style="width: 100%; transition: transform 0.6s ease-in-out; display: block; transform-origin: center center; object-fit: cover;" autoplay muted loop playsinline></video>
+        <div class="pricing-gallery mg-pricing-gallery">
+          <div class="interactive-pan-container mg-interactive-pan-container">
+            <video src="imagenes/MasGO/papelpantalla.mp4" class="pricing-img full-img interactive-zoom mg-pricing-img-3" autoplay muted loop playsinline></video>
           </div>
         </div>
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
             <h3>Migración Digital</h3>
-            <p style="margin-bottom: 12px;">La evolución de la fachada propone una transición desde la <strong>cartelería estática de papel</strong> (vulnerable al desgaste ambiental) hacia un sistema de <strong>soportes digitales centralizados</strong>.</p>
+            <p class="mg-interactive-card-p-2">La evolución de la fachada propone una transición desde la <strong>cartelería estática de papel</strong> (vulnerable al desgaste ambiental) hacia un sistema de <strong>soportes digitales centralizados</strong>.</p>
             <p>Esto permite una <strong>actualización instantánea</strong> de promociones y un impacto visual limpio, reduciendo la <strong>dependencia</strong> de cartelería estática y su necesidad de actualización manual.</p>
           </div>
         </div>
@@ -1227,10 +1322,10 @@
         <div class="variants-info">
           <div class="interactive-card variants-card-container">
             <h3>Presencia e Impacto Urbano</h3>
-            <p style="margin-bottom: 12px;">
+            <p class="mg-interactive-card-p-2">
               <strong>Refugios y Mobiliario Urbano:</strong> Despliegue en paradas de transporte público combinando la experiencia de compra cotidiana con la agilidad del lineal y el foco en el producto.
             </p>
-            <p style="margin-bottom: 12px;">
+            <p class="mg-interactive-card-p-2">
               <strong>Mupis de Proximidad:</strong> Formato vertical geolocalizado en avenidas de alto tránsito peatonal, reforzando el concepto de cercanía y rapidez de compra en el barrio.
             </p>
             <p>

@@ -3679,3 +3679,254 @@ html {
     transition-delay: 0s !important;
   }
 }
+
+
+/* =============================================== */
+/* ESTILOS MOVIDOS DESDE index.html (antes inline) */
+/* =============================================== */
+.ix-item {
+  cursor: pointer;
+}
+
+.ix-info-btn {
+  pointer-events: none;
+}
+
+.ix-modal {
+  display: none;
+}
+
+.ix-inbox-avatar {
+  background: #e8c4b8;
+  color: #333;
+}
+
+.ix-inbox-avatar-2 {
+  background: #a3b19b;
+  color: #fff;
+}
+
+.ix-inbox-avatar-3 {
+  background: #ff4757;
+  color: #fff;
+}
+
+.ix-inbox-avatar-4 {
+  background: #2ed573;
+  color: #fff;
+}
+
+.ix-inbox-avatar-5 {
+  background: #1e90ff;
+  color: #fff;
+}
+
+.ix-retail-wave-container {
+  position: absolute;
+  top: -49px;
+  left: 0;
+  width: 100%;
+}
+
+.ix-retail-wave-container-svg {
+  width: 100%;
+  height: 50px;
+}
+
+.ix-retail-fresh-item-info-h4 {
+  color: #333;
+}
+
+.ix-email-mock-div {
+  height: 40px;
+}
+
+.ix-retail-badge-2x1 {
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  top: -24px;
+}
+
+.ix-retail-coupon-p {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ix-retail-coupon-div {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.ix-retail-coupon-div-2 {
+  margin-top: 15px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #E60000;
+}
+
+.ix-retail-footer-fluid-p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.ix-retail-legals {
+  color: #666;
+  margin-top: 40px;
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.ix-email-mock-header-div {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #555;
+}
+
+.ix-tech-hero-p {
+  color: #00F3FF;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.ix-tech-exploded-container {
+  padding: 50px 20px;
+  width: 100%;
+}
+
+.ix-tech-exploded-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+}
+
+.ix-tech-callout {
+  top: 20%;
+  left: -5%;
+  border-bottom: 1px solid #00F3FF;
+}
+
+.ix-tech-callout-2 {
+  top: 60%;
+  right: -5%;
+  border-bottom: 1px solid #00F3FF;
+}
+
+.ix-tech-exploded-box-img {
+  width: 250px;
+  filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.3));
+}
+
+.ix-tech-exploded-container-h3 {
+  margin-top: 20px;
+  font-weight: 900;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.ix-tech-card-h4 {
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.ix-tech-benchmark-h4 {
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+.ix-tech-chart-div {
+  text-align: left;
+  font-size: 0.7rem;
+  color: #00F3FF;
+  margin-bottom: 5px;
+}
+
+.ix-tech-chart-div-2 {
+  height: 12px;
+  background: #111;
+  border-radius: 6px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.ix-tech-chart-div-3 {
+  height: 100%;
+  background: linear-gradient(90deg, #9D00FF, #00F3FF);
+  width: 98%;
+  box-shadow: 0 0 10px #00F3FF;
+}
+
+.ix-tech-chart-div-4 {
+  text-align: left;
+  font-size: 0.7rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.ix-tech-chart-div-5 {
+  height: 100%;
+  background: #333;
+  width: 64%;
+}
+
+.ix-tech-terminal-footer-div {
+  margin-bottom: 10px;
+}
+
+.ix-tech-terminal-footer-span {
+  color: #39ff14;
+  font-weight: bold;
+}
+
+.ix-tech-terminal-footer-div-2 {
+  margin: 20px 0;
+}
+
+.ix-tech-terminal-footer-a {
+  color: #00F3FF;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.ix-tech-terminal-footer-div-3 {
+  color: #444;
+}
+
+.ix-fintech-hero-overlay-p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.ix-fintech-benefits-container-h {
+  margin-bottom: 25px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.ix-fintech-invest-banner-h2 {
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.ix-fintech-invest-banner-p {
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.ix-fintech-invest-banner-a {
+  background: #fff;
+  color: #001A3D;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 0.8rem;
+}
+
+.ix-fintech-app-section-p {
+  font-weight: 700;
+  margin-bottom: 20px;
+}

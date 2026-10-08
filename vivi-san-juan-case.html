@@ -395,6 +395,23 @@
         width: 100%;
       }
     }
+
+    /* =============================================== */
+    /* ESTILOS MOVIDOS DESDE vivi-san-juan-case.html (antes inline) */
+    /* =============================================== */
+    .vs-dynamic-content-div {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .vs-dynamic-content-video {
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      object-fit: cover;
+      pointer-events: none;
+    }
   </style>
 </head>
 
@@ -480,9 +497,9 @@
     <div class="dynamic-content">
       <h2>Formato Dinámico (DOOH y Social)</h2>
       <p>Expansión a Social Media y DOOH. Integración de contenido dinámico en formato vertical (9:16) para maximizar el alcance en ecosistemas digitales.</p>
-      <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
-        <video width="315" height="560" src="imagenes/Publicidad Via Publica/via/vid_v1.mp4" autoplay loop muted playsinline style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: cover; pointer-events: none;"></video>
-        <video width="315" height="560" src="imagenes/Publicidad Via Publica/via/Corazon.mp4" autoplay loop muted playsinline style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: cover; pointer-events: none;"></video>
+      <div class="vs-dynamic-content-div">
+        <video width="315" height="560" src="imagenes/Publicidad Via Publica/via/vid_v1.mp4" autoplay loop muted playsinline class="vs-dynamic-content-video"></video>
+        <video width="315" height="560" src="imagenes/Publicidad Via Publica/via/Corazon.mp4" autoplay loop muted playsinline class="vs-dynamic-content-video"></video>
       </div>
     </div>
   </section>
