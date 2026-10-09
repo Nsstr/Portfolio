@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Néstor Tártalo — CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    :root { --ink: #141414; --muted: #5f5b54; --line: #d9d3c7; --accent: #e8452c; --paper: #fbf9f4; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #fff; }
+    body { font-family: 'Inter Tight', sans-serif; color: var(--ink); font-size: 9.2pt; line-height: 1.42; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { width: 210mm; height: 297mm; padding: 14mm 15mm 12mm; position: relative; overflow: hidden; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+    h1, h2, h3 { font-family: 'Fraunces', serif; }
+
+    /* Encabezado */
+    header { display: grid; grid-template-columns: 30mm 1fr; gap: 6mm; align-items: center; padding-bottom: 6mm; border-bottom: 1.2pt solid var(--ink); }
+    .photo { width: 30mm; height: 36mm; border-radius: 2mm; background: #222 url('../imagenes/hero.webp') 16% 30% / cover no-repeat; filter: grayscale(1); }
+    header h1 { font-size: 30pt; font-weight: 800; line-height: 1; letter-spacing: -0.5pt; }
+    header .role { font-size: 11pt; margin-top: 2mm; }
+    header .role em { font-family: 'Fraunces', serif; color: var(--accent); }
+    .contact { display: flex; flex-wrap: wrap; gap: 1.2mm 5mm; margin-top: 3mm; font-size: 8.4pt; color: var(--muted); }
+    .contact a { color: var(--ink); text-decoration: none; }
+
+    /* Cuerpo */
+    .grid { display: grid; grid-template-columns: 1fr 58mm; gap: 8mm; margin-top: 6mm; }
+    .label { font-size: 7.2pt; letter-spacing: 1.2pt; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 2.5mm; display: block; }
+    section + section { margin-top: 5.5mm; }
+    .summary { font-size: 9.8pt; line-height: 1.5; }
+    .job { margin-bottom: 3.8mm; }
+    .job-head { display: flex; justify-content: space-between; gap: 4mm; align-items: baseline; }
+    .job h3 { font-size: 10.6pt; font-weight: 600; line-height: 1.2; }
+    .job .when { font-size: 8pt; color: var(--muted); white-space: nowrap; }
+    .job .where { font-size: 8.4pt; color: var(--muted); margin-bottom: 1mm; }
+    .job ul { padding-left: 3.6mm; }
+    .job li { margin-bottom: 0.6mm; }
+    .sub { margin: 1.6mm 0 0 0; padding-left: 3mm; border-left: 1pt solid var(--line); }
+    .sub + .sub { margin-top: 2.4mm; }
+    .sub h4 { font-size: 9.2pt; font-weight: 600; }
+    .sub h4 span { font-weight: 400; color: var(--muted); font-size: 8pt; }
+
+    aside .box { background: var(--paper); border: 0.6pt solid var(--line); border-radius: 2mm; padding: 4mm; }
+    aside .box + .box { margin-top: 4mm; }
+    .wins { list-style: none; }
+    .wins li { padding: 1.8mm 0; border-bottom: 0.6pt solid var(--line); }
+    .wins li:last-child { border-bottom: none; padding-bottom: 0; }
+    .wins b { display: block; font-family: 'Fraunces', serif; font-size: 13pt; line-height: 1.1; }
+    .wins li:first-child b { color: var(--accent); }
+    .plain { list-style: none; }
+    .plain li { margin-bottom: 1mm; }
+    .quote { font-family: 'Fraunces', serif; font-style: italic; font-size: 9.6pt; line-height: 1.35; }
+    .quote small { display: block; font-family: 'Inter Tight', sans-serif; font-style: normal; font-size: 7.8pt; color: var(--muted); margin-top: 1.5mm; }
+    footer { position: absolute; left: 15mm; right: 15mm; bottom: 8mm; display: flex; justify-content: space-between; font-size: 7.6pt; color: var(--muted); border-top: 0.6pt solid var(--line); padding-top: 2mm; }
+  </style>
+</head>
+<body>
+  <!-- Página 1 -->
+  <div class="page">
+    <header>
+      <div class="photo" role="img" aria-label="Néstor Tártalo"></div>
+      <div>
+        <h1>Néstor Tártalo</h1>
+        <p class="role">Diseño y Comunicación · Liderazgo de equipos · Retail — <em>diseñador que ya lidera</em></p>
+        <div class="contact">
+          <span>San Juan, Argentina</span>
+          <a href="https://wa.me/541169620563">+54 9 11 6962-0563</a>
+          <a href="mailto:tartalonestor@gmail.com">tartalonestor@gmail.com</a>
+          <a href="https://nsstr.github.io/Portfolio/">nsstr.github.io/Portfolio</a>
+          <a href="https://www.linkedin.com/in/n%C3%A9stort%C3%A1rtalo/">linkedin.com/in/néstortártalo</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section>
+          <span class="label">Perfil</span>
+          <p class="summary">Diseñador gráfico y líder de equipos en retail. Más de 20 años coordinando personas, de Sheraton a Falabella y GDN AR, y diez años diseñando marcas, piezas de vía pública y video para clientes reales. Distinguido Líder del Año 2025 en GDN AR. Uso IA generativa para crear el material base y ganar ritmo; el armado, la intención y el criterio de cada pieza los pongo yo. Busco liderar diseño y comunicación.</p>
+        </section>
+
+        <section>
+          <span class="label">Experiencia</span>
+          <div class="job">
+            <div class="job-head"><h3>Gerente de Disponibilidad al Cliente</h3><span class="when">dic 2022 – actualidad</span></div>
+            <p class="where">GDN AR (ChangoMás) · San Juan</p>
+            <ul>
+              <li>Lidero la operación diaria de la sucursal y a su equipo para asegurar la disponibilidad de productos y cumplir los KPIs del negocio.</li>
+              <li>Desarrollé herramientas propias: Crew Retail, app web que automatiza horarios, turnos y horas del equipo, y un sistema de reporte de huecos en góndola (Firebase y JavaScript).</li>
+              <li>Gestiono el circuito de pantallas de la sucursal. Convertí la cartelería fija del muro de LED en video por iniciativa propia.</li>
+              <li>Produzco campañas locales con IA generativa y armado tradicional (Black Friday, Club del Intercambio): −70 % de tiempo de producción.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-head"><h3>Diseñador gráfico y productor audiovisual</h3><span class="when">mar 2016 – dic 2025</span></div>
+            <p class="where">Freelance · Buenos Aires y San Juan</p>
+            <ul>
+              <li>Identidad visual para negocios: Soul Café, Zyra Accesorios, Estilo Rústico y NG Amoblamientos.</li>
+              <li>Identidad y arte de tapa para las bandas Evaristo, adoptada por sus seguidores en merchandising y tatuajes, y Venero.</li>
+              <li>Guía gastronómica impresa: maquetación, estética de marca y planificación de contenido.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-head"><h3>Supervisor y coordinador de sucursal</h3><span class="when">dic 2021 – dic 2022</span></div>
+            <p class="where">Alumetal S.A. · Logística · San Juan</p>
+            <ul>
+              <li>Capacitación de nuevos ingresos, informes de cumplimiento de métricas y planificación de abastecimiento entre sucursales.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="box">
+          <span class="label">Logros</span>
+          <ul class="wins">
+            <li><b>Líder del Año 2025</b>Cultura Más · GDN AR</li>
+            <li><b>NPS 100 %</b>Satisfacción en e-commerce y piso de ventas · Falabella</li>
+            <li><b>−70 %</b>Tiempo de producción con IA y armado tradicional</li>
+            <li><b>20+ años</b>Coordinando equipos en retail y hotelería</li>
+            <li><b>14</b>Recomendaciones en LinkedIn de jefes, pares y su equipo</li>
+          </ul>
+        </div>
+        <div class="box">
+          <span class="label">Herramientas</span>
+          <ul class="plain">
+            <li>Photoshop, Illustrator y After Effects (avanzado)</li>
+            <li>Adobe XD</li>
+            <li>IA generativa para imagen y video</li>
+            <li>JavaScript y Firebase</li>
+            <li>Excel avanzado y Power BI</li>
+          </ul>
+        </div>
+        <div class="box">
+          <p class="quote">"Sabe liderar y acompañar ese rol, se destaca por adaptarse a los distintos escenarios sin dificultad."<small>Lucía Corsich · Jefa de Retail, Falabella</small></p>
+        </div>
+      </aside>
+    </div>
+    <footer><span>Néstor Tártalo · CV</span><span>1 / 2</span></footer>
+  </div>
+
+  <!-- Página 2 -->
+  <div class="page">
+    <div class="grid" style="margin-top:0">
+      <main>
+        <section>
+          <span class="label">Experiencia (continuación)</span>
+          <div class="job">
+            <div class="job-head"><h3>Falabella Argentina</h3><span class="when">sep 2010 – abr 2021</span></div>
+            <p class="where">10 años y 8 meses · Buenos Aires y San Juan</p>
+            <div class="sub">
+              <h4>Jefe de Tesorería y Línea de Cajas <span>· abr 2019 – abr 2021</span></h4>
+              <ul>
+                <li>Lideré a supervisores y colaboradores de cajas y tesorería: dotación, organización y planificación.</li>
+                <li>Administración de presupuesto y seguimiento de planes diarios y mensuales.</li>
+                <li>Mejoras de procesos de cambios y devoluciones a partir de métricas de NPS (Medallia).</li>
+              </ul>
+            </div>
+            <div class="sub">
+              <h4>Jefe de Operaciones Click &amp; Collect <span>· nov 2018 – mar 2019</span></h4>
+              <ul>
+                <li>Llevé la satisfacción (NPS) del servicio al 100 % en e-commerce.</li>
+                <li>Optimización de cambios y devoluciones en tienda física.</li>
+              </ul>
+            </div>
+            <div class="sub">
+              <h4>Jefe de Ventas <span>· abr 2018 – oct 2018</span></h4>
+              <ul>
+                <li>Gestión del equipo de ventas, con satisfacción (NPS) al 100 % en el piso de ventas.</li>
+                <li>Planificación de stock por temporada, análisis de competencia y seguimiento de precios.</li>
+              </ul>
+            </div>
+            <div class="sub">
+              <h4>Vendedor integral <span>· sep 2010 – mar 2018</span></h4>
+              <ul>
+                <li>Armado visual de eventos, cartelería y venta en tienda y e-commerce.</li>
+                <li>Diseñé el Pin Aniversario de la tienda, producido y entregado a todos los colaboradores.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job-head"><h3>Auxiliar de operaciones</h3><span class="when">jul – ago 2021</span></div>
+            <p class="where">Andreani Grupo Logístico · San Juan</p>
+          </div>
+
+          <div class="job">
+            <div class="job-head"><h3>Asistente de Supervisor Steward</h3><span class="when">feb 2004 – ago 2010</span></div>
+            <p class="where">Sheraton · Pilar</p>
+            <ul>
+              <li>Coordinación de colaboradores e insumos para eventos privados, y capacitación de nuevos ingresos.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="box">
+          <span class="label">Educación</span>
+          <ul class="plain">
+            <li><b>Tecnicatura en Diseño Gráfico</b><br>Instituto Superior de Arte y Creatividad de Pilar · 2014–2016</li>
+            <li style="margin-top:2mm"><b>Bachiller en Arte, Diseño y Comunicación</b><br>Instituto Superior Mariano Moreno · 2003</li>
+            <li style="margin-top:2mm"><b>Fotografía</b> · curso intermedio</li>
+          </ul>
+        </div>
+        <div class="box">
+          <span class="label">Certificaciones</span>
+          <ul class="plain">
+            <li>Google AI Fundamentals · Google Skillshop</li>
+            <li>Prompt Engineering for ChatGPT · LinkedIn Learning</li>
+            <li>Domina la IA con Gemini</li>
+            <li>Prompt Engineering: IA generativa</li>
+            <li>Excel avanzado para expertos</li>
+            <li>Argentina Programa 4.0</li>
+            <li>Adobe XD CC esencial</li>
+          </ul>
+        </div>
+        <div class="box">
+          <span class="label">Idiomas</span>
+          <ul class="plain">
+            <li>Español · nativo</li>
+            <li>Inglés · básico</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+    <footer><span>Portfolio: nsstr.github.io/Portfolio</span><span>2 / 2</span></footer>
+  </div>
+</body>
+</html>
