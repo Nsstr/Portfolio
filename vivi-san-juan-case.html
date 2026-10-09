@@ -412,6 +412,15 @@
       object-fit: cover;
       pointer-events: none;
     }
+
+    /* Hero en móvil: ocupa todo el ancho (igual que el inicio) */
+    @media (max-width: 768px) {
+      .hero-content {
+        max-width: 100%;
+        padding: 0;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
