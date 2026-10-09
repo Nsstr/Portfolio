@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tarjeta de vista previa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,800;1,9..144,400&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    body { display: grid; grid-template-columns: 430px 1fr; background: #f4f1ea; color: #141414; font-family: 'Inter Tight', sans-serif; }
+    .photo { background: #1a1a1a url('../hero.webp') 16% 30% / cover no-repeat; filter: grayscale(1) contrast(1.05); }
+    .txt { padding: 56px 64px 48px; display: flex; flex-direction: column; }
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; color: #6b675f; border-top: 2px solid #141414; padding-top: 16px; }
+    h1 { font-family: 'Fraunces', serif; font-weight: 800; font-size: 92px; line-height: 0.98; letter-spacing: -1px; margin-top: 40px; }
+    h1 em { font-weight: 400; font-style: italic; color: #e8452c; }
+    .name { font-size: 30px; font-weight: 600; margin-top: 26px; }
+    .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #d9d3c7; padding-top: 18px; }
+    .award { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 600; }
+    .award span { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #e8452c; }
+    .url { font-family: 'JetBrains Mono', monospace; font-size: 18px; color: #6b675f; }
+  </style>
+</head>
+<body>
+  <div class="photo"></div>
+  <div class="txt">
+    <p class="label">Líder de Diseño y Contenido</p>
+    <h1>Diseñador que <em>ya</em> lidera.</h1>
+    <p class="name">Néstor Tártalo</p>
+    <div class="foot">
+      <p class="award"><span></span>Líder del Año 2025 · GDN AR</p>
+      <p class="url">nestortartalo.vercel.app</p>
+    </div>
+  </div>
+</body>
+</html>
