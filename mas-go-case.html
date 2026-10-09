@@ -330,12 +330,8 @@
     }
     
     .bento-box h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
       color: #FFFFFF;
       margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
     }
     
     .bento-box p {
@@ -781,10 +777,7 @@
     }
 
     .pricing-gallery {
-      flex: 1.5;
-      display: flex;
       gap: 20px;
-      justify-content: center;
     }
 
     .pricing-info {
@@ -793,8 +786,7 @@
       justify-content: center;
     }
 
-    .pricing-img {
-      width: 48%; /* Dual images */
+    .pricing-img { /* Dual images */
       height: auto;
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.5);
@@ -812,12 +804,6 @@
     @media (max-width: 900px) {
       .pricing-block.reverse-block {
         flex-direction: column;
-      }
-      .pricing-gallery, .pricing-info {
-        flex: 1 1 100%;
-      }
-      .pricing-img {
-        width: 100%;
       }
       .grid-split-layout {
         grid-template-columns: 1fr;
@@ -902,7 +888,6 @@
     .mg-interactive-card-p {
       font-size: 1.3rem !important;
       line-height: 1.8 !important;
-      margin: 0;
     }
 
     .mg-bento-box-h3 {
@@ -910,7 +895,6 @@
       font-size: 2.2rem !important;
       letter-spacing: 1px !important;
       line-height: 1.1;
-      margin-bottom: 20px;
       text-transform: none !important;
     }
 
@@ -948,7 +932,6 @@
     }
 
     .mg-pricing-img {
-      width: 100%;
       transition: transform 0.6s ease-in-out;
       display: block;
       transform-origin: center center;
@@ -957,12 +940,10 @@
     .mg-pricing-img-2 {
       box-shadow: 0 15px 35px rgba(0,0,0,0.5);
       border-radius: 12px;
-      width: 100%;
       object-fit: cover;
     }
 
     .mg-pricing-img-3 {
-      width: 100%;
       transition: transform 0.6s ease-in-out;
       display: block;
       transform-origin: center center;
