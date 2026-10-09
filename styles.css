@@ -28,7 +28,7 @@ body {
 header.hero {
   height: 100vh;
   background-image: url("imagenes/hero.webp");
-  background-position: left center !important;
+  background-position: left center;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -41,7 +41,7 @@ header.hero {
 
 @media (max-width: 768px) {
   header.hero {
-    background-position: center center !important;
+    background-position: center center;
     justify-content: center;
     text-align: center;
   }
@@ -998,7 +998,7 @@ footer::before {
 /* =============================================== */
 
 #project-modal, #info-modal {
-  display: none !important;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -1011,9 +1011,9 @@ footer::before {
   overflow: hidden;
 }
 
-#project-modal[style*="display: flex"], 
-#info-modal[style*="display: flex"] {
-  display: flex !important;
+#project-modal.is-open,
+#info-modal.is-open {
+  display: flex;
 }
 
 .modal-content {
@@ -1169,9 +1169,9 @@ footer::before {
 /* Asegurar que las imágenes dentro del modal se ajusten */
 #modal-main-image img {
   max-height: 100%;
-  width: auto !important;
+  width: auto;
   max-width: 100%;
-  object-fit: contain !important;
+  object-fit: contain;
 }
 
 /* =============================================== */

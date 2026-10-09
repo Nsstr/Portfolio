@@ -80,9 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const img = document.createElement('img');
       img.src = media.url;
       img.alt = `media ${index + 1}`;
-      img.style.width = "100%";
-      img.style.height = "100%";
-      img.style.objectFit = "contain";
       mainMediaContainer.appendChild(img);
 
       autoSlideTimeout = setTimeout(() => goNext(index, mediaList), 4000);
@@ -231,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       if (mediaList.length > 0) setMainMedia(0, mediaList);
-      modal.style.display = 'flex';
+      modal.classList.add('is-open');
     });
   });
 
@@ -275,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Abriendo modal de info');
       infoTitle.textContent = card.getAttribute('data-title') || "Info";
       infoText.textContent = card.getAttribute('data-info') || "Sin información adicional.";
-      infoModal.style.display = 'flex';
+      infoModal.classList.add('is-open');
     });
   });
 
@@ -289,14 +286,10 @@ document.addEventListener('DOMContentLoaded', function() {
     clearTimersAndPlayers();
     
     // Cerrar modal de imágenes si está abierto
-    if (modal && modal.style.display === 'flex') {
-      modal.style.display = 'none';
-    }
-    
+    if (modal) modal.classList.remove('is-open');
+
     // Cerrar modal de info si está abierto
-    if (infoModal && infoModal.style.display === 'flex') {
-      infoModal.style.display = 'none';
-    }
+    if (infoModal) infoModal.classList.remove('is-open');
     
     // Cerrar modal de Inbox si está abierto
     const inboxModal = document.getElementById('inbox-modal');
@@ -429,18 +422,6 @@ document.addEventListener('DOMContentLoaded', function() {
       this.style.zIndex = '';
     });
   });
-
-  // Ajuste de fondo del hero
-  function adjustHeroBackground() {
-    const hero = document.querySelector('header.hero');
-    if (!hero) return;
-    
-    const isMobile = window.innerWidth <= 768;
-    hero.style.backgroundPosition = isMobile ? '30% center' : 'left center';
-  }
-
-  window.addEventListener('resize', adjustHeroBackground);
-  adjustHeroBackground();
 
   // ===========================
   // INBOX SHOWCASE
