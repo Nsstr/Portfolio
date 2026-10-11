@@ -171,6 +171,11 @@
     .lb-panel h3 { font-family: var(--display); font-size: 1.6rem; margin: 4px 0 14px; }
     .lb-stage { display: flex; align-items: center; gap: 10px; }
     .lb-stage img { flex: 1; min-width: 0; max-height: 62vh; object-fit: contain; background: #e9e5dc; border-radius: 6px; }
+    #lb-video { flex: 1; min-width: 0; aspect-ratio: 16 / 9; max-height: 62vh; background: #000; border-radius: 6px; overflow: hidden; }
+    #lb-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .lb-thumbs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+    .lb-thumbs button { flex: none; width: 96px; aspect-ratio: 16 / 9; border: 2px solid transparent; border-radius: 4px; padding: 0; background: #e9e5dc center / cover; cursor: pointer; opacity: 0.6; }
+    .lb-thumbs button.on { border-color: var(--ink); opacity: 1; }
     .lb-nav { border: 1px solid var(--ink); background: var(--paper); border-radius: 50%; width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer; flex: none; }
     .lb-panel p { color: var(--muted); margin: 14px 0; font-size: 0.95rem; }
     .lb-panel .close { float: right; border: none; background: none; font-size: 1.6rem; cursor: pointer; line-height: 1; }
@@ -480,10 +485,11 @@
       <div class="lb-stage">
         <button class="lb-nav" id="lb-prev" aria-label="Anterior">←</button>
         <img id="lb-img" alt="" />
+        <div id="lb-video" hidden></div>
         <button class="lb-nav" id="lb-next" aria-label="Siguiente">→</button>
       </div>
       <p id="lb-desc"></p>
-      <div id="lb-videos"></div>
+      <div class="lb-thumbs" id="lb-thumbs"></div>
     </div>
   </div>
 
@@ -499,32 +505,75 @@
     // Archivo: lee los proyectos del sitio actual para no duplicar contenido
     const fromRoot = p => p;
     const lightbox = document.getElementById('lightbox');
-    const lb = { img: document.getElementById('lb-img'), title: document.getElementById('lb-title'), desc: document.getElementById('lb-desc'), count: document.getElementById('lb-count'), videos: document.getElementById('lb-videos') };
-    let current = null, index = 0;
-    const showImage = () => {
-      const imgs = current.images;
-      lb.img.src = imgs[index]; lb.img.alt = current.title + ' ' + (index + 1);
-      lb.count.textContent = imgs.length > 1 ? (index + 1) + ' / ' + imgs.length : '';
-      document.getElementById('lb-prev').hidden = document.getElementById('lb-next').hidden = imgs.length < 2;
+    const lb = { img: document.getElementById('lb-img'), video: document.getElementById('lb-video'), title: document.getElementById('lb-title'), desc: document.getElementById('lb-desc'), count: document.getElementById('lb-count'), thumbs: document.getElementById('lb-thumbs') };
+    const ytId = url => (url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/) || [])[1];
+    let current = null, index = 0, player = null, ytReady = null;
+    // La API de YouTube avisa cuándo termina un video para pasar al siguiente
+    const loadYT = () => ytReady || (ytReady = new Promise(resolve => {
+      if (window.YT && YT.Player) return resolve();
+      window.onYouTubeIframeAPIReady = resolve;
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    }));
+    const stopVideo = () => {
+      if (player) { try { player.destroy(); } catch {} player = null; }
+      lb.video.innerHTML = '';
     };
+    const playVideo = id => {
+      const slot = document.createElement('div');
+      lb.video.appendChild(slot);
+      const shown = current.media[index];
+      loadYT().then(() => {
+        if (current.media[index] !== shown || !lightbox.classList.contains('open')) return;
+        player = new YT.Player(slot, {
+          videoId: id,
+          playerVars: { autoplay: 1, mute: 1, rel: 0, modestbranding: 1, playsinline: 1, origin: location.origin },
+          events: {
+            onReady: e => { e.target.mute(); e.target.playVideo(); },
+            onStateChange: e => { if (e.data === YT.PlayerState.ENDED && current.media.length > 1) step(1); }
+          }
+        });
+      });
+    };
+    // Imágenes y videos comparten el mismo visor; los videos se reproducen embebidos
+    const showMedia = () => {
+      const media = current.media, m = media[index];
+      lb.img.hidden = m.type !== 'image';
+      lb.video.hidden = m.type !== 'video';
+      stopVideo();
+      if (m.type === 'image') { lb.img.src = m.src; lb.img.alt = current.title + ' ' + (index + 1); }
+      else playVideo(m.id);
+      lb.count.textContent = media.length > 1 ? (index + 1) + ' / ' + media.length : '';
+      document.getElementById('lb-prev').hidden = document.getElementById('lb-next').hidden = media.length < 2;
+      [...lb.thumbs.children].forEach((t, i) => t.classList.toggle('on', i === index));
+    };
+    const step = d => { index = (index + d + current.media.length) % current.media.length; showMedia(); };
     const openProject = p => {
       current = p; index = 0;
+      p.media = [...p.images.map(src => ({ type: 'image', src })), ...p.videos.map(ytId).filter(Boolean).map(id => ({ type: 'video', id }))];
       lb.title.textContent = p.title; lb.desc.textContent = p.description;
-      lb.videos.innerHTML = p.videos.map((v, i) => `<a class="btn" href="${v}" target="_blank">▶ Ver video ${p.videos.length > 1 ? i + 1 : ''}</a>`).join(' ');
-      lb.img.hidden = !p.images.length;
-      if (p.images.length) showImage(); else lb.count.textContent = '';
+      lb.thumbs.innerHTML = '';
+      if (p.media.length > 1) p.media.forEach((m, i) => {
+        const t = document.createElement('button');
+        t.setAttribute('aria-label', (m.type === 'video' ? 'Video ' : 'Imagen ') + (i + 1));
+        t.style.backgroundImage = `url('${m.type === 'video' ? `https://img.youtube.com/vi/${m.id}/mqdefault.jpg` : m.src}')`;
+        t.addEventListener('click', () => { index = i; showMedia(); });
+        lb.thumbs.appendChild(t);
+      });
+      if (p.media.length) showMedia(); else { lb.img.hidden = lb.video.hidden = true; lb.count.textContent = ''; }
       lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false');
     };
-    const closeLb = () => { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); };
+    const closeLb = () => { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); stopVideo(); };
     document.getElementById('lb-close').addEventListener('click', closeLb);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
-    document.getElementById('lb-prev').addEventListener('click', () => { index = (index - 1 + current.images.length) % current.images.length; showImage(); });
-    document.getElementById('lb-next').addEventListener('click', () => { index = (index + 1) % current.images.length; showImage(); });
+    document.getElementById('lb-prev').addEventListener('click', () => step(-1));
+    document.getElementById('lb-next').addEventListener('click', () => step(1));
     document.addEventListener('keydown', e => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape') closeLb();
-      if (e.key === 'ArrowRight' && current.images.length > 1) document.getElementById('lb-next').click();
-      if (e.key === 'ArrowLeft' && current.images.length > 1) document.getElementById('lb-prev').click();
+      if (e.key === 'ArrowRight' && current.media.length > 1) step(1);
+      if (e.key === 'ArrowLeft' && current.media.length > 1) step(-1);
     });
 
     // Portadas y títulos para las tarjetas que en el sitio actual usan video
