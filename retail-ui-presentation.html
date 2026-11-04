@@ -912,6 +912,33 @@ body::before {
     margin-right: 6px;
   }
 </style>
+  <style id="mobile-fix">
+    /* Ajustes solo para celular: el escritorio no cambia */
+    @media (max-width: 767px) {
+      .back { position: absolute; top: 8px; left: 16px; min-height: 44px; font-size: 13px; z-index: 5; background: rgba(0,0,0,.45); padding: 0 12px; border-radius: 22px; color: #fff; }
+      .nav { bottom: max(10px, env(safe-area-inset-bottom)); gap: 4px; padding: 0 8px; max-width: calc(100vw - 32px); box-sizing: border-box; }
+      .nb { min-width: 44px; height: 44px; padding: 0; font-size: 1.4rem; }
+      .nd-wrap { gap: 0; }
+      .nd, .nd.on { position: relative; width: 16px; height: 44px; background: transparent; transform: none; border-radius: 0; }
+      .nd::before { content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px; border-radius: 50%; background: rgba(255,255,255,.28); }
+      .nd.on::before { background: var(--ui-terracota); transform: scale(1.25); }
+      .nc { min-width: 28px; font-size: 13px; }
+      .deck { height: 100dvh; }
+      .slide:has(.split) { background: #09090B; }
+      .slide .split { flex-direction: column; height: calc(100% - 124px); margin-top: 60px; overflow-y: auto; }
+      :is(#s1,#s2,#s3,#s4,#s5,#s6,#s7,#s8) .split .panel-img { flex: 0 0 34vh; order: 0; width: 100%; }
+      :is(#s1,#s2,#s3,#s4,#s5,#s6,#s7,#s8) .split .panel-text { flex: none; order: 1; overflow: visible; justify-content: flex-start; padding: 28px 16px 32px; }
+      .body, .type-def, .bento-caption, .drops-caption, .panel-text p, .panel-text h4 { font-size: 15px; }
+      :is(#s1,#s2,#s3,#s4,#s5,#s6,#s7,#s8) .c :is(.sub, .tag) { font-size: 13px; }
+      .ci a, .ci span { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; }
+      #s6 { background: #09090B; }
+      .price-cta-btn { min-height: 44px; }
+      .slide-container-eco { padding: 8px 16px 16px; box-sizing: border-box; height: calc(100% - 124px); margin-top: 60px; display: block; overflow-y: auto; }
+      .layout-wrapper-eco { justify-content: center; min-width: 0; height: 560px; margin-block: 16px; }
+      .desktop-section { display: none; }
+      .phone-device { width: min(100%, 320px); max-width: 100%; height: 100%; margin-inline: auto; }
+    }
+  </style>
 </head>
 <body>
 

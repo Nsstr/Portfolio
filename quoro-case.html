@@ -698,6 +698,19 @@
       gap: 0.5rem;
     }
   </style>
+  <style id="mobile-fix">
+    /* Ajustes solo para celular: el escritorio no cambia */
+    @media (max-width: 767px) {
+      .sticky-section, .sticky-right, .content-box { min-width: 0; max-width: 100%; }
+      .sticky-right, .content-box { box-sizing: border-box; }
+      .content-box { padding: 24px 20px; }
+      .hero-title { margin-left: 0; }
+      .text-secondary, .qr-text-secondary-3, .qr-text-secondary-6, .qr-text-secondary-7 { font-size: 15px; }
+      .badge-row { flex-wrap: wrap; }
+      .badge-row:hover { transform: none; }
+      .next-project a { display: inline-flex; align-items: center; min-height: 44px; }
+    }
+  </style>
 </head>
 <body>
 

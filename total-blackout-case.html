@@ -174,6 +174,13 @@
     }
     @media (prefers-reduced-motion: reduce) { .hero-logo { animation: none; } * { scroll-behavior: auto; } }
   </style>
+  <style id="mobile-fix">
+    /* Ajustes solo para celular: el escritorio no cambia */
+    @media (max-width: 767px) {
+      .back { position: absolute; }
+      .note { font-size: 15px; }
+    }
+  </style>
 </head>
 <body>
   <a href="index.html" class="back">← Portfolio</a>

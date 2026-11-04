@@ -1799,5 +1799,40 @@
       document.getElementById('lightbox-img').src = src;
     }
   </script>
+  <style id="mobile-fix">
+    /* Ajustes solo para celular: el escritorio no cambia */
+    @media (max-width: 767px) {
+      html { font-size: 16px; }
+      .sidebar-nav { display: none; }
+      .scroll-container { height: auto; overflow: visible; scroll-snap-type: none; }
+      section, .bt-ux-comparison-section { min-height: 0; padding: 56px 16px; scroll-snap-align: none; }
+      section:first-of-type { padding-top: 84px; }
+      .back-btn { position: absolute; top: 16px; left: 16px; min-height: 44px; box-sizing: border-box; font-size: 15px; }
+      .hero-bento-wrapper, .bento-grid, .bt-bento-grid { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+      .hero-bento-left { width: min(100%, 300px); max-height: none; }
+      .hero-info-box, .bento-card, .bt-bento-card { padding: 24px; }
+      .hero-info-box.top-box h1 { font-size: 2rem; }
+      .hero-info-box.top-box p { font-size: 1.05rem; }
+      .hero-info-box.bottom-box p, .bento-card p, .bento-card .bt-bento-card-p, .bt-bento-card-p-2, .bt-ux-comparison-container-p, .bt-two-column-p, .contact-info p { font-size: 15px; }
+      .bt-hero-info-box-h3, .bento-card .bt-bento-card-h3, .bt-slide-title { font-size: 1.6rem; }
+      .bt-content-box-h2, .bt-content-box-h2-2, .bt-content-box-h2-4, .bt-ux-comparison-container-h2 { font-size: 2rem; }
+      .hero-tag { font-size: 0.85rem; }
+      .vision-text { font-size: 1.1rem; line-height: 1.7; }
+      .table-col { padding: 12px 8px; min-width: 0; font-size: 15px; }
+      .process-col, .traditional-col, .ia-col { font-size: 15px; }
+      .impact-number { font-size: 6.5rem; }
+      .impact-text { font-size: 1.3rem; }
+      .bt-bento-card-2 { height: 340px; }
+      .ux-comparison-container { padding: 0; }
+      .ux-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+      .phone-mockup { max-height: none; width: min(78vw, 300px); }
+      .bt-two-column { flex-direction: column; gap: 36px; padding: 0; }
+      .bt-two-column-div { width: 100%; min-width: 0; flex: none; height: auto; }
+      .bt-two-column-div-2 { order: -1; max-width: none; padding: 0; }
+      .bt-two-column-h3, .bt-two-column-h3-2 { font-size: 16px; }
+      .gmail-mockup-container { width: 100%; max-width: 100%; box-sizing: border-box; }
+      .bt-contact-info-a { display: inline-flex; align-items: center; min-height: 44px; }
+    }
+  </style>
 </body>
 </html>

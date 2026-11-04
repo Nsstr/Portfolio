@@ -216,6 +216,16 @@
       section.block { padding: 64px 0; }
     }
   </style>
+  <style id="mobile-fix">
+    /* Ajustes solo para celular: el escritorio no cambia */
+    @media (max-width: 767px) {
+      .btn { min-height: 44px; justify-content: center; font-size: 0.94rem; }
+      .top .btn { padding-block: 0; font-size: 0.8rem; }
+      .initiative p, .post p, .all-recs li, .decision, blockquote footer { font-size: 15px; }
+      .all-recs summary { padding-block: 12px; font-size: 15px; }
+      .own-voice .more { display: inline-flex; align-items: center; min-height: 44px; }
+    }
+  </style>
 </head>
 <body>
   <header class="top">

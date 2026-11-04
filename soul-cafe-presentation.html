@@ -269,6 +269,30 @@ h2.slide-title em{font-style:italic;font-weight:300;color:var(--cafe-mid)}
 #s1 .sub{animation-delay:.45s}
 #s1 .tag{animation-delay:.6s}
 </style>
+  <style id="mobile-fix">
+    /* Ajustes solo para celular: el escritorio no cambia */
+    @media (max-width: 767px) {
+      .back { position: absolute; top: 8px; left: 16px; min-height: 44px; font-size: 13px; z-index: 5; background: rgba(0,0,0,.45); padding: 0 12px; border-radius: 22px; color: #fff; }
+      .nav { bottom: max(10px, env(safe-area-inset-bottom)); gap: 4px; padding: 0 8px; max-width: calc(100vw - 32px); box-sizing: border-box; }
+      .nb { min-width: 44px; height: 44px; padding: 0; font-size: 1.4rem; }
+      .nd-wrap { gap: 0; }
+      .nd, .nd.on { position: relative; width: 16px; height: 44px; background: transparent; transform: none; border-radius: 0; }
+      .nd::before { content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px; border-radius: 50%; background: rgba(253,248,240,.32); }
+      .nd.on::before { background: var(--cream); transform: scale(1.25); }
+      .nc { min-width: 28px; font-size: 13px; }
+      .deck { height: 100dvh; }
+      .slide:has(.split) { background: #1c1410; }
+      .slide .split { flex-direction: column; height: calc(100% - 124px); margin-top: 60px; overflow-y: auto; }
+      :is(#s1,#s2,#s3,#s4,#s5,#s6,#s7,#s8) .split .panel-img { flex: 0 0 34vh; order: 0; width: 100%; }
+      :is(#s1,#s2,#s3,#s4,#s5,#s6,#s7,#s8) .split .panel-text { flex: none; order: 1; overflow: visible; justify-content: flex-start; padding: 28px 16px 32px; }
+      .body, .type-def, .bento-caption, .drops-caption, .panel-text p, .panel-text h4 { font-size: 15px; }
+      :is(#s1,#s2,#s3,#s4,#s5,#s6,#s7,#s8) .c :is(.sub, .tag) { font-size: 13px; }
+      .ci a, .ci span { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; }
+      .nav { background: rgba(28,20,16,.82); }
+      .type-row { grid-template-columns: 70px minmax(0, 1fr); }
+      #s3 .panel-img { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 

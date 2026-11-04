@@ -22,6 +22,18 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet" />
+  <style id="mobile-fix">
+    /* Ajustes solo para celular: el escritorio no cambia */
+    @media (max-width: 767px) {
+      .hero-subtitle, .tagline-single, .pilar-card p, .pilar-card p em, .sobre-mi-footer, .testimonial-author span, .featured-description { font-size: 15px; }
+      .btn-executive-cv { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font-size: 14px; }
+      .floating-contact-btn { min-height: 44px; }
+      footer { padding-bottom: 76px; }
+      footer p { padding-inline: 16px; box-sizing: border-box; }
+      #modal-title, #info-modal-title { padding-inline: 44px; box-sizing: border-box; }
+      .close-button, .close-info { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+    }
+  </style>
 </head>
 
 <body>
