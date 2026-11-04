@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Total Blackout: campaña conceptual de Black Friday para SuperTotal. Tres videos verticales con concepto, sistema visual y dirección de arte con IA. Caso de Néstor Tártalo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Néstor Tártalo" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:title" content="Total Blackout — Campaña de Black Friday" />
+  <meta property="og:description" content="Una tienda a oscuras, una cuenta regresiva y una palanca. Campaña conceptual en tres videos verticales para la marca ficticia SuperTotal." />
+  <meta property="og:url" content="https://nestortartalo.vercel.app/total-blackout-case.html" />
+  <meta property="og:image" content="https://nestortartalo.vercel.app/imagenes/total-blackout/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Total Blackout — Caso de Estudio</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coral: #ff6e50;
+      --yellow: #f0cd14;
+      --ink: #0e0d10;
+      --ink-2: #17151a;
+      --line: rgba(255, 255, 255, 0.09);
+      --text: #f4f1ee;
+      --muted: #a9a3a0;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--text);
+      font-family: 'Poppins', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+    .back {
+      position: fixed; top: 16px; left: 16px; z-index: 50;
+      padding: 10px 18px; border-radius: 999px;
+      background: rgba(14, 13, 16, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--line); text-decoration: none; font-size: 14px; font-weight: 500;
+    }
+    .back:hover { border-color: var(--coral); }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh; display: grid; place-items: center; text-align: center;
+      position: relative; padding: 96px 16px 64px; overflow: hidden;
+      background: radial-gradient(60% 45% at 50% 42%, rgba(255, 110, 80, 0.22), transparent 70%), var(--ink);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 4px);
+    }
+    .clock {
+      font-family: 'Courier New', monospace; font-weight: 700; letter-spacing: 0.08em;
+      color: #ffd9a8; text-shadow: 0 0 12px rgba(255, 170, 90, 0.7);
+      font-size: clamp(22px, 4vw, 32px); margin-bottom: 28px;
+    }
+    .hero-logo {
+      width: min(640px, 86vw); margin: 0 auto 28px;
+      filter: drop-shadow(0 0 18px rgba(255, 110, 80, 0.55)) drop-shadow(0 0 60px rgba(255, 110, 80, 0.35));
+      animation: ignite 2.4s ease-out both;
+    }
+    @keyframes ignite {
+      0% { opacity: 0; } 8% { opacity: 0.8; } 14% { opacity: 0.1; } 22% { opacity: 0.9; } 30% { opacity: 0.3; } 100% { opacity: 1; }
+    }
+    .hero p.lead { max-width: 640px; margin: 0 auto; color: var(--muted); font-size: clamp(16px, 2.2vw, 19px); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 24px; }
+    .tag { font-size: 13px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--text); }
+    .scroll-hint { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); font-size: 13px; color: var(--muted); }
+
+    section { padding: 96px 0; border-top: 1px solid var(--line); }
+    .eyebrow { color: var(--coral); font-weight: 600; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 12px; }
+    h2 { font-size: clamp(28px, 4.4vw, 46px); line-height: 1.15; margin: 0 0 20px; font-weight: 700; }
+    h3 { font-size: 20px; margin: 0 0 8px; font-weight: 600; }
+    p { margin: 0 0 16px; }
+    .muted { color: var(--muted); }
+
+    /* FEATURED */
+    .featured { display: grid; grid-template-columns: minmax(0, 380px) 1fr; gap: 56px; align-items: center; }
+    .phone {
+      position: relative; aspect-ratio: 9 / 16; width: 100%; border-radius: 28px; overflow: hidden;
+      background: #000; border: 1px solid var(--line);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(255, 110, 80, 0.15);
+    }
+    .phone iframe, .phone img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+    .play {
+      position: absolute; inset: 0; display: grid; place-items: center; cursor: pointer; border: 0; padding: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), transparent 50%); color: #fff;
+    }
+    .play span {
+      width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--coral); box-shadow: 0 0 30px rgba(255, 110, 80, 0.7); font-size: 26px; padding-left: 4px;
+    }
+    .play:focus-visible span { outline: 3px solid var(--yellow); outline-offset: 4px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: rgba(255, 110, 80, 0.14); color: var(--coral); margin-bottom: 16px;
+    }
+    .story { counter-reset: s; list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; }
+    .story li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; color: var(--muted); }
+    .story li::before {
+      counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 50%;
+      display: grid; place-items: center; font-weight: 700; font-size: 14px; color: var(--ink); background: var(--coral);
+    }
+    .story strong { color: var(--text); font-weight: 600; }
+
+    /* SYSTEM */
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+    .card { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+    .card p { color: var(--muted); font-size: 15px; margin: 0; }
+    .swatches { display: flex; gap: 8px; margin-bottom: 16px; }
+    .swatch { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--line); }
+    .plus {
+      width: 48px; height: 48px; border-radius: 50%; background: #3f3d42; position: relative; margin-bottom: 16px;
+      box-shadow: 0 0 22px rgba(240, 205, 20, 0.35);
+    }
+    .plus::before, .plus::after { content: ''; position: absolute; background: var(--yellow); left: 50%; top: 50%; transform: translate(-50%, -50%); }
+    .plus::before { width: 28px; height: 8px; } .plus::after { width: 8px; height: 28px; }
+    .seg { font-family: 'Courier New', monospace; font-weight: 700; font-size: 26px; color: #ffd9a8; text-shadow: 0 0 10px rgba(255, 170, 90, 0.7); margin-bottom: 16px; }
+    .type-sample { font-weight: 700; font-size: 34px; color: var(--coral); line-height: 1; margin-bottom: 4px; }
+    .type-sample + small { display: block; font-weight: 600; font-size: 12px; letter-spacing: 0.06em; margin-bottom: 16px; }
+
+    /* STILLS */
+    .stills { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 40px; }
+    .stills figure { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #000; }
+    .stills img { aspect-ratio: 9 / 16; object-fit: cover; width: 100%; transition: transform 0.4s ease; }
+    .stills figure:hover img { transform: scale(1.04); }
+    .stills figcaption { font-size: 12px; color: var(--muted); padding: 8px 10px; }
+
+    /* SERIES */
+    .series { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 40px; }
+    .series .item { display: grid; grid-template-columns: minmax(0, 240px) 1fr; gap: 24px; align-items: center; }
+    .series .phone { border-radius: 22px; }
+    .series .play span { width: 56px; height: 56px; font-size: 20px; }
+
+    /* PROCESS */
+    .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+    .step-n { font-weight: 800; font-size: 40px; color: rgba(255, 110, 80, 0.35); line-height: 1; margin-bottom: 12px; }
+    .tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+
+    .note { font-size: 14px; color: var(--muted); border-left: 3px solid var(--coral); padding: 4px 0 4px 16px; margin-top: 40px; }
+
+    footer { padding: 72px 0 96px; text-align: center; border-top: 1px solid var(--line); }
+    .btn {
+      display: inline-block; padding: 14px 28px; border-radius: 999px; background: var(--coral); color: #fff;
+      text-decoration: none; font-weight: 600; box-shadow: 0 0 30px rgba(255, 110, 80, 0.4);
+    }
+    .btn:hover { filter: brightness(1.08); }
+
+    @media (max-width: 960px) {
+      .featured { grid-template-columns: 1fr; gap: 40px; }
+      .featured .phone { max-width: 380px; margin-inline: auto; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .stills { grid-template-columns: repeat(3, 1fr); }
+      .series { grid-template-columns: 1fr; }
+      .process { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      section { padding: 72px 0; }
+      .grid-4 { grid-template-columns: 1fr; }
+      .stills { grid-template-columns: repeat(2, 1fr); }
+      .series .item { grid-template-columns: 1fr; }
+      .series .phone { max-width: 300px; margin-inline: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) { .hero-logo { animation: none; } * { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back">← Portfolio</a>
+
+  <header class="hero">
+    <div>
+      <div class="clock" aria-hidden="true">23:59:59</div>
+      <img class="hero-logo" src="imagenes/total-blackout/lockup-blanco.png" alt="Total Blackout" />
+      <p class="lead">Una campaña conceptual de Black Friday para SuperTotal, contada en tres videos verticales. Una tienda a oscuras, una cuenta regresiva y una palanca que enciende las ofertas a la medianoche.</p>
+      <div class="tags">
+        <span class="tag">Concepto y guion</span>
+        <span class="tag">Dirección de arte con IA</span>
+        <span class="tag">Motion y edición</span>
+        <span class="tag">Video vertical</span>
+      </div>
+    </div>
+    <span class="scroll-hint">↓ Ver la campaña</span>
+  </header>
+
+  <!-- PIEZA PRINCIPAL -->
+  <section id="principal">
+    <div class="wrap featured">
+      <div class="phone" data-yt="qQmqwrdrsko">
+        <img src="imagenes/total-blackout/tb-cartel.webp" alt="Cartel Total Blackout encendido en el depósito" loading="lazy" />
+        <button class="play" aria-label="Reproducir Total Blackout"><span>▶</span></button>
+      </div>
+      <div>
+        <span class="badge">Pieza principal · 29 s</span>
+        <h2>La noche antes del Black Friday.</h2>
+        <p class="muted">El Black Friday suele comunicarse con flyers: precios y porcentajes sin contexto. Quise contar lo que no se ve, el equipo que prepara la tienda la noche anterior, y convertir ese momento en el concepto de la campaña.</p>
+        <p class="muted">La idea es un apagón a propósito, como antes de una fiesta sorpresa: en la oscuridad, cada oferta trae su propia luz.</p>
+        <ol class="story">
+          <li><span><strong>23:59:39.</strong> El frente de la tienda, con el cartel encendido y el interior en penumbra.</span></li>
+          <li><span><strong>"Apagamos todo para prepararte algo."</strong> El equipo arma la sorpresa con luz de trabajo.</span></li>
+          <li><span><strong>Seis ofertas, seis luces.</strong> Un corpóreo, las cenefas, una heladera, un posnet: cada rubro se ilumina con algo de su mundo.</span></li>
+          <li><span><strong>23:59:59.</strong> La música se corta, alguien baja la palanca y suena el clack.</span></li>
+          <li><span><strong>00:00:00.</strong> Las luces se prenden fila por fila hasta encender el corpóreo TOTAL BLACKOUT.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- SISTEMA -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Sistema visual</p>
+      <h2>Un concepto, cuatro piezas de sistema.</h2>
+      <p class="muted" style="max-width:720px">Para que no fuera un video con textos sino una campaña, definí recursos que se repiten en las tres piezas.</p>
+      <div class="grid-4">
+        <div class="card">
+          <div class="swatches"><span class="swatch" style="background:#ff6e50"></span><span class="swatch" style="background:#f0cd14"></span><span class="swatch" style="background:#0e0d10"></span></div>
+          <h3>Coral en la oscuridad</h3>
+          <p>El coral de SuperTotal es el color de la luz: corpóreos, cenefas, neón. El amarillo queda reservado para el + y el club de socios.</p>
+        </div>
+        <div class="card">
+          <div class="plus" aria-hidden="true"></div>
+          <h3>El + como transición</h3>
+          <p>El ícono de la marca se convierte en un destello que abre cada oferta. Es el hilo que une todos los cortes.</p>
+        </div>
+        <div class="card">
+          <div class="seg" aria-hidden="true">23:59:5_</div>
+          <h3>Cuenta regresiva</h3>
+          <p>Un reloj de display de segmentos, dibujado a medida, que avanza al ritmo de la música y titila a las 00:00.</p>
+        </div>
+        <div class="card">
+          <div class="type-sample">45%</div><small>EN 1 PAGO</small>
+          <h3>Grilla de ofertas</h3>
+          <p>Siempre en el mismo lugar, con el mismo orden: el número en coral cuenta hacia arriba y el detalle aparece en blanco.</p>
+        </div>
+      </div>
+      <div class="stills">
+        <figure><img src="imagenes/total-blackout/tb-35000.webp" alt="Corpóreo 35.000 encendido" loading="lazy" /><figcaption>35.000 productos</figcaption></figure>
+        <figure><img src="imagenes/total-blackout/tb-almacen.webp" alt="Pasillo de almacén con cenefas coral" loading="lazy" /><figcaption>35% en almacén</figcaption></figure>
+        <figure><img src="imagenes/total-blackout/tb-gaseosas.webp" alt="Heladera de gaseosas iluminada" loading="lazy" /><figcaption>2x1 en gaseosas</figcaption></figure>
+        <figure><img src="imagenes/total-blackout/tb-posnet.webp" alt="Pago con tarjeta en el posnet" loading="lazy" /><figcaption>45% en 1 pago</figcaption></figure>
+        <figure><img src="imagenes/total-blackout/tb-palanca.webp" alt="Luces del depósito encendiéndose" loading="lazy" /><figcaption>00:00:00</figcaption></figure>
+        <figure><img src="imagenes/total-blackout/tb-cartel.webp" alt="Corpóreo Total Blackout encendido" loading="lazy" /><figcaption>El remate</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERIE -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">La serie</p>
+      <h2>Dos piezas más, el mismo evento.</h2>
+      <p class="muted" style="max-width:720px">El concepto se adapta a dos formatos que la gente ya conoce: un vivo de redes y una cadena nacional.</p>
+      <div class="series">
+        <div class="item">
+          <div class="phone" data-yt="izm9MkGHkhs">
+            <img src="imagenes/total-blackout/sm-revelacion.webp" alt="Fachada con el cartel Total Blackout después del sismo" loading="lazy" />
+            <button class="play" aria-label="Reproducir Sismo de ofertas"><span>▶</span></button>
+          </div>
+          <div>
+            <h3>Sismo de ofertas</h3>
+            <p class="muted">Una creadora hace un vivo frente a la tienda. Le llega una alerta, empieza a temblar y se le cae el celular. Cuando lo levanta, la fachada tiene un cartel nuevo y el piso está partido en coral.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="phone" data-yt="EkeQMXPz8GI">
+            <img src="imagenes/total-blackout/cn-placa.webp" alt="Placa de Cadena Nacional de Ofertas con el sello oficial" loading="lazy" />
+            <button class="play" aria-label="Reproducir Cadena Nacional de Ofertas"><span>▶</span></button>
+          </div>
+          <div>
+            <h3>Cadena Nacional de Ofertas</h3>
+            <p class="muted">Una parodia de cadena nacional: corte de transmisión, sello oficial y un locutor solemne que decreta "el estado de ofertas total". Al caer la noche, el cartel se enciende en el cielo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Proceso</p>
+      <h2>De la idea al video.</h2>
+      <div class="process">
+        <div class="card"><div class="step-n">01</div><h3>Concepto y guion</h3><p>La historia de cada pieza, la estructura de tiempos y las ofertas, basadas en promociones reales del rubro.</p></div>
+        <div class="card"><div class="step-n">02</div><h3>Imágenes y animación con IA</h3><p>Cada toma se generó como imagen, se corrigió (marcas reales, textos deformes, continuidad) y se animó. Las cifras y los logos se agregaron después, para que salieran nítidos.</p></div>
+        <div class="card"><div class="step-n">03</div><h3>Edición, motion y sonido</h3><p>Montaje al ritmo de la música, tipografía en movimiento, recoloreo a la paleta de la marca, voces y diseño de sonido.</p></div>
+      </div>
+      <div class="tools">
+        <span class="tag">Gemini</span><span class="tag">Kling AI</span><span class="tag">ElevenLabs</span><span class="tag">Claude</span>
+      </div>
+      <p class="note">SuperTotal es una marca ficticia creada para este portfolio. Las imágenes, los personajes, las voces y la música están generados con IA.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="muted">¿Te gustaría trabajar una campaña así?</p>
+      <a class="btn" href="mailto:tartalonestor@gmail.com">Hablemos</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.phone[data-yt]').forEach(function (box) {
+      var btn = box.querySelector('.play');
+      btn.addEventListener('click', function () {
+        var id = box.getAttribute('data-yt');
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+        f.title = btn.getAttribute('aria-label');
+        f.allow = 'autoplay; encrypted-media; picture-in-picture';
+        f.allowFullscreen = true;
+        box.innerHTML = '';
+        box.appendChild(f);
+      });
+    });
+  </script>
+</body>
+</html>

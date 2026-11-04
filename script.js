@@ -174,6 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'vivi-san-juan-case.html';
         return;
       }
+      if (this.classList.contains('total-blackout-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'total-blackout-case.html';
+        return;
+      }
       if (this.classList.contains('mas-go-card')) {
         sessionStorage.setItem('portfolioScrollY', window.scrollY);
         window.location.href = 'mas-go-case.html';
@@ -262,6 +267,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (card && card.classList.contains('vivi-sanjuan-card')) {
         sessionStorage.setItem('portfolioScrollY', window.scrollY);
         window.location.href = 'vivi-san-juan-case.html';
+        return;
+      }
+      if (card && card.classList.contains('total-blackout-card')) {
+        sessionStorage.setItem('portfolioScrollY', window.scrollY);
+        window.location.href = 'total-blackout-case.html';
         return;
       }
       if (card && card.classList.contains('mas-go-card')) {
